@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projektfinanzierung Erneuerbare Energien – [Bankname]</title>
+  <meta name="description" content="Wind-, Solar- und Speicherprojekte finanzieren: Schnell-Check mit Sofort-Indikation und vollständige Online-Anfrage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <!-- Icon-Sprite (Inline-SVG) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-blitz" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+    <symbol id="i-uebernahme" viewBox="0 0 24 24"><path d="M4 7h12M12 3l4 4-4 4"/><path d="M20 17H8M12 13l-4 4 4 4"/></symbol>
+    <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+    <symbol id="i-dokument" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 005 4.5v15A1.5 1.5 0 006.5 21h11a1.5 1.5 0 001.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M12 10v11M9 21h6"/><circle cx="12" cy="8.5" r="1.5"/><path d="M12 7V2M13.3 9.2l4.4 2.6M10.7 9.2l-4.4 2.6"/></symbol>
+    <symbol id="i-sonne" viewBox="0 0 24 24"><path d="M3 20l2.5-8h13L21 20z"/><path d="M12 12v8M4.3 16h15.4"/><circle cx="12" cy="5" r="2"/><path d="M12 1.5v.5M16 5h.5M7.5 5H8"/></symbol>
+    <symbol id="i-feld" viewBox="0 0 24 24"><path d="M5 11l2-6h10l2 6z"/><path d="M12 11v4M9 5l-1 6M15 5l1 6"/><path d="M3 21c2-3 4-4 6-4M9 21c1.5-2.5 3.5-4 6-4M15 21c1.5-2 3-3 6-3"/></symbol>
+    <symbol id="i-batterie" viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3M11.5 9l-2 3h3l-2 3"/></symbol>
+    <symbol id="i-telefon" viewBox="0 0 24 24"><path d="M5 4h3.5l2 5-2.5 1.5a11 11 0 005.5 5.5L15 13.5l5 2V19a1.5 1.5 0 01-1.5 1.5A16 16 0 013.5 5.5 1.5 1.5 0 015 4z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="kopf">
+    <div class="container kopf__inner">
+      <a class="logo" href="index.html">
+        <span class="logo__platzhalter" aria-hidden="true">LOGO</span>
+        <span class="logo__name">[Bankname] · Erneuerbare Energien</span>
+      </a>
+      <nav class="kopf__nav" aria-label="Hauptnavigation">
+        <a href="index.html" aria-current="page">Start</a>
+        <a href="anfrage.html" data-uebernahme>Anfrage</a>
+        <a href="portal.html">Kundenportal</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero" aria-labelledby="hero-titel">
+      <div class="container hero__grid">
+        <div>
+          <h1 id="hero-titel">Ihr Wind-, Solar- oder Speicherprojekt. Vorgeprüft in wenigen Minuten.</h1>
+          <p class="hero__lead">Für Projektierer, Betreiber, Bürgerenergiegesellschaften, Landwirte und Stadtwerke: Machen Sie Ihre Angaben selbst – wir prüfen schneller und Sie wissen früher, woran Sie sind.</p>
+          <ul class="nutzen">
+            <li>
+              <span class="nutzen__icon"><svg class="icon" aria-hidden="true"><use href="#i-blitz"/></svg></span>
+              <div><strong>Sofort-Indikation</strong><span>Kreditvolumen und Schuldendienstdeckung direkt im Schnell-Check.</span></div>
+            </li>
+            <li>
+              <span class="nutzen__icon"><svg class="icon" aria-hidden="true"><use href="#i-uebernahme"/></svg></span>
+              <div><strong>Keine doppelte Eingabe</strong><span>Ihre Angaben werden automatisch in die vollständige Anfrage übernommen.</span></div>
+            </li>
+            <li>
+              <span class="nutzen__icon"><svg class="icon" aria-hidden="true"><use href="#i-uhr"/></svg></span>
+              <div><strong>Rückmeldung in [X Werktagen]</strong><span>Ihr persönliches Spezialistenteam meldet sich mit einer fundierten Einschätzung.</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ===================== Schnell-Check ===================== -->
+        <div class="karte check" id="schnell-check">
+          <div class="check__kopf">
+            <h2 id="check-titel">Schnell-Check</h2>
+            <p>ca. 3 Minuten</p>
+          </div>
+
+          <div class="fortschritt">
+            <div class="fortschritt__kopf">
+              <span id="sc-vollst-label">Vollständigkeit Ihrer Angaben</span>
+              <strong id="sc-vollst-wert">0 %</strong>
+            </div>
+            <div class="fortschritt__balken" role="progressbar" aria-labelledby="sc-vollst-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 Prozent" id="sc-vollst-balken">
+              <div class="fortschritt__wert" id="sc-vollst-fuellung"></div>
+            </div>
+            <span class="hinweis" id="sc-vollst-text">Je mehr Sie angeben, desto genauer wird die Indikation.</span>
+          </div>
+
+          <form id="schnellcheck" novalidate aria-labelledby="check-titel">
+            <div class="tabs" role="tablist" aria-label="Schnell-Check Abschnitte">
+              <button type="button" class="tab" role="tab" id="tab-projekt" aria-controls="panel-projekt" aria-selected="true"><span class="tab__nr" aria-hidden="true">1</span>Projekt</button>
+              <button type="button" class="tab" role="tab" id="tab-stand" aria-controls="panel-stand" aria-selected="false" tabindex="-1"><span class="tab__nr" aria-hidden="true">2</span>Projektstand</button>
+              <button type="button" class="tab" role="tab" id="tab-zahlen" aria-controls="panel-zahlen" aria-selected="false" tabindex="-1"><span class="tab__nr" aria-hidden="true">3</span>Zahlen</button>
+            </div>
+
+            <!-- Reiter 1: Projekt -->
+            <div class="tab-panel" role="tabpanel" id="panel-projekt" aria-labelledby="tab-projekt" tabindex="0">
+              <fieldset class="feld">
+                <legend>Technologie</legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="technologie" value="wind"><span>Wind an Land</span></label>
+                  <label class="chip"><input type="radio" name="technologie" value="pv_frei"><span>PV-Freifläche</span></label>
+                  <label class="chip"><input type="radio" name="technologie" value="agri_pv"><span>Agri-PV</span></label>
+                  <label class="chip"><input type="radio" name="technologie" value="pv_dach"><span>PV-Dach</span></label>
+                  <label class="chip"><input type="radio" name="technologie" value="speicher"><span>Speicher</span></label>
+                </div>
+              </fieldset>
+              <div class="feld-reihe">
+                <div class="feld">
+                  <label for="sc-leistung">Leistung</label>
+                  <div class="eingabe-gruppe">
+                    <input class="eingabe" type="text" inputmode="decimal" id="sc-leistung" name="leistung_mw" autocomplete="off" placeholder="z. B. 24" aria-describedby="sc-leistung-einheit">
+                    <span class="eingabe-gruppe__einheit" id="sc-leistung-einheit">MW</span>
+                  </div>
+                </div>
+                <div class="feld">
+                  <label for="sc-inbetriebnahme">Geplante Inbetriebnahme</label>
+                  <input class="eingabe" type="month" id="sc-inbetriebnahme" name="inbetriebnahme" min="2024-01" max="2035-12">
+                </div>
+              </div>
+              <div class="feld-reihe">
+                <div class="feld">
+                  <label for="sc-bundesland">Bundesland</label>
+                  <select class="eingabe" id="sc-bundesland" name="bundesland" data-bundeslaender>
+                    <option value="">Bitte wählen</option>
+                  </select>
+                </div>
+                <div class="feld">
+                  <label for="sc-rolle">Ihre Rolle</label>
+                  <select class="eingabe" id="sc-rolle" name="rolle">
+                    <option value="">Bitte wählen</option>
+                    <option value="projektierer">Projektierer</option>
+                    <option value="betreiber">Betreiber</option>
+                    <option value="buergerenergie">Bürgerenergiegesellschaft</option>
+                    <option value="landwirt">Landwirt / Flächeneigentümer</option>
+                    <option value="stadtwerk">Stadtwerk</option>
+                    <option value="sonstige">Sonstige</option>
+                  </select>
+                </div>
+              </div>
+              <div class="tab-panel__aktionen">
+                <button type="button" class="btn btn-sekundaer" data-weiter="tab-stand">Weiter zu Projektstand <svg class="icon icon--klein" aria-hidden="true"><use href="#i-pfeil"/></svg></button>
+              </div>
+            </div>
+
+            <!-- Reiter 2: Projektstand -->
+            <div class="tab-panel" role="tabpanel" id="panel-stand" aria-labelledby="tab-stand" tabindex="0" hidden>
+              <fieldset class="feld">
+                <legend data-genehmigung-label>Baurecht / Genehmigung</legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="genehmigung" value="vorbereitung"><span>In Vorbereitung</span></label>
+                  <label class="chip"><input type="radio" name="genehmigung" value="beantragt"><span>Beantragt</span></label>
+                  <label class="chip"><input type="radio" name="genehmigung" value="erteilt"><span>Erteilt</span></label>
+                  <label class="chip"><input type="radio" name="genehmigung" value="bestandskraeftig"><span>Bestandskräftig</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="feld">
+                <legend>Netzanschluss</legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="netzanschluss" value="offen"><span>Offen</span></label>
+                  <label class="chip"><input type="radio" name="netzanschluss" value="angefragt"><span>Angefragt</span></label>
+                  <label class="chip"><input type="radio" name="netzanschluss" value="zusage"><span>Zusage liegt vor</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="feld">
+                <legend>Flächen gesichert</legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="flaechen" value="nein"><span>Nein</span></label>
+                  <label class="chip"><input type="radio" name="flaechen" value="teilweise"><span>Teilweise</span></label>
+                  <label class="chip"><input type="radio" name="flaechen" value="vollstaendig"><span>Vollständig</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="feld" id="sc-erloesmodell-feld">
+                <legend>Erlösmodell</legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="erloesmodell" value="eeg"><span>EEG-Zuschlag</span></label>
+                  <label class="chip"><input type="radio" name="erloesmodell" value="ppa"><span>PPA</span></label>
+                  <label class="chip"><input type="radio" name="erloesmodell" value="eeg_ppa"><span>EEG + PPA</span></label>
+                  <label class="chip"><input type="radio" name="erloesmodell" value="merchant"><span>Merchant</span></label>
+                </div>
+              </fieldset>
+              <div class="tab-panel__aktionen">
+                <button type="button" class="btn btn-sekundaer" data-weiter="tab-zahlen">Weiter zu Zahlen <svg class="icon icon--klein" aria-hidden="true"><use href="#i-pfeil"/></svg></button>
+              </div>
+            </div>
+
+            <!-- Reiter 3: Zahlen -->
+            <div class="tab-panel" role="tabpanel" id="panel-zahlen" aria-labelledby="tab-zahlen" tabindex="0" hidden>
+              <div class="feld-reihe">
+                <div class="feld" id="sc-p50-feld">
+                  <label for="sc-p50">Volllaststunden P50</label>
+                  <div class="eingabe-gruppe">
+                    <input class="eingabe" type="text" inputmode="decimal" id="sc-p50" name="p50_h" autocomplete="off" placeholder="z. B. 2.400">
+                    <span class="eingabe-gruppe__einheit">h/a</span>
+                  </div>
+                </div>
+                <div class="feld" id="sc-preis-feld">
+                  <label for="sc-preis">Erlös</label>
+                  <div class="eingabe-gruppe">
+                    <input class="eingabe" type="text" inputmode="decimal" id="sc-preis" name="preis_eur_mwh" autocomplete="off" placeholder="z. B. 73">
+                    <span class="eingabe-gruppe__einheit">€/MWh</span>
+                  </div>
+                </div>
+                <div class="feld" id="sc-speicher-feld" hidden>
+                  <label for="sc-speicher">Erlöserwartung</label>
+                  <div class="eingabe-gruppe">
+                    <input class="eingabe" type="text" inputmode="decimal" id="sc-speicher" name="speicher_erloes" autocomplete="off" placeholder="z. B. 110">
+                    <span class="eingabe-gruppe__einheit">T€/MW/a</span>
+                  </div>
+                </div>
+              </div>
+              <div class="feld-reihe">
+                <div class="feld">
+                  <label for="sc-capex">Gesamtinvestition</label>
+                  <div class="eingabe-gruppe">
+                    <input class="eingabe" type="text" inputmode="decimal" id="sc-capex" name="capex_teur" autocomplete="off" placeholder="z. B. 34.800">
+                    <span class="eingabe-gruppe__einheit">T€</span>
+                  </div>
+                </div>
+                <div class="feld">
+                  <label for="sc-opex">Betriebskosten <span class="hinweis" style="display:inline">(optional)</span></label>
+                  <div class="eingabe-gruppe">
+                    <input class="eingabe" type="text" inputmode="decimal" id="sc-opex" name="opex_teur" autocomplete="off" placeholder="Pauschale" aria-describedby="sc-opex-hinweis">
+                    <span class="eingabe-gruppe__einheit">T€/a</span>
+                  </div>
+                  <span class="hinweis" id="sc-opex-hinweis">Leer lassen: Wir setzen eine Pauschale je MW an.</span>
+                </div>
+              </div>
+              <div class="feld">
+                <label for="sc-fk">Fremdkapitalquote</label>
+                <div class="eingabe-gruppe" style="max-width:200px">
+                  <input class="eingabe" type="text" inputmode="decimal" id="sc-fk" name="fk_quote" autocomplete="off" value="80">
+                  <span class="eingabe-gruppe__einheit">%</span>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <section class="ergebnis" aria-labelledby="sc-ergebnis-titel">
+            <h3 class="sr-only" id="sc-ergebnis-titel">Ihre Indikation</h3>
+            <div id="sc-ergebnis" aria-live="polite" aria-atomic="true"></div>
+          </section>
+
+          <div class="check__aktionen">
+            <a class="btn btn-cta btn-gross btn-block" href="anfrage.html" id="sc-cta" data-uebernahme>
+              Vollständige Anfrage starten
+              <svg class="icon" aria-hidden="true"><use href="#i-pfeil"/></svg>
+            </a>
+          </div>
+          <p class="kleingedruckt" id="sc-annahmen"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Was wir finanzieren ===================== -->
+    <section class="abschnitt" aria-labelledby="finanzieren-titel">
+      <div class="container">
+        <div class="abschnitt__kopf">
+          <h2 id="finanzieren-titel">Was wir finanzieren</h2>
+          <p>Projektfinanzierungen für neue Anlagen und Bestandsanlagen – regional verankert und mit Erfahrung in der Energiewende.</p>
+        </div>
+        <div class="kacheln">
+          <article class="karte kachel">
+            <span class="kachel__icon"><svg class="icon icon--gross" aria-hidden="true"><use href="#i-wind"/></svg></span>
+            <h3>Windenergie an Land</h3>
+            <p>Einzelanlagen und Windparks, Neubau und Repowering.</p>
+            <div class="kachel__konditionen">
+              <dl><dt>Volumen</dt><dd>[ab X Mio. €]</dd><dt>Laufzeit</dt><dd>[bis X Jahre]</dd><dt>Zins</dt><dd>[Konditionen]</dd></dl>
+            </div>
+          </article>
+          <article class="karte kachel">
+            <span class="kachel__icon"><svg class="icon icon--gross" aria-hidden="true"><use href="#i-sonne"/></svg></span>
+            <h3>Photovoltaik</h3>
+            <p>Freiflächen- und große Dachanlagen, auch mit Direktvermarktung.</p>
+            <div class="kachel__konditionen">
+              <dl><dt>Volumen</dt><dd>[ab X Mio. €]</dd><dt>Laufzeit</dt><dd>[bis X Jahre]</dd><dt>Zins</dt><dd>[Konditionen]</dd></dl>
+            </div>
+          </article>
+          <article class="karte kachel">
+            <span class="kachel__icon"><svg class="icon icon--gross" aria-hidden="true"><use href="#i-feld"/></svg></span>
+            <h3>Agri-PV</h3>
+            <p>Doppelte Flächennutzung für Landwirtschaft und Stromerzeugung.</p>
+            <div class="kachel__konditionen">
+              <dl><dt>Volumen</dt><dd>[ab X Mio. €]</dd><dt>Laufzeit</dt><dd>[bis X Jahre]</dd><dt>Zins</dt><dd>[Konditionen]</dd></dl>
+            </div>
+          </article>
+          <article class="karte kachel">
+            <span class="kachel__icon"><svg class="icon icon--gross" aria-hidden="true"><use href="#i-batterie"/></svg></span>
+            <h3>Batteriespeicher</h3>
+            <p>Stand-alone oder co-located, mit Vermarktungs- oder Tolling-Vertrag.</p>
+            <div class="kachel__konditionen">
+              <dl><dt>Volumen</dt><dd>[ab X Mio. €]</dd><dt>Laufzeit</dt><dd>[bis X Jahre]</dd><dt>Zins</dt><dd>[Konditionen]</dd></dl>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Ablauf ===================== -->
+    <section class="abschnitt abschnitt--weiss" aria-labelledby="ablauf-titel">
+      <div class="container">
+        <div class="abschnitt__kopf">
+          <h2 id="ablauf-titel">So läuft Ihre Finanzierung ab</h2>
+          <p>Vom ersten Schnell-Check bis zur Auszahlung – transparent und mit festen Ansprechpartnern.</p>
+        </div>
+        <ol class="ablauf">
+          <li><span class="ablauf__nr" aria-hidden="true">1</span><h3>Schnell-Check</h3><p>Eckdaten eingeben und sofort eine unverbindliche Indikation erhalten.</p></li>
+          <li><span class="ablauf__nr" aria-hidden="true">2</span><h3>Anfrage &amp; Unterlagen</h3><p>Vollständige Anfrage online stellen und Unterlagen direkt hochladen.</p></li>
+          <li><span class="ablauf__nr" aria-hidden="true">3</span><h3>Prüfung &amp; Term Sheet</h3><p>Vorprüfung und Due Diligence, danach ein indikatives Term Sheet.</p></li>
+          <li><span class="ablauf__nr" aria-hidden="true">4</span><h3>Vertrag &amp; Auszahlung</h3><p>Kreditentscheidung, Vertragsabschluss und Auszahlung nach Baufortschritt.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== Unterlagen ===================== -->
+    <section class="abschnitt" aria-labelledby="unterlagen-titel">
+      <div class="container">
+        <div class="abschnitt__kopf">
+          <h2 id="unterlagen-titel">Diese Unterlagen sollten Sie bereithalten</h2>
+          <p>Fehlt etwas? Kein Problem – Sie können Unterlagen jederzeit über das Kundenportal nachreichen.</p>
+        </div>
+        <ul class="checkliste">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Ertragsgutachten</strong><span>Bei Wind zwei unabhängige Gutachten mit P50 und P90.</span></div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Genehmigung</strong><span>BImSchG-Bescheid bzw. Baugenehmigung.</span></div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Netzanschlusszusage</strong><span>Zusage oder Reservierung des Netzbetreibers.</span></div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Pacht- und Nutzungsverträge</strong><span>Für alle Anlagen-, Wege- und Kabelflächen.</span></div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Liefer-, EPC- und Wartungsverträge</strong><span>Inklusive Verfügbarkeitsgarantien.</span></div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Finanzmodell</strong><span>Cashflow-Planung über die Kreditlaufzeit, gern als Excel.</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="abschnitt abschnitt--weiss" aria-labelledby="faq-titel">
+      <div class="container">
+        <div class="abschnitt__kopf">
+          <h2 id="faq-titel">Häufige Fragen</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Ist die Indikation im Schnell-Check verbindlich?<svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div><p>Nein. Die Indikation ist eine vereinfachte Rechnung ohne Steuern, Reserven, Bauzeitzinsen und Degradation. Sie ist keine Kreditzusage. Die verbindliche Prüfung erfolgt nach Eingang Ihrer vollständigen Anfrage.</p></div>
+          </details>
+          <details>
+            <summary>Was bedeutet DSCR?<svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div><p>Der Schuldendienstdeckungsgrad (Debt Service Coverage Ratio) setzt den freien Cashflow eines Jahres ins Verhältnis zu Zins und Tilgung. Ein DSCR von 1,20x bedeutet: Der Cashflow ist 20 % höher als der Kapitaldienst.</p></div>
+          </details>
+          <details>
+            <summary>Was ist der Unterschied zwischen P50 und P90?<svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div><p>P50 ist der Ertrag, der mit 50 % Wahrscheinlichkeit erreicht oder übertroffen wird. P90 wird mit 90 % Wahrscheinlichkeit erreicht – ein vorsichtiges Szenario, das wir für die Kreditbemessung zusätzlich betrachten.</p></div>
+          </details>
+          <details>
+            <summary>Kann ich auch Projekte in der Entwicklung anfragen?<svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div><p>Ja. Wir begleiten Projekte gern frühzeitig. Eine Kreditentscheidung setzt jedoch in der Regel eine erteilte Genehmigung, die Netzanschlusszusage und gesicherte Flächen voraus.</p></div>
+          </details>
+          <details>
+            <summary>Werden Förderkredite der KfW berücksichtigt?<svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div><p>Ja. Als Hausbank beantragen wir passende Förderkredite für Sie. Geben Sie in der Anfrage einfach an, dass Sie einen Förderkredit wünschen.</p></div>
+          </details>
+          <details>
+            <summary>Was passiert mit meinen Daten?<svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div><p>[Platzhalter Datenschutzhinweis: Zweck der Verarbeitung, Rechtsgrundlage, Speicherdauer, Ihre Rechte. Text durch die Datenschutzabteilung der Bank ergänzen.]</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Kontaktband ===================== -->
+    <section class="kontaktband" aria-labelledby="kontakt-titel">
+      <div class="container kontaktband__inner">
+        <div>
+          <h2 id="kontakt-titel">Lieber persönlich sprechen?</h2>
+          <p>Ihr Team Erneuerbare Energien: [Telefonnummer] · [E-Mail-Adresse] · [Servicezeiten]</p>
+        </div>
+        <div class="kontaktband__aktionen">
+          <a class="btn btn-sekundaer" href="tel:+490000000000"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-telefon"/></svg>Rückruf vereinbaren</a>
+          <a class="btn btn-cta" href="anfrage.html" data-uebernahme>Vollständige Anfrage starten</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fuss">
+    <div class="container fuss__inner">
+      <p>© [Jahr] [Bankname] eG</p>
+      <nav aria-label="Rechtliches">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Barrierefreiheit</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/calc.js"></script>
+  <script src="assets/schnellcheck.js"></script>
+</body>
+</html>

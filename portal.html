@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kundenportal – Projektfinanzierung Erneuerbare Energien – [Bankname]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M4 15v4.5h16V15"/></symbol>
+    <symbol id="i-sprechblase" viewBox="0 0 24 24"><path d="M4 5h16v11H9.5L5 20v-4H4z"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
+    <symbol id="i-telefon" viewBox="0 0 24 24"><path d="M5 4h3.5l2 5-2.5 1.5a11 11 0 005.5 5.5L15 13.5l5 2V19a1.5 1.5 0 01-1.5 1.5A16 16 0 013.5 5.5 1.5 1.5 0 015 4z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+    <symbol id="i-flagge" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="kopf">
+    <div class="container kopf__inner">
+      <a class="logo" href="index.html">
+        <span class="logo__platzhalter" aria-hidden="true">LOGO</span>
+        <span class="logo__name">[Bankname] · Erneuerbare Energien</span>
+      </a>
+      <nav class="kopf__nav" aria-label="Hauptnavigation">
+        <a href="index.html">Start</a>
+        <a href="anfrage.html">Anfrage</a>
+        <a href="portal.html" aria-current="page">Kundenportal</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="seitenkopf">
+    <div class="container">
+      <h1>Kundenportal</h1>
+      <p>Willkommen, [Name]. Hier sehen Sie den Stand Ihrer Finanzierungsanfragen.</p>
+    </div>
+  </div>
+
+  <main class="container portal" id="inhalt">
+    <section aria-labelledby="liste-titel">
+      <div class="portal__kopfzeile">
+        <h2 id="liste-titel">Ihre Anfragen</h2>
+        <a class="btn btn-cta" href="anfrage.html"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-plus"/></svg>Neue Anfrage</a>
+      </div>
+      <div class="box" id="demo-hinweis" role="note">
+        <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+        <p>Demo-Ansicht mit fiktiven Projekten. Die Anbindung an das Kernbankensystem folgt.</p>
+      </div>
+      <div class="portal__liste" id="projekte" aria-busy="true">
+        <p class="laden">Anfragen werden geladen …</p>
+      </div>
+    </section>
+
+    <aside class="seitenleiste" aria-label="Rückfragen und Kontakt">
+      <section class="karte" aria-labelledby="rueckfragen-titel">
+        <h2 id="rueckfragen-titel">Offene Rückfragen <span id="rueckfragen-anzahl"></span></h2>
+        <ul class="rueckfragen" id="rueckfragen"></ul>
+      </section>
+
+      <section class="karte" aria-labelledby="kontakt-titel">
+        <h2 id="kontakt-titel">Ihr Ansprechpartner</h2>
+        <div class="ansprechpartner">
+          <span class="ansprechpartner__bild"><svg class="icon icon--gross" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div>
+            <p><strong>[Vorname Nachname]</strong></p>
+            <p class="hinweis" style="margin:0">[Funktion], Team Erneuerbare Energien</p>
+          </div>
+        </div>
+        <ul class="kontaktliste">
+          <li><a href="tel:+490000000000"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-telefon"/></svg>[Telefonnummer]</a></li>
+          <li><a href="mailto:ee-team@example.invalid"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-mail"/></svg>[E-Mail-Adresse]</a></li>
+        </ul>
+        <p class="hinweis">Erreichbar [Servicezeiten]. Vertretung: [Name Vertretung].</p>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Vorlage für eine Anfrage-Karte -->
+  <template id="projekt-vorlage">
+    <article class="karte projekt">
+      <div class="projekt__kopf">
+        <div>
+          <h3 data-feld="name"></h3>
+          <dl class="projekt__meta">
+            <div><dt>Technologie:</dt><dd data-feld="technologie"></dd></div>
+            <div><dt>Leistung:</dt><dd data-feld="leistung"></dd></div>
+            <div><dt>Inbetriebnahme:</dt><dd data-feld="inbetriebnahme"></dd></div>
+            <div><dt>Vorgang:</dt><dd data-feld="vorgang"></dd></div>
+          </dl>
+        </div>
+        <div class="projekt__volumen">
+          <span>Kreditvolumen</span>
+          <strong data-feld="volumen"></strong>
+        </div>
+      </div>
+      <div class="projekt__badges" data-feld="badges"></div>
+      <ol class="pipeline" data-feld="pipeline"></ol>
+      <div class="naechster-schritt">
+        <svg class="icon" aria-hidden="true"><use href="#i-flagge"/></svg>
+        <p><strong>Nächster Schritt:</strong> <span data-feld="naechster"></span></p>
+      </div>
+    </article>
+  </template>
+
+  <!-- Vorlage für eine Rückfrage -->
+  <template id="rueckfrage-vorlage">
+    <li class="rueckfrage">
+      <span class="rueckfrage__projekt" data-feld="projekt"></span>
+      <p data-feld="frage"></p>
+      <div class="rueckfrage__aktionen">
+        <input type="file" class="sr-only" tabindex="-1" data-feld="datei">
+        <button type="button" class="btn btn-sekundaer" data-aktion="hochladen"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-upload"/></svg>Dokument hochladen</button>
+        <button type="button" class="btn btn-text" data-aktion="antworten" aria-expanded="false"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-sprechblase"/></svg>Antworten</button>
+      </div>
+      <form class="rueckfrage__antwort" data-feld="antwortform" hidden>
+        <label class="feld__label" data-feld="antwortlabel">Ihre Antwort</label>
+        <textarea class="eingabe" data-feld="antworttext" rows="3"></textarea>
+        <div style="margin-top:8px"><button type="submit" class="btn btn-primaer">Antwort senden</button></div>
+      </form>
+      <p class="rueckfrage__status" data-feld="status" role="status"></p>
+    </li>
+  </template>
+
+  <footer class="fuss">
+    <div class="container fuss__inner">
+      <p>© [Jahr] [Bankname] eG</p>
+      <nav aria-label="Rechtliches">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Barrierefreiheit</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/calc.js"></script>
+  <script src="assets/portal.js"></script>
+</body>
+</html>
