@@ -27,6 +27,15 @@ python3 -m http.server 8000
 
 Danach im Browser <http://localhost:8000> öffnen. Ein lokaler Server ist nötig, weil `sessionStorage` und `<template>` unter `file://` je nach Browser eingeschränkt sind.
 
+### Online (GitHub Pages)
+
+Die Seite wird bei jedem Push auf `main` automatisch veröffentlicht (`.github/workflows/pages.yml`):
+<https://rt6k6rcwb7-stack.github.io/EEneue-Antragsstrecke/>
+
+Der Workflow prüft vorher den Testfall des Rechenkerns und veröffentlicht nur `index.html`, `anfrage.html`, `portal.html` und `assets/`.
+Einmalig nötig: unter **Settings → Pages → Build and deployment → Source** „GitHub Actions“ auswählen.
+Manuell auslösen: **Actions → GitHub Pages → Run workflow**.
+
 ## Konfiguration
 
 Alle Bankparameter stehen zentral in `CONFIG` in `assets/calc.js`:
