@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vollständige Anfrage – Projektfinanzierung Erneuerbare Energien – [Bankname]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pfeil-links" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3.5L21.5 20h-19z"/><path d="M12 10v4.5M12 17.5v.01"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M4 15v4.5h16V15"/></symbol>
+    <symbol id="i-dokument" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 005 4.5v15A1.5 1.5 0 006.5 21h11a1.5 1.5 0 001.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5"/></symbol>
+    <symbol id="i-speichern" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#formular">Zum Formular springen</a>
+
+  <header class="kopf">
+    <div class="container kopf__inner">
+      <a class="logo" href="index.html">
+        <span class="logo__platzhalter" aria-hidden="true">LOGO</span>
+        <span class="logo__name">[Bankname] · Erneuerbare Energien</span>
+      </a>
+      <nav class="kopf__nav" aria-label="Hauptnavigation">
+        <a href="index.html">Start</a>
+        <a href="anfrage.html" aria-current="page">Anfrage</a>
+        <a href="portal.html">Kundenportal</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="seitenkopf">
+    <div class="container">
+      <h1>Vollständige Finanzierungsanfrage</h1>
+      <p>Sechs Schritte, ca. 15 Minuten. Sie können jederzeit einen Entwurf speichern.</p>
+    </div>
+  </div>
+
+  <main class="container antrag" id="inhalt">
+    <!-- ===================== Schrittnavigation ===================== -->
+    <nav class="schrittnav" aria-labelledby="schrittnav-titel" id="schrittnav">
+      <h2 id="schrittnav-titel">Ihre Schritte</h2>
+      <ol>
+        <li><button type="button" data-ziel="1" aria-current="step"><span class="schrittnav__nr">1</span><span class="schrittnav__text">Projekt</span></button></li>
+        <li><button type="button" data-ziel="2"><span class="schrittnav__nr">2</span><span class="schrittnav__text">Genehmigungen &amp; Netz</span></button></li>
+        <li><button type="button" data-ziel="3"><span class="schrittnav__nr">3</span><span class="schrittnav__text">Ertrag &amp; Erlöse</span></button></li>
+        <li><button type="button" data-ziel="4"><span class="schrittnav__nr">4</span><span class="schrittnav__text">Kosten &amp; Finanzierung</span></button></li>
+        <li><button type="button" data-ziel="5"><span class="schrittnav__nr">5</span><span class="schrittnav__text">Unterlagen</span></button></li>
+        <li><button type="button" data-ziel="6"><span class="schrittnav__nr">6</span><span class="schrittnav__text">Prüfen &amp; Einreichen</span></button></li>
+      </ol>
+    </nav>
+
+    <!-- ===================== Formular ===================== -->
+    <div class="karte formular" id="formular-bereich">
+      <div class="box" id="vorbefuellt" role="status" hidden>
+        <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+        <p id="vorbefuellt-text"></p>
+      </div>
+
+      <form id="formular" novalidate>
+        <!-- Schritt 1 -->
+        <section class="schritt" data-schritt="1" aria-labelledby="s1-titel">
+          <div class="schritt__kopf">
+            <span class="schritt__zaehler">Schritt 1 von 6</span>
+            <h2 id="s1-titel" tabindex="-1">Projekt</h2>
+            <p>Grunddaten zu Ihrem Vorhaben. Pflichtfelder sind mit * gekennzeichnet.</p>
+          </div>
+          <fieldset class="feld" data-feld="technologie">
+            <legend>Technologie<span class="pflicht" aria-hidden="true">*</span><span class="sr-only"> (Pflichtfeld)</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="technologie" value="wind" required><span>Wind an Land</span></label>
+              <label class="chip"><input type="radio" name="technologie" value="pv_frei"><span>PV-Freifläche</span></label>
+              <label class="chip"><input type="radio" name="technologie" value="agri_pv"><span>Agri-PV</span></label>
+              <label class="chip"><input type="radio" name="technologie" value="pv_dach"><span>PV-Dach</span></label>
+              <label class="chip"><input type="radio" name="technologie" value="speicher"><span>Speicher</span></label>
+            </div>
+          </fieldset>
+          <div class="feld" data-feld="projektname">
+            <label for="f-projektname">Projektname<span class="pflicht" aria-hidden="true">*</span></label>
+            <input class="eingabe" type="text" id="f-projektname" name="projektname" required autocomplete="off" placeholder="z. B. Windpark Musterhöhe">
+          </div>
+          <div class="feld-reihe">
+            <div class="feld" data-feld="gemeinde">
+              <label for="f-gemeinde">Gemeinde / Standort</label>
+              <input class="eingabe" type="text" id="f-gemeinde" name="gemeinde" autocomplete="off">
+            </div>
+            <div class="feld" data-feld="bundesland">
+              <label for="f-bundesland">Bundesland</label>
+              <select class="eingabe" id="f-bundesland" name="bundesland" data-bundeslaender>
+                <option value="">Bitte wählen</option>
+              </select>
+            </div>
+          </div>
+          <div class="feld-reihe">
+            <div class="feld" data-feld="projektgesellschaft">
+              <label for="f-projektgesellschaft">Projektgesellschaft</label>
+              <input class="eingabe" type="text" id="f-projektgesellschaft" name="projektgesellschaft" autocomplete="organization" placeholder="z. B. Windpark Musterhöhe GmbH &amp; Co. KG">
+              <span class="hinweis">Falls noch nicht gegründet, bitte leer lassen.</span>
+            </div>
+            <div class="feld" data-feld="rolle">
+              <label for="f-rolle">Ihre Rolle</label>
+              <select class="eingabe" id="f-rolle" name="rolle">
+                <option value="">Bitte wählen</option>
+                <option value="projektierer">Projektierer</option>
+                <option value="betreiber">Betreiber</option>
+                <option value="buergerenergie">Bürgerenergiegesellschaft</option>
+                <option value="landwirt">Landwirt / Flächeneigentümer</option>
+                <option value="stadtwerk">Stadtwerk</option>
+                <option value="sonstige">Sonstige</option>
+              </select>
+            </div>
+          </div>
+          <div class="feld-reihe">
+            <div class="feld" data-feld="leistung_mw">
+              <label for="f-leistung">Leistung<span class="pflicht" aria-hidden="true">*</span></label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-leistung" name="leistung_mw" required autocomplete="off" placeholder="z. B. 24">
+                <span class="eingabe-gruppe__einheit">MW</span>
+              </div>
+            </div>
+            <div class="feld" data-feld="inbetriebnahme">
+              <label for="f-inbetriebnahme">Geplante Inbetriebnahme</label>
+              <input class="eingabe" type="month" id="f-inbetriebnahme" name="inbetriebnahme" min="2024-01" max="2035-12">
+            </div>
+          </div>
+        </section>
+
+        <!-- Schritt 2 -->
+        <section class="schritt" data-schritt="2" aria-labelledby="s2-titel" hidden>
+          <div class="schritt__kopf">
+            <span class="schritt__zaehler">Schritt 2 von 6</span>
+            <h2 id="s2-titel" tabindex="-1">Genehmigungen &amp; Netz</h2>
+            <p>Der Projektstand bestimmt, wie schnell eine Kreditentscheidung möglich ist.</p>
+          </div>
+          <fieldset class="feld" data-feld="genehmigung">
+            <legend><span data-genehmigung-label>Baurecht / Genehmigung</span><span class="pflicht" aria-hidden="true">*</span><span class="sr-only"> (Pflichtfeld)</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="genehmigung" value="vorbereitung" required><span>In Vorbereitung</span></label>
+              <label class="chip"><input type="radio" name="genehmigung" value="beantragt"><span>Beantragt</span></label>
+              <label class="chip"><input type="radio" name="genehmigung" value="erteilt"><span>Erteilt</span></label>
+              <label class="chip"><input type="radio" name="genehmigung" value="bestandskraeftig"><span>Bestandskräftig</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="feld" data-feld="netzanschluss">
+            <legend>Netzanschluss<span class="pflicht" aria-hidden="true">*</span><span class="sr-only"> (Pflichtfeld)</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="netzanschluss" value="offen" required><span>Offen</span></label>
+              <label class="chip"><input type="radio" name="netzanschluss" value="angefragt"><span>Angefragt</span></label>
+              <label class="chip"><input type="radio" name="netzanschluss" value="zusage"><span>Zusage liegt vor</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="feld" data-feld="flaechen">
+            <legend>Flächen gesichert<span class="pflicht" aria-hidden="true">*</span><span class="sr-only"> (Pflichtfeld)</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="flaechen" value="nein" required><span>Nein</span></label>
+              <label class="chip"><input type="radio" name="flaechen" value="teilweise"><span>Teilweise</span></label>
+              <label class="chip"><input type="radio" name="flaechen" value="vollstaendig"><span>Vollständig</span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <!-- Schritt 3 -->
+        <section class="schritt" data-schritt="3" aria-labelledby="s3-titel" hidden>
+          <div class="schritt__kopf">
+            <span class="schritt__zaehler">Schritt 3 von 6</span>
+            <h2 id="s3-titel" tabindex="-1">Ertrag &amp; Erlöse</h2>
+            <p data-nur="nicht-speicher">Bitte übernehmen Sie die Werte aus Ihrem Ertragsgutachten.</p>
+            <p data-nur="speicher" hidden>Bei Speichern rechnen wir mit Ihrer jährlichen Erlöserwartung je MW.</p>
+          </div>
+          <div class="feld-reihe" data-nur="nicht-speicher">
+            <div class="feld" data-feld="p50_h">
+              <label for="f-p50">Volllaststunden P50<span class="pflicht" aria-hidden="true">*</span></label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-p50" name="p50_h" required autocomplete="off" placeholder="z. B. 2.400">
+                <span class="eingabe-gruppe__einheit">h/a</span>
+              </div>
+            </div>
+            <div class="feld" data-feld="p90_h">
+              <label for="f-p90">Volllaststunden P90</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-p90" name="p90_h" autocomplete="off" placeholder="z. B. 2.050">
+                <span class="eingabe-gruppe__einheit">h/a</span>
+              </div>
+              <span class="hinweis">Ohne P90 können wir den vorsichtigen DSCR nicht berechnen.</span>
+            </div>
+          </div>
+          <fieldset class="feld" data-feld="erloesmodell" data-nur="nicht-speicher">
+            <legend>Erlösmodell<span class="pflicht" aria-hidden="true">*</span><span class="sr-only"> (Pflichtfeld)</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="erloesmodell" value="eeg" required><span>EEG-Zuschlag</span></label>
+              <label class="chip"><input type="radio" name="erloesmodell" value="ppa"><span>PPA</span></label>
+              <label class="chip"><input type="radio" name="erloesmodell" value="eeg_ppa"><span>EEG + PPA</span></label>
+              <label class="chip"><input type="radio" name="erloesmodell" value="merchant"><span>Merchant</span></label>
+            </div>
+          </fieldset>
+          <div class="feld-reihe" data-nur="nicht-speicher">
+            <div class="feld" data-feld="preis_eur_mwh">
+              <label for="f-preis"><span id="f-preis-label">Erlös</span><span class="pflicht" aria-hidden="true">*</span></label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-preis" name="preis_eur_mwh" required autocomplete="off" placeholder="z. B. 73">
+                <span class="eingabe-gruppe__einheit">€/MWh</span>
+              </div>
+            </div>
+            <div class="feld" data-feld="ppa_laufzeit" id="f-ppa-feld" hidden>
+              <label for="f-ppa">PPA-Laufzeit</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="numeric" id="f-ppa" name="ppa_laufzeit" autocomplete="off" placeholder="z. B. 10">
+                <span class="eingabe-gruppe__einheit">Jahre</span>
+              </div>
+            </div>
+          </div>
+          <div class="feld" data-feld="speicher_erloes" data-nur="speicher" hidden>
+            <label for="f-speicher">Erlöserwartung<span class="pflicht" aria-hidden="true">*</span></label>
+            <div class="eingabe-gruppe" style="max-width:320px">
+              <input class="eingabe" type="text" inputmode="decimal" id="f-speicher" name="speicher_erloes" required autocomplete="off" placeholder="z. B. 110">
+              <span class="eingabe-gruppe__einheit">T€/MW/a</span>
+            </div>
+            <span class="hinweis">Summe aus Arbitrage, Regelenergie und ggf. Tolling-Erlösen.</span>
+          </div>
+        </section>
+
+        <!-- Schritt 4 -->
+        <section class="schritt" data-schritt="4" aria-labelledby="s4-titel" hidden>
+          <div class="schritt__kopf">
+            <span class="schritt__zaehler">Schritt 4 von 6</span>
+            <h2 id="s4-titel" tabindex="-1">Kosten &amp; Finanzierung</h2>
+            <p>Investitions- und Betriebskosten sowie Ihre gewünschte Finanzierungsstruktur.</p>
+          </div>
+          <div class="feld-reihe">
+            <div class="feld" data-feld="capex_teur">
+              <label for="f-capex">Gesamtinvestition (Capex)<span class="pflicht" aria-hidden="true">*</span></label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-capex" name="capex_teur" required autocomplete="off" placeholder="z. B. 34.800">
+                <span class="eingabe-gruppe__einheit">T€</span>
+              </div>
+            </div>
+            <div class="feld" data-feld="opex_teur">
+              <label for="f-opex">Betriebskosten (Opex)</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-opex" name="opex_teur" autocomplete="off" placeholder="Pauschale" aria-describedby="f-opex-hinweis">
+                <span class="eingabe-gruppe__einheit">T€/a</span>
+              </div>
+              <span class="hinweis" id="f-opex-hinweis">Leer lassen: Wir setzen eine Pauschale je MW an.</span>
+            </div>
+          </div>
+          <div class="feld-reihe feld-reihe--3">
+            <div class="feld" data-feld="fk_quote">
+              <label for="f-fk">Fremdkapitalquote</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-fk" name="fk_quote" autocomplete="off" value="80">
+                <span class="eingabe-gruppe__einheit">%</span>
+              </div>
+            </div>
+            <div class="feld" data-feld="zins">
+              <label for="f-zins">Zins (Annahme)</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-zins" name="zins" autocomplete="off" value="4,2">
+                <span class="eingabe-gruppe__einheit">% p. a.</span>
+              </div>
+            </div>
+            <div class="feld" data-feld="laufzeit">
+              <label for="f-laufzeit">Laufzeit</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="numeric" id="f-laufzeit" name="laufzeit" autocomplete="off" value="18">
+                <span class="eingabe-gruppe__einheit">Jahre</span>
+              </div>
+            </div>
+          </div>
+          <dl class="abgeleitet" aria-live="polite">
+            <div><dt>Investition je MW</dt><dd id="abg-capex-mw">–</dd></div>
+            <div><dt>Kreditbetrag</dt><dd id="abg-kredit">–</dd></div>
+            <div><dt>Annuität p. a.</dt><dd id="abg-annuitaet">–</dd></div>
+          </dl>
+          <div class="feld" data-feld="foerderkredit">
+            <label class="checkbox">
+              <input type="checkbox" name="foerderkredit" id="f-foerderkredit">
+              <span class="checkbox__text"><strong>Förderkredit gewünscht (KfW)</strong><br><span class="hinweis" style="margin:0">Wir prüfen passende Programme, z. B. „Erneuerbare Energien – Standard“, und beantragen sie als Hausbank für Sie.</span></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Schritt 5 -->
+        <section class="schritt" data-schritt="5" aria-labelledby="s5-titel" hidden>
+          <div class="schritt__kopf">
+            <span class="schritt__zaehler">Schritt 5 von 6</span>
+            <h2 id="s5-titel" tabindex="-1">Unterlagen</h2>
+            <p>Laden Sie vorhandene Unterlagen hoch (PDF, Excel, Word, ZIP, Bilder; max. <span data-upload-max></span> MB je Datei). Fehlendes können Sie später nachreichen.</p>
+          </div>
+          <ul class="uploads" id="uploads"></ul>
+          <p class="hinweis">Hinweis: Hochgeladene Dateien werden erst beim Einreichen übertragen. Beim Speichern eines Entwurfs werden nur die Dateinamen gemerkt.</p>
+        </section>
+
+        <!-- Schritt 6 -->
+        <section class="schritt" data-schritt="6" aria-labelledby="s6-titel" hidden>
+          <div class="schritt__kopf">
+            <span class="schritt__zaehler">Schritt 6 von 6</span>
+            <h2 id="s6-titel" tabindex="-1">Prüfen &amp; Einreichen</h2>
+            <p>Bitte prüfen Sie Ihre Angaben. Über „Ändern“ gelangen Sie zum jeweiligen Schritt.</p>
+          </div>
+          <div class="zusammenfassung" id="zusammenfassung"></div>
+
+          <div class="box box--warn" id="fehlende-unterlagen" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-warn"/></svg>
+            <div>
+              <p><strong id="fehlende-unterlagen-titel"></strong></p>
+              <p id="fehlende-unterlagen-liste"></p>
+              <p>Sie können trotzdem einreichen und die Unterlagen später über das Kundenportal nachreichen.</p>
+            </div>
+          </div>
+
+          <h3>Ansprechpartner</h3>
+          <div class="feld-reihe">
+            <div class="feld" data-feld="ansprechpartner">
+              <label for="f-ansprechpartner">Name<span class="pflicht" aria-hidden="true">*</span></label>
+              <input class="eingabe" type="text" id="f-ansprechpartner" name="ansprechpartner" required autocomplete="name">
+            </div>
+            <div class="feld" data-feld="email">
+              <label for="f-email">E-Mail<span class="pflicht" aria-hidden="true">*</span></label>
+              <input class="eingabe" type="email" id="f-email" name="email" required autocomplete="email" inputmode="email">
+            </div>
+          </div>
+          <div class="feld" data-feld="telefon" style="max-width:50%;min-width:min(100%,280px)">
+            <label for="f-telefon">Telefon</label>
+            <input class="eingabe" type="tel" id="f-telefon" name="telefon" autocomplete="tel">
+          </div>
+          <div class="feld" data-feld="bestaetigung">
+            <label class="checkbox">
+              <input type="checkbox" name="bestaetigung" id="f-bestaetigung" required>
+              <span class="checkbox__text">Ich bestätige, dass meine Angaben nach bestem Wissen vollständig und richtig sind, und habe die <a href="#" target="_blank" rel="noopener">Datenschutzhinweise</a> zur Kenntnis genommen. [Platzhalter Datenschutztext]<span class="pflicht" aria-hidden="true">*</span></span>
+            </label>
+          </div>
+        </section>
+
+        <div class="formular__aktionen">
+          <button type="button" class="btn btn-text" id="btn-zurueck"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-pfeil-links"/></svg>Zurück</button>
+          <div class="formular__aktionen-rechts">
+            <button type="button" class="btn btn-sekundaer" id="btn-entwurf"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-speichern"/></svg>Entwurf speichern</button>
+            <button type="submit" class="btn btn-primaer" id="btn-weiter">Weiter<svg class="icon icon--klein" aria-hidden="true"><use href="#i-pfeil"/></svg></button>
+          </div>
+        </div>
+        <p class="status-meldung" id="status-meldung" role="status"></p>
+      </form>
+
+      <!-- Erfolgsseite -->
+      <section class="erfolg" id="erfolg" aria-labelledby="erfolg-titel" hidden>
+        <span class="erfolg__icon"><svg class="icon icon--gross" aria-hidden="true"><use href="#i-check"/></svg></span>
+        <h2 id="erfolg-titel" tabindex="-1">Vielen Dank – Ihre Anfrage ist eingegangen</h2>
+        <p>Ihre Vorgangsnummer:</p>
+        <p class="erfolg__nr" id="erfolg-nr"></p>
+        <h3>So geht es weiter</h3>
+        <ol class="naechste">
+          <li><div><strong>Eingangsbestätigung</strong>Sie erhalten in Kürze eine E-Mail mit Ihrer Vorgangsnummer und den Zugangsdaten zum Kundenportal.</div></li>
+          <li><div><strong>Vorprüfung</strong>Unser Team Erneuerbare Energien prüft Ihre Angaben und meldet sich innerhalb von [X Werktagen].</div></li>
+          <li><div><strong>Rückfragen &amp; Unterlagen</strong>Offene Punkte klären wir mit Ihnen über das Kundenportal – dort können Sie auch Unterlagen nachreichen.</div></li>
+          <li><div><strong>Indikatives Term Sheet</strong>Nach der Due Diligence erhalten Sie ein Term Sheet mit Struktur und Konditionen.</div></li>
+        </ol>
+        <a class="btn btn-cta btn-gross" href="portal.html">Zum Kundenportal<svg class="icon" aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+      </section>
+    </div>
+
+    <!-- ===================== Live-Indikation ===================== -->
+    <aside class="karte indikation" id="indikation" aria-labelledby="ind-titel">
+      <h2 id="ind-titel">Live-Indikation</h2>
+      <p class="indikation__sub" id="ind-sub">Aktualisiert sich mit jeder Eingabe. Unverbindlich, keine Kreditzusage.</p>
+      <div aria-live="polite" aria-atomic="false" id="ind-live">
+        <div class="dscr-grid">
+          <div class="dscr">
+            <span class="dscr__label">DSCR P50</span>
+            <span class="dscr__wert" id="ind-dscr-p50">–</span>
+            <span id="ind-dscr-p50-badge"></span>
+            <span class="dscr__min" id="ind-dscr-p50-min"></span>
+          </div>
+          <div class="dscr">
+            <span class="dscr__label">DSCR P90</span>
+            <span class="dscr__wert" id="ind-dscr-p90">–</span>
+            <span id="ind-dscr-p90-badge"></span>
+            <span class="dscr__min" id="ind-dscr-p90-min"></span>
+          </div>
+        </div>
+      </div>
+      <dl class="werte">
+        <dt>Gesamtinvestition</dt><dd id="ind-capex">–</dd>
+        <dt>Kreditbetrag</dt><dd id="ind-kredit">–</dd>
+        <dt>Eigenkapital</dt><dd id="ind-ek">–</dd>
+        <dt>Annuität p. a.</dt><dd id="ind-annuitaet">–</dd>
+        <dt>CFADS P50 p. a.</dt><dd id="ind-cfads-p50">–</dd>
+        <dt>CFADS P90 p. a.</dt><dd id="ind-cfads-p90">–</dd>
+      </dl>
+      <p class="hinweis" id="ind-opex-hinweis"></p>
+
+      <div class="indikation__block">
+        <h3>Projektreife <span id="ind-reife-badge"></span></h3>
+        <ul class="offene-punkte" id="ind-offen"></ul>
+      </div>
+
+      <div class="indikation__block">
+        <div class="fortschritt" style="margin:0">
+          <div class="fortschritt__kopf">
+            <span id="ind-unterlagen-label">Unterlagen</span>
+            <strong id="ind-unterlagen-wert">0 von 9</strong>
+          </div>
+          <div class="fortschritt__balken" role="progressbar" aria-labelledby="ind-unterlagen-label" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0" aria-valuetext="0 von 9 Unterlagen hochgeladen" id="ind-unterlagen-balken">
+            <div class="fortschritt__wert" id="ind-unterlagen-fuellung"></div>
+          </div>
+        </div>
+      </div>
+      <p class="kleingedruckt">Vereinfachte Rechnung ohne Steuern, Reserven, Bauzeitzinsen und Degradation.</p>
+    </aside>
+  </main>
+
+  <a class="indikation-mini" href="#indikation" id="indikation-mini">
+    <span>Live-Indikation</span>
+    <span>DSCR P50 <strong id="mini-dscr">–</strong> <span id="mini-badge"></span></span>
+  </a>
+
+  <footer class="fuss">
+    <div class="container fuss__inner">
+      <p>© [Jahr] [Bankname] eG</p>
+      <nav aria-label="Rechtliches">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Barrierefreiheit</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/calc.js"></script>
+  <script src="assets/anfrage.js"></script>
+</body>
+</html>
