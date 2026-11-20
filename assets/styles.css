@@ -289,6 +289,8 @@ select.eingabe { appearance: none; padding-right: 40px; background-image: url("d
 .urteil { display: grid; gap: 6px; }
 .urteil p { margin: 0; font-size: .95rem; }
 
+.ergebnis__hinweis { display: flex; gap: 8px; align-items: flex-start; margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--linie); font-size: .9rem; color: var(--warn-text); }
+.ergebnis__hinweis .icon { margin-top: 2px; }
 .check__aktionen { display: grid; gap: 10px; margin-top: 18px; }
 .kleingedruckt { font-size: .8125rem; color: var(--text-gedaempft); margin: 14px 0 0; }
 
@@ -474,6 +476,10 @@ select.eingabe { appearance: none; padding-right: 40px; background-image: url("d
 .indikation__block { padding-top: 14px; margin-top: 14px; border-top: 1px solid var(--linie); }
 .indikation__block h3 { font-size: .95rem; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .offene-punkte { margin: 8px 0 0; padding-left: 20px; font-size: .9rem; }
+.standort { display: grid; gap: 12px; }
+.standort__kopf { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: .9rem; font-weight: 600; }
+.standort .offene-punkte { margin-top: 4px; color: var(--text-gedaempft); }
+.schritt__unterkopf { font-size: 1.1rem; margin: 28px 0 14px; padding-top: 20px; border-top: 1px solid var(--linie); }
 .offene-punkte li { margin-bottom: 2px; }
 @media (max-width: 1180px) { .indikation { position: static; } }
 

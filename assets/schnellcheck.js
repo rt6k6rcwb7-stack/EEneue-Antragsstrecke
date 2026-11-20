@@ -21,6 +21,8 @@
     preisFeld: document.getElementById('sc-preis-feld'),
     speicherFeld: document.getElementById('sc-speicher-feld'),
     erloesmodellFeld: document.getElementById('sc-erloesmodell-feld'),
+    gueteFeld: document.getElementById('sc-guete-feld'),
+    gueteHinweis: document.getElementById('sc-guete-hinweis'),
     opex: document.getElementById('sc-opex'),
     opexHinweis: document.getElementById('sc-opex-hinweis'),
     genLabel: form.querySelector('[data-genehmigung-label]')
@@ -102,6 +104,7 @@
     } else {
       alle.push({ name: 'erloesmodell', label: 'Erlösmodell', ok: hatWert(d.erloesmodell) });
       alle.push({ name: 'p50_h', label: 'Volllaststunden P50', pflicht: true, ok: zahlOk(d.p50_h) });
+      if (d.technologie === 'wind') alle.push({ name: 'guetefaktor', label: 'Gütefaktor', ok: zahlOk(d.guetefaktor) });
       alle.push({ name: 'preis_eur_mwh', label: 'Erlös in €/MWh', pflicht: true, ok: zahlOk(d.preis_eur_mwh) });
     }
     alle.push({ name: 'capex_teur', label: 'Gesamtinvestition', pflicht: true, ok: zahlOk(d.capex_teur) });
@@ -121,6 +124,15 @@
     el.preisFeld.hidden = speicher;
     el.speicherFeld.hidden = !speicher;
     el.erloesmodellFeld.hidden = speicher;
+    el.gueteFeld.hidden = d.technologie !== 'wind';
+    var guete = EE.parseZahl(d.guetefaktor);
+    var kfGilt = CONFIG.standort.wind.korrekturFuerErloesmodell.indexOf(d.erloesmodell) !== -1;
+    if (guete !== null && guete > 0) {
+      el.gueteHinweis.textContent = 'Korrekturfaktor ' + EE.fmtZahl(EE.korrekturfaktor(guete), 2) +
+        (kfGilt ? ' – wird auf Ihren Zuschlagswert angewendet.' : ' – wirkt nur beim Erlösmodell EEG-Zuschlag.');
+    } else {
+      el.gueteHinweis.textContent = 'Standortgüte laut Ertragsgutachten (EEG-Referenzertragsmodell). Beim EEG-Zuschlag rechnen wir mit dem passenden Korrekturfaktor.';
+    }
     el.genLabel.textContent = d.technologie === 'wind' ? 'Genehmigung nach BImSchG' : 'Baurecht / Genehmigung';
 
     // Platzhalter der Betriebskosten zeigt die angenommene Pauschale
@@ -177,7 +189,8 @@
           '<div class="kennzahl"><dt>Tragfähig bis ca.</dt><dd>' + EE.fmtTEUR(erg.tragfaehigerKredit) + '</dd></div>' +
           '<div class="kennzahl"><dt>DSCR P50</dt><dd>' + EE.fmtDSCR(erg.dscrP50) + '</dd></div>' +
         '</dl>' +
-        (u ? '<div class="urteil"><span><span class="badge badge--' + u.stufe + '">' + u.titel + '</span></span><p>' + u.text + '</p></div>' : '');
+        (u ? '<div class="urteil"><span><span class="badge badge--' + u.stufe + '">' + u.titel + '</span></span><p>' + u.text + '</p></div>' : '') +
+        plausibilitaetsHinweis(d);
     }
 
     el.annahmen.textContent =
@@ -186,7 +199,18 @@
       (erg.opexPauschal
         ? 'Betriebskosten pauschal mit ' + erg.opexPauschaleJeMW + ' T€ je MW und Jahr angesetzt. '
         : (EE.parseZahl(d.opex_teur) !== null ? 'Betriebskosten nach Ihrer Angabe. ' : 'Betriebskosten pauschal je MW. ')) +
-      'Vereinfachte Rechnung ohne Steuern, Reserven, Bauzeitzinsen und Degradation. Keine Kreditzusage.';
+      (erg.korrekturAngewendet ? 'Zuschlagswert mit Korrekturfaktor ' + EE.fmtZahl(erg.korrekturfaktor, 2) + ' angesetzt. ' : '') +
+      (erg.degradationProzent > 0 ? 'Degradation ' + EE.fmtZahl(erg.degradationProzent, 1) + ' % p. a., gemittelt über die Laufzeit. ' : '') +
+      'Vereinfachte Rechnung ohne Steuern, Reserven und Bauzeitzinsen. Keine Kreditzusage.';
+  }
+
+  /** Hinweis, wenn P50 nicht zur üblichen Bandbreite des Bundeslands passt. */
+  function plausibilitaetsHinweis(d) {
+    if (d.technologie === 'speicher') return '';
+    var pl = EE.plausibilitaet(d.technologie, d.bundesland, EE.parseZahl(d.p50_h));
+    if (pl.stufe !== 'warn' && pl.stufe !== 'fail') return '';
+    return '<p class="ergebnis__hinweis"><svg class="icon icon--klein" aria-hidden="true"><use href="#i-warn"/></svg>' +
+      '<span>' + pl.text + '</span></p>';
   }
 
   var timer = null;

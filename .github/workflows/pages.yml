@@ -26,18 +26,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Rechenkern prüfen (Testfall Wind)
-        run: |
-          node -e '
-            const EE = require("./assets/calc.js");
-            const r = EE.berechne({ technologie: "wind", leistungMW: 24, p50h: 2400, p90h: 2050,
-              preisEURMWh: 73, capexTEUR: 34800, opexTEUR: 1100, fkQuoteProzent: 80,
-              zinsProzent: 4.2, laufzeitJahre: 18 });
-            const ok = Math.abs(r.dscrP50 - 1.39) < 0.005 && Math.abs(r.dscrP90 - 1.11) < 0.01
-              && Math.abs(r.annuitaet - 2235) < 1;
-            console.log("DSCR P50", r.dscrP50.toFixed(3), "DSCR P90", r.dscrP90.toFixed(3), "Annuität", r.annuitaet.toFixed(1));
-            if (!ok) { console.error("Testfall weicht ab"); process.exit(1); }
-          '
+      - name: Rechenkern prüfen
+        run: node tests/calc.test.js
 
       - name: Seite zusammenstellen
         run: |

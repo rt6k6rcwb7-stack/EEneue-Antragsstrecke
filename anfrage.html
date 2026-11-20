@@ -166,6 +166,34 @@
               <label class="chip"><input type="radio" name="flaechen" value="vollstaendig"><span>Vollständig</span></label>
             </div>
           </fieldset>
+
+          <h3 class="schritt__unterkopf">Netzanschluss im Detail</h3>
+          <fieldset class="feld" data-feld="spannungsebene">
+            <legend>Spannungsebene am Verknüpfungspunkt</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="spannungsebene" value="ns"><span>Niederspannung</span></label>
+              <label class="chip"><input type="radio" name="spannungsebene" value="ms"><span>Mittelspannung</span></label>
+              <label class="chip"><input type="radio" name="spannungsebene" value="hs"><span>Hochspannung / eigenes Umspannwerk</span></label>
+            </div>
+          </fieldset>
+          <div class="feld-reihe">
+            <div class="feld" data-feld="kabel_km">
+              <label for="f-kabel">Länge der Kabeltrasse</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-kabel" name="kabel_km" autocomplete="off" placeholder="z. B. 6" aria-describedby="f-kabel-hinweis">
+                <span class="eingabe-gruppe__einheit">km</span>
+              </div>
+              <span class="hinweis" id="f-kabel-hinweis">Vom Park bis zum Verknüpfungspunkt des Netzbetreibers.</span>
+            </div>
+            <div class="feld" data-feld="abregelung_prozent">
+              <label for="f-abregelung">Erwartete Abregelung</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-abregelung" name="abregelung_prozent" autocomplete="off" placeholder="z. B. 3" aria-describedby="f-abregelung-hinweis">
+                <span class="eingabe-gruppe__einheit">% p. a.</span>
+              </div>
+              <span class="hinweis" id="f-abregelung-hinweis">Anteil der Jahreserzeugung, der durch Netzengpässe verloren geht. Wird als Abschlag auf den Umsatz angesetzt.</span>
+            </div>
+          </div>
         </section>
 
         <!-- Schritt 3 -->
@@ -180,9 +208,10 @@
             <div class="feld" data-feld="p50_h">
               <label for="f-p50">Volllaststunden P50<span class="pflicht" aria-hidden="true">*</span></label>
               <div class="eingabe-gruppe">
-                <input class="eingabe" type="text" inputmode="decimal" id="f-p50" name="p50_h" required autocomplete="off" placeholder="z. B. 2.400">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-p50" name="p50_h" required autocomplete="off" placeholder="z. B. 2.400" aria-describedby="f-p50-hinweis">
                 <span class="eingabe-gruppe__einheit">h/a</span>
               </div>
+              <span class="hinweis" id="f-p50-hinweis"></span>
             </div>
             <div class="feld" data-feld="p90_h">
               <label for="f-p90">Volllaststunden P90</label>
@@ -192,6 +221,39 @@
               </div>
               <span class="hinweis">Ohne P90 können wir den vorsichtigen DSCR nicht berechnen.</span>
             </div>
+          </div>
+          <div class="feld-reihe feld-reihe--3" data-nur="wind" hidden>
+            <div class="feld" data-feld="guetefaktor">
+              <label for="f-guete">Gütefaktor</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-guete" name="guetefaktor" autocomplete="off" placeholder="z. B. 80" aria-describedby="f-guete-hinweis">
+                <span class="eingabe-gruppe__einheit">%</span>
+              </div>
+              <span class="hinweis" id="f-guete-hinweis">Laut Gutachten (Referenzertragsmodell).</span>
+            </div>
+            <div class="feld" data-feld="nabenhoehe">
+              <label for="f-nabe">Nabenhöhe</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-nabe" name="nabenhoehe" autocomplete="off" placeholder="z. B. 166">
+                <span class="eingabe-gruppe__einheit">m</span>
+              </div>
+            </div>
+            <div class="feld" data-feld="windgeschwindigkeit">
+              <label for="f-wind">Mittlerer Wind</label>
+              <div class="eingabe-gruppe">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-wind" name="windgeschwindigkeit" autocomplete="off" placeholder="z. B. 6,8">
+                <span class="eingabe-gruppe__einheit">m/s</span>
+              </div>
+              <span class="hinweis">Geschwindigkeit in Nabenhöhe</span>
+            </div>
+          </div>
+          <div class="feld" data-feld="globalstrahlung" data-nur="pv" hidden>
+            <label for="f-strahlung">Globalstrahlung am Standort</label>
+            <div class="eingabe-gruppe" style="max-width:320px">
+              <input class="eingabe" type="text" inputmode="decimal" id="f-strahlung" name="globalstrahlung" autocomplete="off" placeholder="z. B. 1.120">
+              <span class="eingabe-gruppe__einheit">kWh/m²/a</span>
+            </div>
+            <span class="hinweis">Z. B. aus PVGIS oder den Strahlungskarten des DWD.</span>
           </div>
           <fieldset class="feld" data-feld="erloesmodell" data-nur="nicht-speicher">
             <legend>Erlösmodell<span class="pflicht" aria-hidden="true">*</span><span class="sr-only"> (Pflichtfeld)</span></legend>
@@ -206,9 +268,10 @@
             <div class="feld" data-feld="preis_eur_mwh">
               <label for="f-preis"><span id="f-preis-label">Erlös</span><span class="pflicht" aria-hidden="true">*</span></label>
               <div class="eingabe-gruppe">
-                <input class="eingabe" type="text" inputmode="decimal" id="f-preis" name="preis_eur_mwh" required autocomplete="off" placeholder="z. B. 73">
+                <input class="eingabe" type="text" inputmode="decimal" id="f-preis" name="preis_eur_mwh" required autocomplete="off" placeholder="z. B. 73" aria-describedby="f-preis-hinweis">
                 <span class="eingabe-gruppe__einheit">€/MWh</span>
               </div>
+              <span class="hinweis" id="f-preis-hinweis"></span>
             </div>
             <div class="feld" data-feld="ppa_laufzeit" id="f-ppa-feld" hidden>
               <label for="f-ppa">PPA-Laufzeit</label>
@@ -225,6 +288,25 @@
               <span class="eingabe-gruppe__einheit">T€/MW/a</span>
             </div>
             <span class="hinweis">Summe aus Arbitrage, Regelenergie und ggf. Tolling-Erlösen.</span>
+          </div>
+
+          <h3 class="schritt__unterkopf">Gutachten &amp; Annahmen</h3>
+          <fieldset class="feld" data-feld="gutachten">
+            <legend id="f-gutachten-legend">Stand des Ertragsgutachtens</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="gutachten" value="keines"><span>Noch keines</span></label>
+              <label class="chip"><input type="radio" name="gutachten" value="vorlaeufig"><span>Vorläufige Prognose</span></label>
+              <label class="chip"><input type="radio" name="gutachten" value="eines"><span>Ein Gutachten</span></label>
+              <label class="chip"><input type="radio" name="gutachten" value="zwei"><span>Zwei unabhängige Gutachten</span></label>
+            </div>
+          </fieldset>
+          <div class="feld" data-feld="degradation_prozent">
+            <label for="f-degradation">Degradation</label>
+            <div class="eingabe-gruppe" style="max-width:240px">
+              <input class="eingabe" type="text" inputmode="decimal" id="f-degradation" name="degradation_prozent" autocomplete="off" aria-describedby="f-degradation-hinweis">
+              <span class="eingabe-gruppe__einheit">% p. a.</span>
+            </div>
+            <span class="hinweis" id="f-degradation-hinweis">Jährlicher Leistungsverlust. Leer lassen: Wir setzen einen Standardwert an.</span>
           </div>
         </section>
 
@@ -396,6 +478,12 @@
         <dt>CFADS P90 p. a.</dt><dd id="ind-cfads-p90">–</dd>
       </dl>
       <p class="hinweis" id="ind-opex-hinweis"></p>
+      <p class="hinweis" id="ind-umsatz-hinweis"></p>
+
+      <div class="indikation__block">
+        <h3>Standort <span id="ind-standort-badge"></span></h3>
+        <div class="standort" id="ind-standort"></div>
+      </div>
 
       <div class="indikation__block">
         <h3>Projektreife <span id="ind-reife-badge"></span></h3>
@@ -413,7 +501,7 @@
           </div>
         </div>
       </div>
-      <p class="kleingedruckt">Vereinfachte Rechnung ohne Steuern, Reserven, Bauzeitzinsen und Degradation.</p>
+      <p class="kleingedruckt">Vereinfachte Rechnung ohne Steuern, Reserven und Bauzeitzinsen. Degradation als Mittelwert über die Laufzeit. Standort-Grenzwerte sind Platzhalter.</p>
     </aside>
   </main>
 
