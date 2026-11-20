@@ -75,6 +75,15 @@ Alle Bankparameter stehen zentral in `CONFIG` in `assets/calc.js`:
 | `abregelungErfahrung` | z. B. Schleswig-Holstein 6 %, Niedersachsen 4 %, Standard 1,5 % | Regionale Erfahrungswerte, **nur als Hinweis** angezeigt, nicht automatisch angesetzt |
 | `degradationStandard` | Wind 0 · PV-Freifläche 0,4 · Agri-PV 0,4 · PV-Dach 0,5 · Speicher 1,0 % p. a. | Wird angesetzt, wenn der Kunde nichts angibt |
 
+### Parameter ändern
+
+1. `assets/calc.js` auf GitHub öffnen, auf das Stift-Symbol klicken und den Wert in `CONFIG` ändern.
+2. Dezimalzahlen mit **Punkt** schreiben (`1.25`, nicht `1,25`); Kommas trennen die Einträge.
+3. **Commit changes** → „Create a new branch and start a pull request“.
+4. Im Pull Request laufen automatisch die Tests (`.github/workflows/tests.yml`): Syntaxprüfung aller JavaScript-Dateien und `tests/calc.test.js`. Erst wenn sie grün sind, mergen. Nach dem Merge wird die Seite neu veröffentlicht.
+
+Der Test „Testfall Wind aus der Vorgabe“ nutzt die Korrekturfaktoren nicht, wohl aber die Wind-Degradation (`standort.degradationStandard.wind`, derzeit 0). Wer diese oder die Korrekturfaktoren ändert, muss `tests/calc.test.js` anpassen.
+
 Hinweis: Im Schnell-Check gilt der Zins aus `CONFIG.zinsProzent` (4,5 %), in der Anfrage die änderbare Vorbelegung (4,2 %). Deshalb weichen die DSCR-Werte beider Seiten bei gleichen Eingaben leicht voneinander ab.
 
 Texte in eckigen Klammern sind Platzhalter: `[Bankname]`, `[X Werktagen]`, Konditionen, Kontaktdaten und der Datenschutztext. Das Logo ist nur als Platzhalter „LOGO“ angelegt.
