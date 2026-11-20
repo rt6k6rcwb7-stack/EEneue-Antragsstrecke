@@ -4,8 +4,9 @@
  *
  * Alle Bankparameter stehen ausschließlich im CONFIG-Objekt.
  * Die Rechnung ist bewusst vereinfacht: ohne Steuern, Reserven
- * (DSRA/MRA), Bauzeitzinsen und Degradation. Sie ersetzt keine
- * Kreditprüfung und stellt keine Kreditzusage dar.
+ * (DSRA/MRA) und Bauzeitzinsen. Degradation geht als Mittelwert über
+ * die Kreditlaufzeit ein, Abregelung als pauschaler Abschlag.
+ * Sie ersetzt keine Kreditprüfung und stellt keine Kreditzusage dar.
  *
  * Läuft im Browser (window.EE) und in Node (module.exports) –
  * so lässt sich der Testfall ohne Browser prüfen.
@@ -38,6 +39,76 @@
       agri_pv: 18,
       pv_dach: 15,
       speicher: 12
+    },
+
+    /*
+     * Standortgüte
+     * ACHTUNG: Alle Werte in diesem Block sind PLATZHALTER. Sie sind
+     * grobe Erfahrungswerte und müssen von der Kreditabteilung bzw. dem
+     * Risikomanagement der Bank festgelegt werden.
+     */
+    standort: {
+      wind: {
+        // Korrekturfaktoren des EEG-Referenzertragsmodells (Gütefaktor in % -> Faktor).
+        // Stützstellen nach § 36h EEG 2023 – vor Livegang mit der aktuellen Fassung abgleichen.
+        // Zwischen den Stützstellen wird linear interpoliert, außerhalb gilt der Randwert.
+        korrekturfaktoren: [
+          [50, 1.55], [60, 1.42], [70, 1.29], [80, 1.16], [90, 1.07], [100, 1.00],
+          [110, 0.94], [120, 0.89], [130, 0.85], [140, 0.81], [150, 0.79]
+        ],
+        // Der Korrekturfaktor wird nur bei diesen Erlösmodellen auf den Preis angewendet
+        // (Eingabe = Zuschlagswert für den 100-%-Referenzstandort).
+        korrekturFuerErloesmodell: ['eeg'],
+        // Ampel Dargebot: Gütefaktor unter "rot" = fail, unter "gelb" = warn
+        guetefaktorRot: 60,
+        guetefaktorGelb: 70
+      },
+
+      // Plausible Volllaststunden P50 je Bundesland [min, max] (PLATZHALTER).
+      // Wind: Neuanlagen an Land. PV: PV-Freifläche, fest aufgeständert, Süd (kWh/kWp = h).
+      bandbreiten: {
+        'Schleswig-Holstein':     { wind: [2200, 3400], pv: [880, 1030] },
+        'Hamburg':                { wind: [2100, 3200], pv: [880, 1020] },
+        'Bremen':                 { wind: [2100, 3200], pv: [880, 1020] },
+        'Niedersachsen':          { wind: [2000, 3300], pv: [890, 1040] },
+        'Mecklenburg-Vorpommern': { wind: [2100, 3300], pv: [920, 1080] },
+        'Brandenburg':            { wind: [1900, 3000], pv: [940, 1100] },
+        'Berlin':                 { wind: [1800, 2800], pv: [930, 1080] },
+        'Sachsen-Anhalt':         { wind: [1900, 3000], pv: [930, 1090] },
+        'Nordrhein-Westfalen':    { wind: [1800, 2900], pv: [870, 1020] },
+        'Sachsen':                { wind: [1700, 2800], pv: [940, 1100] },
+        'Thüringen':              { wind: [1700, 2800], pv: [930, 1090] },
+        'Hessen':                 { wind: [1700, 2800], pv: [920, 1080] },
+        'Rheinland-Pfalz':        { wind: [1700, 2800], pv: [930, 1100] },
+        'Saarland':               { wind: [1700, 2700], pv: [940, 1100] },
+        'Baden-Württemberg':      { wind: [1500, 2500], pv: [980, 1180] },
+        'Bayern':                 { wind: [1500, 2600], pv: [980, 1200] }
+      },
+      // PV-Bandbreite je Bauform relativ zur Freifläche (PLATZHALTER)
+      pvFaktor: { pv_frei: 1.0, agri_pv: 0.95, pv_dach: 0.9 },
+      // Ab wie viel % über dem Höchstwert der Bandbreite die Ampel auf rot geht
+      bandbreiteRotUeberProzent: 15,
+
+      // Gutachtenlage: Abstand P90 zu P50 in % von P50 (PLATZHALTER)
+      p90AbstandGelbProzent: 10,
+      p90AbstandRotProzent: 15,
+      // Anzahl unabhängiger Ertragsgutachten, die für "grün" verlangt werden
+      gutachtenGruen: { wind: 'zwei', pv_frei: 'eines', agri_pv: 'eines', pv_dach: 'eines', speicher: 'eines' },
+
+      // Netz (PLATZHALTER)
+      kabelGelbKm: 10,
+      kabelRotKm: 20,
+      abregelungGelbProzent: 5,
+      abregelungRotProzent: 10,
+      // Regionale Erfahrungswerte für Abregelung in % (nur als Hinweis, nicht automatisch angesetzt)
+      abregelungErfahrung: {
+        'Schleswig-Holstein': 6, 'Niedersachsen': 4, 'Mecklenburg-Vorpommern': 4,
+        'Hamburg': 3, 'Bremen': 3, 'Brandenburg': 3, 'Sachsen-Anhalt': 3,
+        standard: 1.5
+      },
+
+      // Degradation in % pro Jahr, wenn nichts angegeben ist (PLATZHALTER)
+      degradationStandard: { wind: 0, pv_frei: 0.4, agri_pv: 0.4, pv_dach: 0.5, speicher: 1.0 }
     },
 
     // Vorbelegung der vollständigen Anfrage (Schritt 4)
@@ -94,6 +165,17 @@
       ppa: 'PPA',
       eeg_ppa: 'EEG + PPA',
       merchant: 'Merchant'
+    },
+    spannungsebene: {
+      ns: 'Niederspannung',
+      ms: 'Mittelspannung',
+      hs: 'Hochspannung / eigenes Umspannwerk'
+    },
+    gutachten: {
+      keines: 'Noch keines',
+      vorlaeufig: 'Vorläufige Prognose',
+      eines: 'Ein Gutachten',
+      zwei: 'Zwei unabhängige Gutachten'
     },
     rolle: {
       projektierer: 'Projektierer',
@@ -222,14 +304,33 @@
       capexJeMW: null
     };
 
+    // Standortfaktoren auf den Umsatz
+    // 1. Korrekturfaktor (nur Wind mit EEG-Zuschlag und angegebenem Gütefaktor)
+    r.korrekturfaktor = 1;
+    r.korrekturAngewendet = false;
+    if (tech === 'wind' && istZahl(e.guetefaktorProzent) &&
+        CONFIG.standort.wind.korrekturFuerErloesmodell.indexOf(e.erloesmodell) !== -1) {
+      r.korrekturfaktor = korrekturfaktor(e.guetefaktorProzent);
+      r.korrekturAngewendet = true;
+    }
+    r.preisWirksam = istZahl(e.preisEURMWh) ? e.preisEURMWh * r.korrekturfaktor : null;
+    // 2. Abregelung (nur wenn angegeben)
+    r.abregelungProzent = istZahl(e.abregelungProzent) ? e.abregelungProzent : 0;
+    // 3. Degradation: Angabe oder Standardwert je Technologie, gemittelt über die Kreditlaufzeit
+    var degStandard = CONFIG.standort.degradationStandard[tech];
+    r.degradationProzent = istZahl(e.degradationProzent) ? e.degradationProzent : (istZahl(degStandard) ? degStandard : 0);
+    r.degradationStandard = !istZahl(e.degradationProzent);
+    r.degradationsfaktor = degradationsfaktor(r.degradationProzent, laufzeit);
+    r.umsatzfaktor = (1 - r.abregelungProzent / 100) * r.degradationsfaktor;
+
     // Umsatz in T€
     if (istZahl(mw) && mw > 0) {
       if (istSpeicher) {
-        if (istZahl(e.speicherTEURMW)) r.umsatzP50 = mw * e.speicherTEURMW;
+        if (istZahl(e.speicherTEURMW)) r.umsatzP50 = mw * e.speicherTEURMW * r.umsatzfaktor;
         // Für Speicher gibt es keine P90-Ertragsbetrachtung.
-      } else if (istZahl(e.preisEURMWh)) {
-        if (istZahl(e.p50h)) r.umsatzP50 = mw * e.p50h * e.preisEURMWh / 1000;
-        if (istZahl(e.p90h)) r.umsatzP90 = mw * e.p90h * e.preisEURMWh / 1000;
+      } else if (r.preisWirksam !== null) {
+        if (istZahl(e.p50h)) r.umsatzP50 = mw * e.p50h * r.preisWirksam / 1000 * r.umsatzfaktor;
+        if (istZahl(e.p90h)) r.umsatzP90 = mw * e.p90h * r.preisWirksam / 1000 * r.umsatzfaktor;
       }
     }
 
@@ -260,6 +361,188 @@
     }
 
     return r;
+  }
+
+  /** Korrekturfaktor zum Gütefaktor (lineare Interpolation zwischen den Stützstellen). */
+  function korrekturfaktor(guete) {
+    var st = CONFIG.standort.wind.korrekturfaktoren;
+    if (!istZahl(guete)) return null;
+    if (guete <= st[0][0]) return st[0][1];
+    if (guete >= st[st.length - 1][0]) return st[st.length - 1][1];
+    for (var i = 0; i < st.length - 1; i++) {
+      var a = st[i], b = st[i + 1];
+      if (guete <= b[0]) return a[1] + (b[1] - a[1]) * (guete - a[0]) / (b[0] - a[0]);
+    }
+    return 1;
+  }
+
+  /** Mittlerer Ertragsfaktor über n Jahre bei d % Degradation pro Jahr (Jahr 1 = 100 %). */
+  function degradationsfaktor(dProzent, n) {
+    var d = dProzent / 100;
+    if (!(d > 0) || !(n > 0)) return 1;
+    return (1 - Math.pow(1 - d, n)) / (n * d);
+  }
+
+  /* ------------------------------------------------------------------
+   * Standortgüte: Plausibilität und Ampel
+   * ---------------------------------------------------------------- */
+  var STUFE_RANG = { ok: 1, warn: 2, fail: 3 };
+
+  function schlechteste(stufen) {
+    var erg = null;
+    stufen.forEach(function (s) {
+      if (s && (!erg || STUFE_RANG[s] > STUFE_RANG[erg])) erg = s;
+    });
+    return erg;
+  }
+
+  /** Übliche Bandbreite der Volllaststunden P50 für Technologie und Bundesland, oder null. */
+  function bandbreite(tech, land) {
+    var b = CONFIG.standort.bandbreiten[land];
+    if (!b) return null;
+    if (tech === 'wind') return b.wind.slice();
+    var f = CONFIG.standort.pvFaktor[tech];
+    if (f === undefined) return null;
+    return [Math.round(b.pv[0] * f), Math.round(b.pv[1] * f)];
+  }
+
+  /** Prüft P50 gegen die übliche Bandbreite. stufe: ok | warn | fail | null (keine Prüfung möglich). */
+  function plausibilitaet(tech, land, p50h) {
+    var band = bandbreite(tech, land);
+    if (!band || !istZahl(p50h)) return { stufe: null, band: band, text: '' };
+    var spanne = fmtZahl(band[0]) + '–' + fmtZahl(band[1]) + ' h';
+    var rotGrenze = band[1] * (1 + CONFIG.standort.bandbreiteRotUeberProzent / 100);
+    if (p50h > rotGrenze) {
+      return { stufe: 'fail', band: band, text: 'P50 von ' + fmtZahl(p50h) + ' h liegt deutlich über der üblichen Bandbreite für ' + land + ' (' + spanne + '). Bitte durch Ertragsgutachten belegen.' };
+    }
+    if (p50h > band[1]) {
+      return { stufe: 'warn', band: band, text: 'P50 von ' + fmtZahl(p50h) + ' h liegt über der üblichen Bandbreite für ' + land + ' (' + spanne + '). Bitte durch Ertragsgutachten belegen.' };
+    }
+    if (p50h < band[0]) {
+      return { stufe: 'warn', band: band, text: 'P50 von ' + fmtZahl(p50h) + ' h liegt unter der üblichen Bandbreite für ' + land + ' (' + spanne + '). Standort und Anlagenauslegung bitte prüfen.' };
+    }
+    return { stufe: 'ok', band: band, text: 'P50 liegt in der üblichen Bandbreite für ' + land + ' (' + spanne + ').' };
+  }
+
+  function punkt(stufe, text) { return { stufe: stufe, text: text }; }
+
+  function bereich(punkte, leerText) {
+    var bewertet = punkte.filter(function (p) { return p.stufe; });
+    if (!bewertet.length) return { stufe: null, punkte: [punkt(null, leerText)] };
+    return { stufe: schlechteste(bewertet.map(function (p) { return p.stufe; })), punkte: punkte };
+  }
+
+  /**
+   * Standort-Ampel aus den Formulardaten (Strings) und dem Rechenergebnis.
+   * Fehlende Angaben werden als "warn" gewertet, sobald im Bereich etwas angegeben ist.
+   * @returns {{dargebot, gutachten, netz, gesamt}} je Bereich {stufe, punkte:[{stufe,text}]}
+   */
+  function standortBewertung(d, erg) {
+    var S = CONFIG.standort;
+    var tech = d.technologie;
+    var land = d.bundesland;
+    var p50 = parseZahl(d.p50_h);
+    var p90 = parseZahl(d.p90_h);
+    var fehlt = 'warn';
+
+    // 1. Dargebot (Wind bzw. Sonne)
+    var dargebot;
+    if (tech === 'speicher') {
+      dargebot = { stufe: null, entfaellt: true, punkte: [punkt(null, 'Bei Speichern entfällt die Bewertung von Wind bzw. Sonne.')] };
+    } else {
+      var pd = [];
+      var hatAngaben = istZahl(p50) || (tech === 'wind' && istZahl(parseZahl(d.guetefaktor)));
+      if (tech === 'wind') {
+        var g = parseZahl(d.guetefaktor);
+        if (istZahl(g)) {
+          var kf = korrekturfaktor(g);
+          var stufeG = g < S.wind.guetefaktorRot ? 'fail' : g < S.wind.guetefaktorGelb ? 'warn' : 'ok';
+          pd.push(punkt(stufeG, 'Gütefaktor ' + fmtZahl(g) + ' % (Korrekturfaktor ' + fmtZahl(kf, 2) + ')' +
+            (stufeG === 'ok' ? '' : ' – unter ' + (stufeG === 'fail' ? S.wind.guetefaktorRot : S.wind.guetefaktorGelb) + ' %')));
+        } else if (hatAngaben) {
+          pd.push(punkt(fehlt, 'Gütefaktor fehlt'));
+        }
+      }
+      if (!land) {
+        if (hatAngaben) pd.push(punkt(null, 'Bundesland fehlt – keine regionale Einordnung möglich'));
+      } else if (istZahl(p50)) {
+        var pl = plausibilitaet(tech, land, p50);
+        if (pl.stufe) pd.push(punkt(pl.stufe, pl.text));
+      }
+      dargebot = bereich(pd, 'Noch keine Angaben zum Ertrag');
+    }
+
+    // 2. Gutachtenlage
+    var pg = [];
+    var gs = d.gutachten;
+    var verlangt = S.gutachtenGruen[tech] || 'eines';
+    var gName = tech === 'speicher' ? 'Erlösgutachten' : 'Ertragsgutachten';
+    if (gs) {
+      var stufeGs;
+      if (gs === 'keines') stufeGs = 'fail';
+      else if (gs === 'vorlaeufig') stufeGs = 'warn';
+      else if (gs === 'eines') stufeGs = verlangt === 'zwei' ? 'warn' : 'ok';
+      else stufeGs = 'ok';
+      pg.push(punkt(stufeGs, gName + ': ' + LABELS.gutachten[gs] +
+        (gs === 'eines' && verlangt === 'zwei' ? ' – für Wind verlangen wir zwei unabhängige' : '')));
+    }
+    if (tech !== 'speicher' && istZahl(p50) && p50 > 0) {
+      if (istZahl(p90)) {
+        var abstand = (1 - p90 / p50) * 100;
+        var stufeP = abstand > S.p90AbstandRotProzent ? 'fail' : abstand > S.p90AbstandGelbProzent ? 'warn' : 'ok';
+        pg.push(punkt(stufeP, 'P90 liegt ' + fmtZahl(abstand, 1) + ' % unter P50' +
+          (stufeP === 'ok' ? '' : ' – hohe Unsicherheit der Prognose')));
+      } else {
+        pg.push(punkt(fehlt, 'P90 fehlt – Unsicherheit der Prognose unbekannt'));
+      }
+    }
+    if (!gs && pg.length) pg.unshift(punkt(fehlt, 'Stand des ' + gName + 's fehlt'));
+    var gutachten = bereich(pg, 'Noch keine Angaben zum Gutachten');
+
+    // 3. Netz
+    var pn = [];
+    var mw = parseZahl(d.leistung_mw);
+    if (d.netzanschluss) {
+      var stufeN = { zusage: 'ok', angefragt: 'warn', offen: 'fail' }[d.netzanschluss];
+      pn.push(punkt(stufeN, 'Netzanschluss: ' + LABELS.netzanschluss[d.netzanschluss]));
+    }
+    if (d.spannungsebene === 'hs') {
+      pn.push(punkt('warn', 'Eigenes Umspannwerk: Kosten und Zeitplan prüfen'));
+    } else if (d.spannungsebene === 'ns' && istZahl(mw) && mw > 1) {
+      pn.push(punkt('warn', 'Niederspannung ist für ' + fmtZahl(mw, mw % 1 ? 1 : 0) + ' MW ungewöhnlich'));
+    } else if (d.spannungsebene) {
+      pn.push(punkt('ok', 'Anschluss in ' + LABELS.spannungsebene[d.spannungsebene]));
+    }
+    var km = parseZahl(d.kabel_km);
+    var hatNetz = pn.length > 0 || istZahl(km);
+    if (istZahl(km)) {
+      var stufeK = km > S.kabelRotKm ? 'fail' : km > S.kabelGelbKm ? 'warn' : 'ok';
+      pn.push(punkt(stufeK, 'Kabeltrasse ' + fmtZahl(km, km % 1 ? 1 : 0) + ' km' + (stufeK === 'ok' ? '' : ' – Kosten und Trassensicherung prüfen')));
+    } else if (hatNetz) {
+      pn.push(punkt(fehlt, 'Länge der Kabeltrasse fehlt'));
+    }
+    var abr = parseZahl(d.abregelung_prozent);
+    if (istZahl(abr)) {
+      var stufeA = abr >= S.abregelungRotProzent ? 'fail' : abr >= S.abregelungGelbProzent ? 'warn' : 'ok';
+      pn.push(punkt(stufeA, 'Erwartete Abregelung ' + fmtZahl(abr, abr % 1 ? 1 : 0) + ' %'));
+    } else if (hatNetz) {
+      pn.push(punkt(fehlt, 'Erwartete Abregelung fehlt (Erfahrungswert ' + (land || 'Region') + ': ' +
+        fmtZahl(abregelungErfahrung(land), 1) + ' %)'));
+    }
+    var netz = bereich(pn, 'Noch keine Angaben zum Netz');
+
+    return {
+      dargebot: dargebot,
+      gutachten: gutachten,
+      netz: netz,
+      gesamt: schlechteste([dargebot.stufe, gutachten.stufe, netz.stufe])
+    };
+  }
+
+  /** Regionaler Erfahrungswert für Abregelung in % (Platzhalter). */
+  function abregelungErfahrung(land) {
+    var t = CONFIG.standort.abregelungErfahrung;
+    return istZahl(t[land]) ? t[land] : t.standard;
   }
 
   /** Ampel: ok (≥ Mindestwert), warn (bis Toleranz darunter), fail (darunter). */
@@ -417,6 +700,10 @@
       speicherTEURMW: parseZahl(d.speicher_erloes),
       capexTEUR: parseZahl(d.capex_teur),
       opexTEUR: parseZahl(d.opex_teur),
+      erloesmodell: d.erloesmodell,
+      guetefaktorProzent: parseZahl(d.guetefaktor),
+      abregelungProzent: parseZahl(d.abregelung_prozent),
+      degradationProzent: parseZahl(d.degradation_prozent),
       fkQuoteProzent: fk !== null ? fk : vorgaben.fkQuoteProzent,
       zinsProzent: zins !== null ? zins : vorgaben.zinsProzent,
       laufzeitJahre: laufzeit !== null ? laufzeit : vorgaben.laufzeitJahre
@@ -434,6 +721,12 @@
     fmtDSCR: fmtDSCR,
     fmtProzent: fmtProzent,
     annuitaetenfaktor: annuitaetenfaktor,
+    korrekturfaktor: korrekturfaktor,
+    degradationsfaktor: degradationsfaktor,
+    bandbreite: bandbreite,
+    plausibilitaet: plausibilitaet,
+    standortBewertung: standortBewertung,
+    abregelungErfahrung: abregelungErfahrung,
     berechne: berechne,
     ampel: ampel,
     AMPEL_TEXT: AMPEL_TEXT,

@@ -153,25 +153,43 @@
       case 2: return [
         pflicht('genehmigung', 'Bitte wählen Sie den Stand der Genehmigung aus.'),
         pflicht('netzanschluss', 'Bitte wählen Sie den Stand des Netzanschlusses aus.'),
-        pflicht('flaechen', 'Bitte geben Sie an, ob die Flächen gesichert sind.')
+        pflicht('flaechen', 'Bitte geben Sie an, ob die Flächen gesichert sind.'),
+        zahl('kabel_km', '', { optional: true, min: 0, max: 100, beispiel: '6', bereich: 'Bitte geben Sie eine Länge zwischen 0 und 100 km an.' }),
+        zahl('abregelung_prozent', '', { optional: true, min: 0, max: 50, beispiel: '3', bereich: 'Bitte geben Sie einen Wert zwischen 0 und 50 % an.' })
       ];
-      case 3:
-        if (speicher) return [
-          zahl('speicher_erloes', 'Bitte geben Sie Ihre Erlöserwartung in T€ je MW und Jahr an.', { groesserNull: true, beispiel: '110' })
-        ];
-        return [
-          zahl('p50_h', 'Bitte geben Sie die Volllaststunden P50 an.', { groesserNull: true, max: 8760, beispiel: '2.400' }),
-          zahl('p90_h', '', {
-            optional: true, max: 8760, beispiel: '2.050',
-            extra: function (n, dd) {
-              var p50 = EE.parseZahl(dd.p50_h);
-              return p50 !== null && n > p50 ? 'P90 darf nicht größer als P50 sein.' : null;
-            }
-          }),
-          pflicht('erloesmodell', 'Bitte wählen Sie das Erlösmodell aus.'),
-          zahl('preis_eur_mwh', 'Bitte geben Sie den Preis in €/MWh an.', { groesserNull: true, max: 1000, beispiel: '73' }),
-          zahl('ppa_laufzeit', '', { optional: true, min: 1, max: 30, beispiel: '10', bereich: 'Bitte geben Sie eine Laufzeit zwischen 1 und 30 Jahren an.' })
-        ];
+      case 3: {
+        var r3;
+        if (speicher) {
+          r3 = [
+            zahl('speicher_erloes', 'Bitte geben Sie Ihre Erlöserwartung in T€ je MW und Jahr an.', { groesserNull: true, beispiel: '110' })
+          ];
+        } else {
+          r3 = [
+            zahl('p50_h', 'Bitte geben Sie die Volllaststunden P50 an.', { groesserNull: true, max: 8760, beispiel: '2.400' }),
+            zahl('p90_h', '', {
+              optional: true, max: 8760, beispiel: '2.050',
+              extra: function (n, dd) {
+                var p50 = EE.parseZahl(dd.p50_h);
+                return p50 !== null && n > p50 ? 'P90 darf nicht größer als P50 sein.' : null;
+              }
+            }),
+            pflicht('erloesmodell', 'Bitte wählen Sie das Erlösmodell aus.'),
+            zahl('preis_eur_mwh', 'Bitte geben Sie den Preis in €/MWh an.', { groesserNull: true, max: 1000, beispiel: '73' }),
+            zahl('ppa_laufzeit', '', { optional: true, min: 1, max: 30, beispiel: '10', bereich: 'Bitte geben Sie eine Laufzeit zwischen 1 und 30 Jahren an.' })
+          ];
+          if (d.technologie === 'wind') {
+            r3.push(
+              zahl('guetefaktor', '', { optional: true, min: 20, max: 200, beispiel: '80', bereich: 'Bitte geben Sie einen Gütefaktor zwischen 20 und 200 % an.' }),
+              zahl('nabenhoehe', '', { optional: true, min: 30, max: 250, beispiel: '166', bereich: 'Bitte geben Sie eine Nabenhöhe zwischen 30 und 250 m an.' }),
+              zahl('windgeschwindigkeit', '', { optional: true, min: 2, max: 15, beispiel: '6,8', bereich: 'Bitte geben Sie einen Wert zwischen 2 und 15 m/s an.' })
+            );
+          } else {
+            r3.push(zahl('globalstrahlung', '', { optional: true, min: 600, max: 1500, beispiel: '1.120', bereich: 'Bitte geben Sie einen Wert zwischen 600 und 1.500 kWh/m² an.' }));
+          }
+        }
+        r3.push(zahl('degradation_prozent', '', { optional: true, min: 0, max: 5, beispiel: '0,4', bereich: 'Bitte geben Sie einen Wert zwischen 0 und 5 % an.' }));
+        return r3;
+      }
       case 4: return [
         zahl('capex_teur', 'Bitte geben Sie die Gesamtinvestition in T€ an.', { groesserNull: true, beispiel: '34.800' }),
         zahl('opex_teur', '', { optional: true, min: 0, beispiel: '1.100' }),
@@ -362,12 +380,25 @@
     merchant: 'Erwarteter Marktpreis'
   };
 
+  /** Bei Wind mit EEG-Zuschlag wird der Zuschlagswert eingegeben und mit dem Korrekturfaktor umgerechnet. */
+  function preisLabel(d) {
+    if (d.technologie === 'wind' && CONFIG.standort.wind.korrekturFuerErloesmodell.indexOf(d.erloesmodell) !== -1) {
+      return 'Zuschlagswert (EEG)';
+    }
+    return PREIS_LABEL[d.erloesmodell] || 'Erlös';
+  }
+
   function aktualisiereFelder(d) {
     var speicher = istSpeicher(d);
     form.querySelectorAll('[data-nur="speicher"]').forEach(function (e) { e.hidden = !speicher; });
     form.querySelectorAll('[data-nur="nicht-speicher"]').forEach(function (e) { e.hidden = speicher; });
+    var wind = d.technologie === 'wind';
+    var pv = /^(pv_frei|agri_pv|pv_dach)$/.test(d.technologie || '');
+    form.querySelectorAll('[data-nur="wind"]').forEach(function (e) { e.hidden = !wind; });
+    form.querySelectorAll('[data-nur="pv"]').forEach(function (e) { e.hidden = !pv; });
+    aktualisiereStandortHinweise(d, wind, pv);
     $('f-ppa-feld').hidden = speicher || !(d.erloesmodell === 'ppa' || d.erloesmodell === 'eeg_ppa');
-    $('f-preis-label').textContent = PREIS_LABEL[d.erloesmodell] || 'Erlös';
+    $('f-preis-label').textContent = preisLabel(d);
     form.querySelectorAll('[data-genehmigung-label]').forEach(function (e) {
       e.textContent = d.technologie === 'wind' ? 'Genehmigung nach BImSchG' : 'Baurecht / Genehmigung';
     });
@@ -387,6 +418,48 @@
       $('dok-' + dok.id + '-titel').textContent = dok.titel(d);
       $('dok-' + dok.id + '-hinweis').textContent = dok.hinweis(d);
     });
+  }
+
+  function aktualisiereStandortHinweise(d, wind, pv) {
+    var S = CONFIG.standort;
+    var band = EE.bandbreite(d.technologie, d.bundesland);
+    var p50Hinweis = pv ? 'Entspricht dem spezifischen Ertrag in kWh/kWp.' : '';
+    if (band) p50Hinweis += (p50Hinweis ? ' ' : '') + 'Üblich in ' + d.bundesland + ': ' + EE.fmtZahl(band[0]) + '–' + EE.fmtZahl(band[1]) + ' h.';
+    $('f-p50-hinweis').textContent = p50Hinweis;
+
+    // Gütefaktor und Korrekturfaktor
+    var guete = EE.parseZahl(d.guetefaktor);
+    var kfGilt = wind && S.wind.korrekturFuerErloesmodell.indexOf(d.erloesmodell) !== -1;
+    $('f-guete-hinweis').textContent = guete > 0
+      ? 'Korrekturfaktor ' + EE.fmtZahl(EE.korrekturfaktor(guete), 2) + (kfGilt ? '' : ' (wirkt nur beim EEG-Zuschlag)')
+      : 'Laut Gutachten (Referenzertragsmodell).';
+    var preis = EE.parseZahl(d.preis_eur_mwh);
+    var preisHinweis = '';
+    if (kfGilt) {
+      if (guete > 0 && preis > 0) {
+        var kf = EE.korrekturfaktor(guete);
+        preisHinweis = 'Zuschlagswert × Korrekturfaktor ' + EE.fmtZahl(kf, 2) + ' = anzulegender Wert ' + EE.fmtZahl(preis * kf, 2) + ' €/MWh.';
+      } else {
+        preisHinweis = 'Ihr Zuschlagswert gilt für den 100-%-Referenzstandort. Mit Gütefaktor rechnen wir den Korrekturfaktor ein.';
+      }
+    }
+    $('f-preis-hinweis').textContent = preisHinweis;
+
+    // Abregelung: regionaler Erfahrungswert
+    var erfahrung = EE.abregelungErfahrung(d.bundesland);
+    $('f-abregelung').placeholder = 'z. B. ' + EE.fmtZahl(erfahrung, 1);
+    $('f-abregelung-hinweis').textContent = 'Anteil der Jahreserzeugung, der durch Netzengpässe verloren geht. Erfahrungswert ' +
+      (d.bundesland || 'ohne Bundesland') + ': ' + EE.fmtZahl(erfahrung, 1) + ' %. Wird nur angesetzt, wenn Sie einen Wert eintragen.';
+
+    // Degradation: Standardwert je Technologie
+    var deg = S.degradationStandard[d.technologie];
+    var degFeld = $('f-degradation');
+    degFeld.placeholder = deg !== undefined ? 'Standard: ' + EE.fmtZahl(deg, 1) : '';
+    $('f-degradation-hinweis').textContent = deg !== undefined
+      ? 'Jährlicher Leistungsverlust. Leer lassen: Wir setzen ' + EE.fmtZahl(deg, 1) + ' % p. a. an (' + EE.TECHNOLOGIEN[d.technologie].label + ').'
+      : 'Jährlicher Leistungsverlust. Leer lassen: Wir setzen einen Standardwert an.';
+
+    $('f-gutachten-legend').textContent = d.technologie === 'speicher' ? 'Stand des Erlösgutachtens' : 'Stand des Ertragsgutachtens';
   }
 
   /* ------------------------------------------------------------------
@@ -518,6 +591,18 @@
       ? 'Betriebskosten pauschal angesetzt: ' + erg.opexPauschaleJeMW + ' T€/MW/a = ' + EE.fmtTEUR(erg.opex) + ' p. a.'
       : '';
 
+    // Wirkung der Standortfaktoren auf den Umsatz
+    var faktoren = [];
+    if (erg.korrekturAngewendet) faktoren.push('Korrekturfaktor ' + EE.fmtZahl(erg.korrekturfaktor, 2));
+    if (erg.abregelungProzent > 0) faktoren.push('Abregelung ' + EE.fmtZahl(erg.abregelungProzent, 1) + ' %');
+    if (erg.degradationProzent > 0) {
+      faktoren.push('Degradation ' + EE.fmtZahl(erg.degradationProzent, 1) + ' % p. a.' +
+        (erg.degradationStandard ? ' (Standard)' : '') + ', Ø ' + EE.fmtZahl((1 - erg.degradationsfaktor) * 100, 1) + ' % weniger');
+    }
+    $('ind-umsatz-hinweis').textContent = faktoren.length ? 'Im Umsatz berücksichtigt: ' + faktoren.join(' · ') + '.' : '';
+
+    renderStandort(d, erg);
+
     // Projektreife
     var reife = EE.projektreife(d, d.technologie === 'wind');
     var reifeStufe = { baureif: 'ok', fast: 'info', entwicklung: 'warn' }[reife.stufe];
@@ -546,6 +631,23 @@
     $('mini-badge').innerHTML = a50 ? badge(a50, EE.AMPEL_TEXT[a50]) : '';
 
     return erg;
+  }
+
+  var STANDORT_TEXT = { ok: 'gut', warn: 'prüfen', fail: 'kritisch' };
+
+  function renderStandort(d, erg) {
+    var b = EE.standortBewertung(d, erg);
+    var titelDargebot = d.technologie === 'wind' ? 'Windangebot'
+      : /^(pv_frei|agri_pv|pv_dach)$/.test(d.technologie || '') ? 'Sonneneinstrahlung' : 'Wind / Sonne';
+    var bereiche = [[titelDargebot, b.dargebot], ['Gutachtenlage', b.gutachten], ['Netz', b.netz]];
+    $('ind-standort').innerHTML = bereiche.map(function (x) {
+      var be = x[1];
+      var bd = be.stufe ? badge(be.stufe, STANDORT_TEXT[be.stufe]) : badge('neutral', be.entfaellt ? 'entfällt' : 'offen');
+      return '<div><div class="standort__kopf"><span>' + x[0] + '</span>' + bd + '</div>' +
+        '<ul class="offene-punkte">' + be.punkte.map(function (pk) { return '<li>' + escapeHtml(pk.text) + '</li>'; }).join('') + '</ul></div>';
+    }).join('');
+    $('ind-standort-badge').innerHTML = b.gesamt ? badge(b.gesamt, STANDORT_TEXT[b.gesamt]) : badge('neutral', 'offen');
+    return b;
   }
 
   /* ------------------------------------------------------------------
@@ -581,9 +683,23 @@
         ['Volllaststunden P50', wert(d.p50_h, 'h/a')],
         ['Volllaststunden P90', wert(d.p90_h, 'h/a')],
         ['Erlösmodell', auswahl('erloesmodell', d.erloesmodell)],
-        [PREIS_LABEL[d.erloesmodell] || 'Erlös', wert(d.preis_eur_mwh, '€/MWh')]
+        [preisLabel(d), wert(d.preis_eur_mwh, '€/MWh') +
+          (erg.korrekturAngewendet ? ' (anzulegender Wert ' + escapeHtml(EE.fmtZahl(erg.preisWirksam, 2)) + ' €/MWh)' : '')]
       ];
     if (!speicher && (d.erloesmodell === 'ppa' || d.erloesmodell === 'eeg_ppa')) ertrag.push(['PPA-Laufzeit', wert(d.ppa_laufzeit, 'Jahre')]);
+    if (d.technologie === 'wind') {
+      ertrag.push(['Gütefaktor', leer(d.guetefaktor) ? wert('') :
+        wert(d.guetefaktor, '%') + ' (Korrekturfaktor ' + escapeHtml(EE.fmtZahl(EE.korrekturfaktor(EE.parseZahl(d.guetefaktor)), 2)) +
+        (erg.korrekturAngewendet ? ', angewendet' : ', nicht angewendet') + ')']);
+      ertrag.push(['Nabenhöhe', wert(d.nabenhoehe, 'm')]);
+      ertrag.push(['Mittlere Windgeschwindigkeit', leer(d.windgeschwindigkeit) ? wert('') : escapeHtml(EE.fmtZahl(EE.parseZahl(d.windgeschwindigkeit), 1)) + ' m/s']);
+    } else if (!speicher) {
+      ertrag.push(['Globalstrahlung', wert(d.globalstrahlung, 'kWh/m²/a')]);
+    }
+    ertrag.push([speicher ? 'Erlösgutachten' : 'Ertragsgutachten', auswahl('gutachten', d.gutachten)]);
+    ertrag.push(['Degradation', leer(d.degradation_prozent)
+      ? escapeHtml(EE.fmtZahl(erg.degradationProzent, 1)) + ' % p. a. (Standard)'
+      : escapeHtml(EE.fmtZahl(EE.parseZahl(d.degradation_prozent), 1)) + ' % p. a.']);
 
     var html =
       block('Projekt', 1, [
@@ -599,7 +715,10 @@
       block('Genehmigungen &amp; Netz', 2, [
         [d.technologie === 'wind' ? 'Genehmigung nach BImSchG' : 'Baurecht / Genehmigung', auswahl('genehmigung', d.genehmigung)],
         ['Netzanschluss', auswahl('netzanschluss', d.netzanschluss)],
-        ['Flächen gesichert', auswahl('flaechen', d.flaechen)]
+        ['Flächen gesichert', auswahl('flaechen', d.flaechen)],
+        ['Spannungsebene', auswahl('spannungsebene', d.spannungsebene)],
+        ['Kabeltrasse', leer(d.kabel_km) ? wert('') : escapeHtml(EE.fmtZahl(EE.parseZahl(d.kabel_km), 1)) + ' km'],
+        ['Erwartete Abregelung', leer(d.abregelung_prozent) ? wert('') : escapeHtml(EE.fmtZahl(EE.parseZahl(d.abregelung_prozent), 1)) + ' %']
       ]) +
       block('Ertrag &amp; Erlöse', 3, ertrag) +
       block('Kosten &amp; Finanzierung', 4, [
@@ -700,15 +819,20 @@
         cfadsP50: erg.cfadsP50, cfadsP90: erg.cfadsP90, kredit: erg.kredit, eigenkapital: erg.eigenkapital,
         annuitaet: erg.annuitaet, dscrP50: erg.dscrP50, dscrP90: erg.dscrP90,
         ampelP50: EE.ampel(erg.dscrP50, CONFIG.minDscrP50), ampelP90: EE.ampel(erg.dscrP90, CONFIG.minDscrP90),
-        tragfaehigerKredit: erg.tragfaehigerKredit
+        tragfaehigerKredit: erg.tragfaehigerKredit,
+        korrekturfaktor: erg.korrekturfaktor, korrekturAngewendet: erg.korrekturAngewendet,
+        preisWirksam: erg.preisWirksam, abregelungProzent: erg.abregelungProzent,
+        degradationProzent: erg.degradationProzent, degradationsfaktor: erg.degradationsfaktor
       },
+      standort: EE.standortBewertung(d, erg),
       projektreife: { stufe: reife.stufe, offen: reife.offen },
       unterlagen: DOKUMENTE.map(function (dok) {
         var f = dateien[dok.id];
         return { id: dok.id, bezeichnung: dok.titel(d), feld: 'dokument_' + dok.id, datei: f ? f.name : null, groesse: f ? f.size : null };
       }),
       parameter: {
-        minDscrP50: CONFIG.minDscrP50, minDscrP90: CONFIG.minDscrP90, toleranzKnapp: CONFIG.toleranzKnapp
+        minDscrP50: CONFIG.minDscrP50, minDscrP90: CONFIG.minDscrP90, toleranzKnapp: CONFIG.toleranzKnapp,
+        standort: CONFIG.standort
       }
     };
 
