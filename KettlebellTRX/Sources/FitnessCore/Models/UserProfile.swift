@@ -158,6 +158,7 @@ public struct UserProfile: Codable, Identifiable, Hashable, Sendable {
     public var health: HealthSettings
     public var programStatus: ProgramStatus
     public var consents: PrivacyConsents
+    public var screening: HealthScreening?
     public var updatedAt: Date
 
     public init(
@@ -178,6 +179,7 @@ public struct UserProfile: Codable, Identifiable, Hashable, Sendable {
         health: HealthSettings = HealthSettings(),
         programStatus: ProgramStatus = .active,
         consents: PrivacyConsents = PrivacyConsents(),
+        screening: HealthScreening? = nil,
         updatedAt: Date = Date()
     ) {
         self.id = id; self.displayName = displayName; self.birthYear = birthYear
@@ -186,10 +188,11 @@ public struct UserProfile: Codable, Identifiable, Hashable, Sendable {
         self.sessionsPerWeek = sessionsPerWeek; self.sessionMinutes = sessionMinutes
         self.trainingDays = trainingDays; self.sports = sports; self.goals = goals
         self.restrictions = restrictions; self.health = health
-        self.programStatus = programStatus; self.consents = consents; self.updatedAt = updatedAt
+        self.programStatus = programStatus; self.consents = consents; self.screening = screening
+        self.updatedAt = updatedAt
     }
 
-    /// Ausgangsprofil laut Auftrag. Alle Werte sind im Profil änderbar.
+    /// Ausgangsprofil laut Auftrag (Vorführmodus und Tests). Alle Werte sind im Profil änderbar.
     public static func initial() -> UserProfile {
         UserProfile(
             birthYear: 1967, heightCm: 193, experience: .intermediate,
@@ -197,6 +200,15 @@ public struct UserProfile: Codable, Identifiable, Hashable, Sendable {
             sports: ["Golf", "Tennis"]
         )
     }
+
+    /// Neutrale Vorbelegung für den Einrichtungsassistenten neuer Familienmitglieder.
+    public static func blank(now: Date = Date(), calendar: Calendar = .current) -> UserProfile {
+        UserProfile(birthYear: calendar.component(.year, from: now) - 40, heightCm: 175, experience: .beginner,
+                    kettlebellsKg: [8, 12], hasTRX: true)
+    }
+
+    /// Mindestalter, ab dem das Programm ohne Anleitung vorgesehen ist.
+    public static let minimumAge = 16
 
     public func age(on date: Date = Date(), calendar: Calendar = .current) -> Int {
         calendar.component(.year, from: date) - birthYear

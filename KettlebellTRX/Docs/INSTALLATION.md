@@ -57,8 +57,8 @@ Für **beide** Targets (KettlebellTRX und KettlebellTRXWatch): Signing & Capabil
 
 ## 4. Erste Schritte in der App
 
-1. Einstellungen (Zahnrad) → **Profil**: Angaben prüfen (vorbelegt: Jg. 1967, 193 cm,
-   Kettlebells 8/12/16 kg, TRX, Mo/Mi/Fr, 30–40 min).
+1. Der **Einrichtungsassistent** fragt Name, Geburtsjahr, Größe, Ausrüstung, Trainingstage,
+   Gesundheits-Check und Einwilligungen ab und erstellt daraus den Plan.
 2. Einstellungen → **Gesundheit**: Einschränkungen, Pulsobergrenze, Technikfreigabe für Swings.
 3. Einstellungen → **Geräte** → „Mit Apple Health verbinden“ und Berechtigungen erteilen.
    Optional „Workouts in Apple Health speichern“.
@@ -68,6 +68,8 @@ Für **beide** Targets (KettlebellTRX und KettlebellTRXWatch): Signing & Capabil
 6. Tab **Training** → Selbsteinschätzung → Empfehlung → Start. Die Watch-App öffnet sich.
 
 ## 5. TestFlight
+
+Für die Familie ausführlich in [FAMILY.md](FAMILY.md). Kurzfassung:
 
 1. Apple Developer Program erforderlich. In App Store Connect eine App mit der Bundle-ID
    `<prefix>.app` anlegen.

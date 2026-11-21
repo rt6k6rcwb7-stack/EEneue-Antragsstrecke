@@ -9,8 +9,6 @@ final class DemoScreenshotTests: XCTestCase {
     override func setUp() {
         continueAfterFailure = true
         app = XCUIApplication()
-        app.launchArguments = ["-demo"]
-        app.launch()
     }
 
     func shot(_ name: String) {
@@ -43,7 +41,32 @@ final class DemoScreenshotTests: XCTestCase {
         if element.exists { element.tap() } else { XCTFail("Element nicht gefunden: \(element)") }
     }
 
+    /// Ersteinrichtung eines neuen Familienmitglieds (Daten werden vorher gelöscht).
+    func testOnboarding() {
+        app.launchArguments = ["-freshStart"]
+        app.launch()
+        let next = app.buttons["Weiter"]
+        XCTAssertTrue(next.waitForExistence(timeout: 20))
+        shot("onboarding-1-willkommen")
+        next.tap()
+        let name = app.textFields["Vorname (für die Begrüßung)"]
+        if name.waitForExistence(timeout: 5) { name.tap(); name.typeText("Anna") }
+        shot("onboarding-2-ueber-dich")
+        next.tap(); shot("onboarding-3-ausruestung")
+        next.tap(); shot("onboarding-4-rhythmus")
+        next.tap(); shot("onboarding-5-gesundheit")
+        next.tap()
+        let health = app.switches["Apple Health lesen (Ruhepuls, HRV, Schlaf, Aktivität)"]
+        if health.waitForExistence(timeout: 5), (health.value as? String) == "1" { health.tap() }
+        shot("onboarding-6-datenschutz")
+        app.buttons["Plan erstellen und loslegen"].tap()
+        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 10))
+        shot("onboarding-7-fertig")
+    }
+
     func testDemoTour() {
+        app.launchArguments = ["-demo"]
+        app.launch()
         XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 20))
         shot("dashboard")
         app.swipeUp(); shot("dashboard-regeneration")

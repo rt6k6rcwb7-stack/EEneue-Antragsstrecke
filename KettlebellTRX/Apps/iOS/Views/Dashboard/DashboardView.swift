@@ -20,7 +20,7 @@ struct DashboardView: View {
             }
             .padding()
         }
-        .navigationTitle("Heute")
+        .navigationTitle(model.profile.displayName.isEmpty ? "Heute" : "Hallo, \(model.profile.displayName)")
         .refreshable { await model.syncNow() }
     }
 

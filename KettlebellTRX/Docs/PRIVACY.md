@@ -1,7 +1,7 @@
 # Datenschutz und Datensicherheit
 
 Gesundheitsdaten sind besondere Kategorien personenbezogener Daten (Art. 9 DSGVO). Die App ist
-für die private Nutzung durch eine Person ausgelegt und verarbeitet Daten standardmäßig nur lokal.
+für die private Nutzung in der Familie ausgelegt – jede Person auf ihrem eigenen Gerät, ohne Datenaustausch – und verarbeitet Daten standardmäßig nur lokal.
 
 ## Umsetzung
 

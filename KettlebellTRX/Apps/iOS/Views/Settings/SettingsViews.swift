@@ -22,7 +22,7 @@ struct SettingsView: View {
                                                                           set: { var s = model.settings; s.keepScreenOnDuringWorkout = $0; model.updateSettings(s) }))
             }
             Section {
-                Text("Kettlebell & TRX Training · Version 1.0\n\(TrainingAssistant.medicalDisclaimer)")
+                Text("Kettlebell & TRX Training · Version 1.0 · Familien-Version\nJede Person nutzt die App auf ihrem eigenen iPhone. Gesundheitsdaten bleiben auf diesem Gerät und werden nicht mit anderen Familienmitgliedern geteilt.\n\(TrainingAssistant.medicalDisclaimer)")
                     .font(.footnote).foregroundStyle(Theme.secondaryText)
             }
         }
@@ -258,9 +258,13 @@ struct DevicesView: View {
                     Button("Jetzt synchronisieren") { Task { await model.syncNow() } }
                     Button("Verbindung widerrufen", role: .destructive) { revokeKind = .whoop }
                 } else {
-                    TextField("WHOOP Client-ID", text: $whoopClientId).textInputAutocapitalization(.never).autocorrectionDisabled()
-                    TextField("Redirect-URI", text: $whoopRedirect).textInputAutocapitalization(.never).autocorrectionDisabled()
-                    TextField("Token-Broker-URL (https://…)", text: $whoopBroker).textInputAutocapitalization(.never).keyboardType(.URL)
+                    DisclosureGroup(AppModel.bundledWhoopConfig != nil ? "Technische Einstellungen (vorbelegt)" : "Technische Einstellungen") {
+                        TextField("WHOOP Client-ID", text: $whoopClientId).textInputAutocapitalization(.never).autocorrectionDisabled()
+                        TextField("Redirect-URI", text: $whoopRedirect).textInputAutocapitalization(.never).autocorrectionDisabled()
+                        TextField("Token-Broker-URL (https://…)", text: $whoopBroker).textInputAutocapitalization(.never).keyboardType(.URL)
+                    }
+                    Text("Melde dich mit deinem eigenen WHOOP-Konto an. Deine Daten gelangen nur auf dein iPhone.")
+                        .font(.footnote).foregroundStyle(Theme.secondaryText)
                     Button("Mit WHOOP verbinden") {
                         guard let url = URL(string: whoopBroker) else { return }
                         let cfg = WhoopConfiguration(clientId: whoopClientId, redirectURI: whoopRedirect, brokerBaseURL: url)
@@ -289,7 +293,9 @@ struct DevicesView: View {
         }
         .navigationTitle("Geräte")
         .onAppear {
-            if let c = model.settings.whoop { whoopClientId = c.clientId; whoopRedirect = c.redirectURI; whoopBroker = c.brokerBaseURL.absoluteString }
+            if let c = model.settings.whoop ?? AppModel.bundledWhoopConfig {
+                whoopClientId = c.clientId; whoopRedirect = c.redirectURI; whoopBroker = c.brokerBaseURL.absoluteString
+            }
         }
         .confirmationDialog("Verbindung widerrufen", isPresented: Binding(get: { revokeKind != nil }, set: { if !$0 { revokeKind = nil } }), titleVisibility: .visible) {
             Button("Widerrufen, Daten behalten") { if let k = revokeKind { Task { await model.revoke(k, deleteData: false) } } }

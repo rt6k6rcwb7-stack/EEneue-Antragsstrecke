@@ -2,7 +2,7 @@
 
 ## Automatisierte Tests (`swift test`)
 
-66 Tests in `Tests/FitnessCoreTests`, laufen unter macOS und Linux sowie in der CI
+70 Tests in `Tests/FitnessCoreTests`, laufen unter macOS und Linux sowie in der CI
 (`.github/workflows/kettlebell-trx.yml`).
 
 | Bereich (Auftrag) | Tests |
@@ -18,6 +18,7 @@
 | HealthKit-Mapping / Garmin | Quellenerkennung, Schlafphasen, Energie als Schätzung, Garmin-Verfügbarkeitsbericht |
 | Watch-Protokoll | Outbox/Bestätigung, Duplikate über zwei Kanäle, Begrenzung, Kodierung |
 | Assistent | alle Sicherheitsregeln, Rückkehr nach Fieber trotz bester Recovery, gute Recovery übersteuert keine Belastungsregel, Vitalregeln nur gleiche Quelle, Kombination, fehlende Daten |
+| Familie / Ersteinrichtung | Neuinstallation verlangt Einrichtung, Plan aus Profil (eigene Tage/Kettlebells), neutrales Vorbelegungsprofil, Gesundheits-Check setzt vorsichtige Einstellungen, Löschen startet Einrichtung neu |
 | Bibliothek / Animation | ≥ 40 vollständige Übungen, Kategorien, Verweise, Erweiterungsdatei, Bodenkontakt aller Animationen |
 
 ```bash

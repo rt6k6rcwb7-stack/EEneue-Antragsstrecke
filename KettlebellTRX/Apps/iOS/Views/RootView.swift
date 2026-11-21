@@ -9,6 +9,14 @@ struct RootView: View {
     @State private var showSettings = false
 
     var body: some View {
+        if model.needsOnboarding {
+            OnboardingView()
+        } else {
+            tabs
+        }
+    }
+
+    private var tabs: some View {
         TabView(selection: $tab) {
             screen(DashboardView(openTraining: { tab = 2 })).tabItem { Label("Dashboard", systemImage: "square.grid.2x2") }.tag(0)
             screen(PlanView()).tabItem { Label("Plan", systemImage: "calendar") }.tag(1)

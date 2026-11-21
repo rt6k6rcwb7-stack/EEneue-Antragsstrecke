@@ -56,9 +56,31 @@ final class AppModel {
         watch.onHeartRate = { [weak self] points in self?.receiveHeartRate(points) }
         watch.onSummary = { [weak self] summary in self?.receiveWatchSummary(summary) }
         watch.onRemoteCommand = { [weak self] cmd in self?.handleWatchCommand(cmd) }
+        if ProcessInfo.processInfo.arguments.contains("-freshStart") { try? repository.deleteAllPersonalData() }
         rebuildSync()
-        ensurePlan()
         if Self.isDemoLaunch { prepareDemo() }
+        if repository.hasStoredProfile { ensurePlan() }
+    }
+
+    /// Erststart eines Familienmitglieds: Einrichtungsassistent anzeigen.
+    var needsOnboarding: Bool { _ = version; return !repo.hasStoredProfile }
+
+    func completeOnboarding(_ p: UserProfile) {
+        attempt("Einrichtung speichern") {
+            try repo.completeOnboarding(profile: p, library: library, startDate: Calendar.iso8601Monday.startOfWeek(for: Date()))
+        }
+        if let cfg = Self.bundledWhoopConfig, repo.settings.whoop == nil {
+            var s = repo.settings; s.whoop = cfg; updateSettings(s)
+        }
+    }
+
+    /// Beim Build hinterlegte WHOOP-App-Daten (öffentlich, kein Secret), damit Familienmitglieder
+    /// nichts eintippen müssen. Quelle: Info.plist-Schlüssel aus project.yml.
+    static var bundledWhoopConfig: WhoopConfiguration? {
+        let info = Bundle.main.infoDictionary ?? [:]
+        guard let id = info["KBTRXWhoopClientID"] as? String, !id.isEmpty,
+              let broker = (info["KBTRXWhoopBrokerURL"] as? String).flatMap(URL.init(string:)), broker.scheme == "https" else { return nil }
+        return WhoopConfiguration(clientId: id, redirectURI: "kbtrx://oauth/whoop", brokerBaseURL: broker)
     }
 
     /// Vorführmodus (Startargument `-demo`, z. B. für Screenshots im Simulator):
@@ -66,6 +88,7 @@ final class AppModel {
     static var isDemoLaunch: Bool { ProcessInfo.processInfo.arguments.contains("-demo") }
 
     private func prepareDemo() {
+        if !repo.hasStoredProfile { try? repo.updateProfile(.initial()) }
         guard !repo.hasDemoData else { return }
         let cal = Calendar.iso8601Monday
         let start = cal.date(byAdding: .weekOfYear, value: -3, to: cal.startOfWeek(for: Date())) ?? Date()
@@ -465,8 +488,7 @@ final class AppModel {
         try? tokenStore.deleteToken(for: WhoopAuthorization.tokenKey)
         attempt("Alle Daten löschen") { try repo.deleteAllPersonalData() }
         run = nil
-        ensurePlan()
-        rebuildSync()
+        rebuildSync()   // danach startet der Einrichtungsassistent
     }
 }
 

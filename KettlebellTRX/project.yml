@@ -5,6 +5,7 @@
 # VOR DEM ERSTEN BUILD ANPASSEN:
 #   - BUNDLE_ID_PREFIX (eigene, eindeutige Kennung, z. B. de.<name>.kbtrx)
 #   - DEVELOPMENT_TEAM (eigene Apple-Team-ID, Xcode → Settings → Accounts)
+#   - optional WHOOP_CLIENT_ID / WHOOP_BROKER_URL (siehe Docs/FAMILY.md)
 name: KettlebellTRX
 options:
   bundleIdPrefix: de.kbtrx
@@ -22,6 +23,9 @@ settings:
   base:
     BUNDLE_ID_PREFIX: de.kbtrx
     DEVELOPMENT_TEAM: ""
+    # Optional: eigene WHOOP-App (öffentliche Daten, KEIN Secret) – dann muss in der Familie niemand etwas eintippen
+    WHOOP_CLIENT_ID: ""
+    WHOOP_BROKER_URL: ""
     SWIFT_VERSION: "5.9"
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
@@ -59,6 +63,8 @@ targets:
         ITSAppUsesNonExemptEncryption: false
         NSHealthShareUsageDescription: "Die App liest Ruhepuls, Herzfrequenzvariabilität, Schlaf, Aktivität und Workouts aus Apple Health, um dein Training an deine Regeneration anzupassen. Die Daten bleiben auf deinem Gerät."
         NSHealthUpdateUsageDescription: "Mit deiner Zustimmung speichert die App abgeschlossene Trainingseinheiten in Apple Health."
+        KBTRXWhoopClientID: $(WHOOP_CLIENT_ID)
+        KBTRXWhoopBrokerURL: $(WHOOP_BROKER_URL)
         CFBundleURLTypes:
           - CFBundleURLName: whoop-oauth
             CFBundleURLSchemes: [kbtrx]

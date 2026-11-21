@@ -58,13 +58,17 @@ public final class AppRepository: @unchecked Sendable {
     public private(set) var recommendations: [Recommendation] = []
     public private(set) var settings = AppSettings()
     public private(set) var activeRun: WorkoutRun?
+    /// `false`, solange die Person den Einrichtungsassistenten noch nicht abgeschlossen hat.
+    public private(set) var hasStoredProfile = false
 
     private var sessionIndex: [UUID: Int] = [:]
 
     public init(store: LocalStore, migrations: [SchemaMigration] = []) throws {
         self.store = store
         try Self.migrateIfNeeded(store: store, migrations: migrations)
-        profile = try store.load(UserProfile.self, from: StoreFile.profile.rawValue) ?? .initial()
+        let storedProfile = try store.load(UserProfile.self, from: StoreFile.profile.rawValue)
+        hasStoredProfile = storedProfile != nil
+        profile = storedProfile ?? .initial()
         plan = try store.load(TrainingPlan.self, from: StoreFile.plan.rawValue)
         planArchive = try store.load([TrainingPlan].self, from: StoreFile.planArchive.rawValue) ?? []
         sessions = try store.load([WorkoutSession].self, from: StoreFile.sessions.rawValue) ?? []
@@ -113,6 +117,13 @@ public final class AppRepository: @unchecked Sendable {
         p.updatedAt = Date()
         profile = p
         try store.save(profile, as: StoreFile.profile.rawValue)
+        hasStoredProfile = true
+    }
+
+    /// Abschluss des Einrichtungsassistenten: Profil speichern und ersten Plan anlegen.
+    public func completeOnboarding(profile p: UserProfile, library: ExerciseLibrary, startDate: Date) throws {
+        try updateProfile(p)
+        try setPlan(PlanGenerator(library: library, profile: p).generate(startDate: startDate), archiveCurrent: false)
     }
 
     public func setPlan(_ p: TrainingPlan, archiveCurrent: Bool = true) throws {
@@ -269,6 +280,7 @@ public final class AppRepository: @unchecked Sendable {
         profile = .initial(); plan = nil; planArchive = []; sessions = []; vitals = []; recovery = []
         devices = DeviceConnection.defaults(); syncStates = []; painReports = []; checkIns = []
         recommendations = []; settings = AppSettings(); activeRun = nil
+        hasStoredProfile = false
         rebuildIndex()
         try store.save(StoreMeta(schemaVersion: Self.currentSchemaVersion, createdAt: Date()), as: StoreFile.meta.rawValue)
     }

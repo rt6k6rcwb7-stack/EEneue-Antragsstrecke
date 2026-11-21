@@ -1,6 +1,7 @@
 # Kettlebell & TRX Training
 
-Persönliche Fitness- und Vitaldaten-App für iPhone, iPad und Apple Watch: ein periodisierter
+Private Fitness- und Vitaldaten-App für die **Familie** – jede Person auf ihrem eigenen iPhone,
+verteilt über TestFlight (siehe [Docs/FAMILY.md](Docs/FAMILY.md)). Für iPhone, iPad und Apple Watch: ein periodisierter
 8-Wochen-Plan mit Kettlebell, TRX und Eigengewicht, ein interaktiver Trainingsplayer mit
 Live-Puls, Vitaldaten aus Apple Health, Garmin (über Apple Health) und WHOOP sowie ein
 regelbasierter, konservativer Trainingsassistent.
@@ -12,7 +13,8 @@ regelbasierter, konservativer Trainingsassistent.
 
 | Bereich | Umsetzung | Geprüft |
 |---|---|---|
-| Kernlogik `FitnessCore` (Plan, Progression, Player-Zustand, Timer, Harmonisierung, Assistent, Persistenz, Export, Sync, WHOOP-Client, HealthKit-Mapping, Watch-Protokoll) | vollständig | **66 automatisierte Tests, grün** (Linux, Swift 6.0.3) |
+| Familien-Version | Einrichtungsassistent mit Gesundheits-Check, Daten strikt je Gerät, WHOOP-Vorbelegung, TestFlight-Anleitung | Ersteinrichtung per Test und UI-Test geprüft |
+| Kernlogik `FitnessCore` (Plan, Progression, Player-Zustand, Timer, Harmonisierung, Assistent, Persistenz, Export, Sync, WHOOP-Client, HealthKit-Mapping, Watch-Protokoll) | vollständig | **70 automatisierte Tests, grün** (Linux, Swift 6.0.3) |
 | Übungsbibliothek | 58 Übungen, eigene animierte Darstellungen | per Test auf Vollständigkeit geprüft |
 | iOS-/iPadOS-App (SwiftUI) | Dashboard, Plan, Training/Player, Bibliothek, Fortschritt, Einstellungen | **kompiliert fehler- und warnungsfrei** (CI, Xcode 16.4, iOS-Simulator-SDK, Watch-App eingebettet); **nicht auf echtem Gerät getestet** |
 | watchOS-App | Workout-Session, Live-Puls, Mirroring, Wiederherstellung | **nicht auf echter Apple Watch getestet** |
@@ -41,6 +43,9 @@ Ausführlich: [Docs/INSTALLATION.md](Docs/INSTALLATION.md)
 
 | Dokument | Inhalt |
 |---|---|
+| [FAMILY.md](Docs/FAMILY.md) | Nutzung in der Familie, Verteilung über TestFlight, WHOOP/Garmin je Person |
+| [DATENSCHUTZERKLAERUNG.md](Docs/DATENSCHUTZERKLAERUNG.md) | Vorlage für die in App Store Connect geforderte Datenschutz-URL |
+| [Screenshots](Docs/Screenshots) | Echte App im iPhone-Simulator mit Beispieldaten (Actions → „Run workflow“ erzeugt sie neu) |
 | [ARCHITECTURE.md](Docs/ARCHITECTURE.md) | Projektstruktur, Komponenten, Datenmodell, Schnittstellen, Abhängigkeiten |
 | [INSTALLATION.md](Docs/INSTALLATION.md) | Installation mit Xcode auf iPhone und Apple Watch, TestFlight |
 | [INTEGRATIONS.md](Docs/INTEGRATIONS.md) | Apple HealthKit, Garmin (Prüfergebnis), WHOOP (OAuth, Broker, Endpunkte) |
