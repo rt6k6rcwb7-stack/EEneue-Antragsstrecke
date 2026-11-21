@@ -71,12 +71,23 @@ jobs:
           xcrun simctl status_bar "$UDID" override --time 9:41 --batteryState charged --batteryLevel 100 || true
       - name: App mit Beispieldaten durchklicken
         run: |
-          mkdir -p screenshots
           xcodebuild test -project KettlebellTRX.xcodeproj -scheme KettlebellTRX \
             -destination "id=${{ steps.sim.outputs.udid }}" \
-            -only-testing:KettlebellTRXUITests \
-            TEST_RUNNER_SCREENSHOT_DIR="$PWD/screenshots" > uitest.log 2>&1 || { tail -n 120 uitest.log; echo "UI-Test fehlgeschlagen"; }
+            -only-testing:KettlebellTRXUITests -resultBundlePath demo.xcresult > uitest.log 2>&1 || { tail -n 120 uitest.log; echo "UI-Test fehlgeschlagen"; }
           grep -E "Test Case|error:|failed" uitest.log | tail -n 40 || true
+      - name: Screenshots exportieren
+        run: |
+          mkdir -p raw screenshots
+          xcrun xcresulttool export attachments --path demo.xcresult --output-path raw
+          python3 - <<'PY'
+          import json, os, shutil
+          m = json.load(open("raw/manifest.json"))
+          items = [a for t in m for a in t.get("attachments", [])]
+          items.sort(key=lambda a: a.get("timestamp", 0))
+          for i, a in enumerate(items, 1):
+              name = a.get("suggestedHumanReadableName", a["exportedFileName"]).split("_")[0]
+              shutil.copy(os.path.join("raw", a["exportedFileName"]), f"screenshots/{i:02d}-{name}.png")
+          PY
           ls -la screenshots
       - uses: actions/upload-artifact@v4
         with:
