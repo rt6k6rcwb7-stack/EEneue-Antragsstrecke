@@ -68,3 +68,25 @@ final class FamilyOnboardingTests: XCTestCase {
         XCTAssertEqual(try AppRepository(store: LocalStore(directory: dir)).profile.screening?.yes, [.jointOrSpineProblem])
     }
 }
+
+final class DemoPlanMarkingTests: XCTestCase {
+    func testDemoSessionsMarkPlanAndDeletionUnmarks() throws {
+        let repo = try AppRepository(store: LocalStore(directory: TS.tempDir()))
+        try repo.setPlan(TS.plan())
+        // echte Einheit am ersten Tag
+        var real = WorkoutRun.from(planned: repo.plan!.weeks[0].workouts[0], now: TS.date(2, 18))
+        real.start(at: TS.date(2, 18)); real.finish(at: TS.date(2, 19))
+        try repo.completeRun(real)
+
+        try repo.loadDemoSessions(DemoDataGenerator().sessions(plan: repo.plan!, upTo: TS.date(14)))
+        let week1 = repo.plan!.weeks[0].workouts
+        XCTAssertEqual(week1[0].completedSessionId, real.session.id, "echte Einheit bleibt maßgeblich")
+        XCTAssertTrue(week1.allSatisfy { $0.completedSessionId != nil })
+        XCTAssertTrue(repo.plan!.weeks[1].workouts.allSatisfy { $0.completedSessionId != nil })
+
+        try repo.deleteDemoData()
+        XCTAssertEqual(repo.plan!.weeks[0].workouts[0].completedSessionId, real.session.id)
+        XCTAssertNil(repo.plan!.weeks[0].workouts[1].completedSessionId)
+        XCTAssertTrue(repo.plan!.weeks[1].workouts.allSatisfy { $0.completedSessionId == nil })
+    }
+}

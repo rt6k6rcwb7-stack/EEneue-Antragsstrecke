@@ -476,7 +476,7 @@ final class AppModel {
     func loadDemoData() {
         guard let plan = repo.plan else { return }
         attempt("Beispieldaten laden") {
-            for s in DemoDataGenerator().sessions(plan: plan, upTo: Date()) { try repo.upsertSession(s) }
+            try repo.loadDemoSessions(DemoDataGenerator().sessions(plan: plan, upTo: Date()))
             try repo.ingestVitals(DemoDataGenerator().vitals(days: 60, endingAt: Date()))
         }
     }

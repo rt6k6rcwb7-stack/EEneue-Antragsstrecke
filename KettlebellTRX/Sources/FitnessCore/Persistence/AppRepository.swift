@@ -264,9 +264,31 @@ public final class AppRepository: @unchecked Sendable {
 
     public var hasDemoData: Bool { sessions.contains(where: \.isDemo) || vitals.contains { $0.quality == .demo } }
 
+    /// Lädt gekennzeichnete Beispiel-Einheiten und markiert die zugehörigen Plantage als erledigt
+    /// (nur Tage, die noch keine echte Einheit haben).
+    public func loadDemoSessions(_ demo: [WorkoutSession]) throws {
+        guard var p = plan else { return }
+        for s in demo where s.isDemo {
+            try upsertSession(s)
+            if let pid = s.plannedWorkoutId, var w = p.workout(id: pid), w.completedSessionId == nil, s.state == .completed {
+                w.completedSessionId = s.id
+                p.updateWorkout(w)
+            }
+        }
+        try setPlan(p, archiveCurrent: false)
+    }
+
     public func deleteDemoData() throws {
+        let demoIds = Set(sessions.filter(\.isDemo).map(\.id))
         sessions.removeAll(where: \.isDemo)
         rebuildIndex()
+        // Plan-Markierungen der Beispiel-Einheiten zurücknehmen
+        if var p = plan {
+            for w in p.allWorkouts where w.completedSessionId.map(demoIds.contains) == true {
+                var c = w; c.completedSessionId = nil; p.updateWorkout(c)
+            }
+            try setPlan(p, archiveCurrent: false)
+        }
         vitals.removeAll { $0.quality == .demo || $0.channel == .demo }
         recovery.removeAll { $0.quality == .demo }
         try store.save(sessions, as: StoreFile.sessions.rawValue)

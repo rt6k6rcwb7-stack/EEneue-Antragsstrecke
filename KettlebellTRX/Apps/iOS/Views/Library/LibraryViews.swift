@@ -67,7 +67,7 @@ struct ExerciseDetailView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(exercise.nameDE).font(.title.bold())
                     if let en = exercise.nameEN, en != exercise.nameDE { Text(en).foregroundStyle(Theme.secondaryText) }
-                    Text("\(exercise.category.displayName) · \(exercise.difficulty.displayName) · \(exercise.equipment.map(\.displayName).joined(separator: ", "))")
+                    Text(([exercise.category.displayName, exercise.difficulty.displayName] + Self.extraEquipment(exercise)).joined(separator: " · "))
                         .font(.subheadline).foregroundStyle(Theme.secondaryText)
                 }
                 if verdict.level != .allowed {
@@ -106,6 +106,19 @@ struct ExerciseDetailView: View {
         }
         .navigationTitle(exercise.nameDE)
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    /// Geräte, die nicht schon durch die Kategorie genannt sind (z. B. kein doppeltes „Kettlebell“).
+    static func extraEquipment(_ e: Exercise) -> [String] {
+        let implied: Set<Equipment>
+        switch e.category {
+        case .kettlebell: implied = [.kettlebell]
+        case .trx: implied = [.trx]
+        case .bodyweight: implied = [.bodyweight]
+        default: implied = [.bodyweight]
+        }
+        let extra = e.equipment.filter { !implied.contains($0) }.map(\.displayName)
+        return extra.isEmpty ? [] : [extra.joined(separator: ", ")]
     }
 
     private var loadText: String {
