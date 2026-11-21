@@ -14,7 +14,7 @@ regelbasierter, konservativer Trainingsassistent.
 |---|---|---|
 | Kernlogik `FitnessCore` (Plan, Progression, Player-Zustand, Timer, Harmonisierung, Assistent, Persistenz, Export, Sync, WHOOP-Client, HealthKit-Mapping, Watch-Protokoll) | vollständig | **66 automatisierte Tests, grün** (Linux, Swift 6.0.3) |
 | Übungsbibliothek | 58 Übungen, eigene animierte Darstellungen | per Test auf Vollständigkeit geprüft |
-| iOS-/iPadOS-App (SwiftUI) | Dashboard, Plan, Training/Player, Bibliothek, Fortschritt, Einstellungen | Syntax geprüft; **Kompilierung über CI auf macOS** (siehe unten); **nicht auf echtem Gerät getestet** |
+| iOS-/iPadOS-App (SwiftUI) | Dashboard, Plan, Training/Player, Bibliothek, Fortschritt, Einstellungen | **kompiliert fehler- und warnungsfrei** (CI, Xcode 16.4, iOS-Simulator-SDK, Watch-App eingebettet); **nicht auf echtem Gerät getestet** |
 | watchOS-App | Workout-Session, Live-Puls, Mirroring, Wiederherstellung | **nicht auf echter Apple Watch getestet** |
 | Apple Health | Lesen (Ruhepuls, HRV, Schlaf, Aktivität, Workouts), Speichern nach Zustimmung | **nicht auf Gerät getestet** |
 | Garmin Approach S70 | Stufe 1: über Apple Health inkl. Verfügbarkeitsprüfung. Stufe 2 (direkte API): bewusst **nicht aktiviert** | Mapping getestet; echte Garmin-Daten nicht geprüft |

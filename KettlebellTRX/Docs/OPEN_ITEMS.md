@@ -7,7 +7,7 @@ Apple-Geräte, ohne WHOOP- und Garmin-Zugang.
 
 | Funktion | Grund | Was geprüft ist |
 |---|---|---|
-| iOS-/watchOS-UI auf Geräten | kein Mac/iPhone/Watch | Syntax; Kompilierung über CI (macOS) |
+| iOS-/watchOS-UI auf Geräten | kein Mac/iPhone/Watch | Build ohne Fehler/Warnungen in der CI (Xcode 16.4); nie gestartet |
 | HealthKit lesen/schreiben | kein Gerät | Mapping und Quellenerkennung per Test |
 | Workout Mirroring, Live-Puls, Verbindungsabbruch, Wiederherstellung auf der Watch | keine Watch | Nachrichtenprotokoll, Duplikat-/Lückenlogik per Test |
 | Garmin-Daten über Apple Health (Approach S70) | kein Gerät | Mapping; welche Datenarten real ankommen, zeigt die Prüffunktion in der App |
