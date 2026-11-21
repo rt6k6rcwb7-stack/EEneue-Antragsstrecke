@@ -51,3 +51,35 @@ jobs:
           grep -E "PRODUCT_BUNDLE_IDENTIFIER|bundle-identifier" build.log | grep -o "bundle-identifier [^ ]*" | sort -u || true
           echo "--- Warnungen im App-Code ---"
           grep -E "/Apps/.*: (warning|error):" build.log | sort -u || echo "keine"
+
+  demo-screenshots:
+    name: Demo-Screenshots (iPhone-Simulator)
+    runs-on: macos-15
+    needs: apps-build
+    defaults:
+      run:
+        working-directory: KettlebellTRX
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen && xcodegen generate
+      - name: Simulator wählen
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; c=[x for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone 16 Pro') or x['name'].startswith('iPhone 16')]; print(c[0]['udid'])")
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl status_bar "$UDID" override --time 9:41 --batteryState charged --batteryLevel 100 || true
+      - name: App mit Beispieldaten durchklicken
+        run: |
+          mkdir -p screenshots
+          xcodebuild test -project KettlebellTRX.xcodeproj -scheme KettlebellTRX \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -only-testing:KettlebellTRXUITests \
+            TEST_RUNNER_SCREENSHOT_DIR="$PWD/screenshots" > uitest.log 2>&1 || { tail -n 120 uitest.log; echo "UI-Test fehlgeschlagen"; }
+          grep -E "Test Case|error:|failed" uitest.log | tail -n 40 || true
+          ls -la screenshots
+      - uses: actions/upload-artifact@v4
+        with:
+          name: demo-screenshots
+          path: KettlebellTRX/screenshots
+          if-no-files-found: warn

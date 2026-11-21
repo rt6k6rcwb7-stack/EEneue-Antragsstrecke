@@ -58,6 +58,19 @@ final class AppModel {
         watch.onRemoteCommand = { [weak self] cmd in self?.handleWatchCommand(cmd) }
         rebuildSync()
         ensurePlan()
+        if Self.isDemoLaunch { prepareDemo() }
+    }
+
+    /// Vorführmodus (Startargument `-demo`, z. B. für Screenshots im Simulator):
+    /// Plan beginnt vor drei Wochen, gekennzeichnete Beispieldaten werden geladen.
+    static var isDemoLaunch: Bool { ProcessInfo.processInfo.arguments.contains("-demo") }
+
+    private func prepareDemo() {
+        guard !repo.hasDemoData else { return }
+        let cal = Calendar.iso8601Monday
+        let start = cal.date(byAdding: .weekOfYear, value: -3, to: cal.startOfWeek(for: Date())) ?? Date()
+        regeneratePlan(start: start)
+        loadDemoData()
     }
 
     private func touch() { version &+= 1 }

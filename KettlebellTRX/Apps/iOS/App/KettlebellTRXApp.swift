@@ -12,7 +12,7 @@ struct KettlebellTRXApp: App {
                 .environment(model)
                 .preferredColorScheme(.dark)
                 .tint(Theme.accent)
-                .task { RestNotifications.requestPermission() }
+                .task { if !AppModel.isDemoLaunch { RestNotifications.requestPermission() } }
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
