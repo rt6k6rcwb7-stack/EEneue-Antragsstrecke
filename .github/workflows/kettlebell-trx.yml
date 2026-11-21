@@ -46,5 +46,8 @@ jobs:
         run: |
           xcodebuild -project KettlebellTRX.xcodeproj -scheme KettlebellTRX \
             -destination 'generic/platform=iOS Simulator' \
-            CODE_SIGNING_ALLOWED=NO build | tail -n 60
-          exit ${PIPESTATUS[0]}
+            CODE_SIGNING_ALLOWED=NO build > build.log 2>&1 || { tail -n 200 build.log; exit 1; }
+          grep -E "\*\* BUILD" build.log
+          grep -E "PRODUCT_BUNDLE_IDENTIFIER|bundle-identifier" build.log | grep -o "bundle-identifier [^ ]*" | sort -u || true
+          echo "--- Warnungen im App-Code ---"
+          grep -E "/Apps/.*: (warning|error):" build.log | sort -u || echo "keine"
