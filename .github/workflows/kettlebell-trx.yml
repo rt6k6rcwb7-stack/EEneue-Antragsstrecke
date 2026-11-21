@@ -56,6 +56,10 @@ jobs:
     name: Demo-Screenshots (iPhone-Simulator)
     runs-on: macos-15
     needs: apps-build
+    # Nur manuell (Actions → Kettlebell & TRX → Run workflow), da Screenshots in den Branch committet werden.
+    if: github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
     defaults:
       run:
         working-directory: KettlebellTRX
@@ -89,6 +93,15 @@ jobs:
               shutil.copy(os.path.join("raw", a["exportedFileName"]), f"screenshots/{i:02d}-{name}.png")
           PY
           ls -la screenshots
+      - name: Verkleinert in den Branch übernehmen
+        run: |
+          rm -rf Docs/Screenshots && mkdir -p Docs/Screenshots
+          for f in screenshots/*.png; do sips -Z 900 "$f" --out "Docs/Screenshots/$(basename "$f")" >/dev/null; done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Docs/Screenshots
+          git commit -m "Demo-Screenshots aktualisiert (Beispieldaten, iPhone-Simulator) [skip ci]" || exit 0
+          git push origin HEAD:${{ github.ref_name }}
       - uses: actions/upload-artifact@v4
         with:
           name: demo-screenshots
