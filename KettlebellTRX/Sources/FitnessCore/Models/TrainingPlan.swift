@@ -97,14 +97,16 @@ public struct PlannedWorkout: Codable, Identifiable, Hashable, Sendable {
 
     public func exercises(in block: BlockKind) -> [PlannedExercise] { exercises.filter { $0.block == block } }
 
-    /// Grobe Dauerschätzung in Sekunden (Arbeitszeit + Pausen + Übergänge).
-    public func estimatedDurationSeconds(secondsPerRep: Double = 3.5) -> Int {
+    /// Dauerschätzung in Sekunden: Arbeitszeit (≈ 4 s je Wiederholung) + Pausen + Satzvorbereitung
+    /// (Haupttraining 10 s je Satz) + Übergang zur nächsten Übung (Haupttraining 25 s, sonst 10 s).
+    public func estimatedDurationSeconds(secondsPerRep: Double = 4.0) -> Int {
         exercises.reduce(0) { total, ex in
             let work = ex.targetKind == .reps ? Double(ex.target) * secondsPerRep : Double(ex.target)
             let sides = ex.perSide ? 2.0 : 1.0
-            let perSet = work * sides
+            let isMain = ex.block == .main
+            let perSet = work * sides + (isMain ? 10 : 0)
             let rests = Double(max(0, ex.sets - 1) * ex.restSeconds)
-            return total + Int(perSet * Double(ex.sets) + rests + 20)
+            return total + Int(perSet * Double(ex.sets) + rests + (isMain ? 25 : 10))
         }
     }
 }

@@ -1,0 +1,6 @@
+name = "kbtrx-whoop-token-broker"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+ALLOWED_REDIRECT_URI = "kbtrx://oauth/whoop"

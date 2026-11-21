@@ -9,11 +9,16 @@ let package = Package(
     platforms: [.iOS(.v17), .watchOS(.v10), .macOS(.v14)],
     products: [
         .library(name: "FitnessCore", targets: ["FitnessCore"]),
+        .executable(name: "kbtrx-plan", targets: ["kbtrx-plan"]),
     ],
     targets: [
         .target(
             name: "FitnessCore",
             resources: [.process("Library/Resources")]
+        ),
+        .executableTarget(
+            name: "kbtrx-plan",
+            dependencies: ["FitnessCore"]
         ),
         .testTarget(
             name: "FitnessCoreTests",

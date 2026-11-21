@@ -196,11 +196,15 @@ public struct PlanGenerator: Sendable {
         return fitToTimeBudget(result)
     }
 
-    /// Kürzt das Haupttraining, falls die Einheit das Zeitbudget überschreitet (mind. 4 Hauptübungen bleiben).
+    /// Hält das Zeitbudget ein: zuerst Pausen im Haupttraining moderat kürzen (nicht unter 45 s),
+    /// erst danach die letzte Hauptübung streichen (mind. 4 Hauptübungen bleiben).
     func fitToTimeBudget(_ list: [PlannedExercise]) -> [PlannedExercise] {
         var items = list
         let limit = profile.sessionMinutes.upperBound * 60
         func duration() -> Int { PlannedWorkout(week: 1, weekday: .monday, dayType: .strength, exercises: items).estimatedDurationSeconds() }
+        for i in items.indices where duration() > limit && items[i].block == .main && items[i].restSeconds > 45 {
+            items[i].restSeconds = max(45, items[i].restSeconds - 15)
+        }
         while duration() > limit {
             let mains = items.indices.filter { items[$0].block == .main }
             guard mains.count > 4, let last = mains.last else { break }

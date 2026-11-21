@@ -13,6 +13,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
     public var restTimerSound: Bool = true
     public var restTimerHaptics: Bool = true
     public var keepScreenOnDuringWorkout: Bool = true
+    /// Öffentliche WHOOP-App-Daten (Client-ID, Redirect, eigener Token-Broker). Kein Secret.
+    public var whoop: WhoopConfiguration?
     public init() {}
 }
 

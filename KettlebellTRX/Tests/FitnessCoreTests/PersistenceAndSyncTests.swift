@@ -136,7 +136,7 @@ final class SyncTests: XCTestCase {
         return r
     }
 
-    func testSuccessfulSyncUpdatesStateAndStatus() async throws {
+    @MainActor func testSuccessfulSyncUpdatesStateAndStatus() async throws {
         let r = try repo()
         let c = SyncCoordinator(repository: r, providers: [
             MockProvider(kind: .whoop, result: .success([TS.sample(.recoveryScore, 70, day: 3, source: .whoop, channel: .whoopAPI)])),
@@ -154,7 +154,7 @@ final class SyncTests: XCTestCase {
         XCTAssertEqual(r.syncState(.whoop).lastImportedCount, 0)
     }
 
-    func testFailureIsVisibleAndLocalDataUntouched() async throws {
+    @MainActor func testFailureIsVisibleAndLocalDataUntouched() async throws {
         let r = try repo()
         try r.setPlan(TS.plan())
         let s = WorkoutSession(plannedWorkoutId: nil, dayType: .strength, startedAt: TS.date(2), state: .completed, exercises: [])
@@ -173,7 +173,7 @@ final class SyncTests: XCTestCase {
         XCTAssertEqual(r.vitals.count, 1, "Andere Quelle wurde trotzdem synchronisiert")
     }
 
-    func testAuthErrorMarksDeviceAndDisabledSourceSkipped() async throws {
+    @MainActor func testAuthErrorMarksDeviceAndDisabledSourceSkipped() async throws {
         let r = try repo()
         var gd = r.device(.garminViaHealth); gd.isEnabled = false; try r.updateDevice(gd)
         let c = SyncCoordinator(repository: r, providers: [
@@ -186,7 +186,7 @@ final class SyncTests: XCTestCase {
         XCTAssertEqual(r.syncState(.whoop).lastError?.isRecoverable, false)
     }
 
-    func testGarminDirectUnavailableAndDefaults() async throws {
+    @MainActor func testGarminDirectUnavailableAndDefaults() async throws {
         let r = try repo()
         if case .unavailable = r.device(.garminPersonalAPI).status {} else { XCTFail() }
         var d = r.device(.garminPersonalAPI); d.isEnabled = true; try r.updateDevice(d)

@@ -1,0 +1,50 @@
+# Kettlebell & TRX: Kernlogik testen (Linux) und iOS-/watchOS-App bauen (macOS).
+name: Kettlebell & TRX
+
+on:
+  push:
+    paths: ["KettlebellTRX/**", ".github/workflows/kettlebell-trx.yml"]
+  pull_request:
+    paths: ["KettlebellTRX/**", ".github/workflows/kettlebell-trx.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core-tests:
+    name: FitnessCore-Tests (Linux)
+    runs-on: ubuntu-latest
+    container: swift:6.0
+    defaults:
+      run:
+        working-directory: KettlebellTRX
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests
+        run: swift test
+      - name: Planvorschau
+        run: swift run kbtrx-plan
+
+  apps-build:
+    name: iOS- und watchOS-App bauen (macOS)
+    runs-on: macos-15
+    defaults:
+      run:
+        working-directory: KettlebellTRX
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode-Version
+        run: xcodebuild -version
+      - name: XcodeGen installieren
+        run: brew install xcodegen
+      - name: Projekt erzeugen
+        run: xcodegen generate
+      - name: FitnessCore-Tests (macOS)
+        run: swift test
+      - name: iOS-App inkl. Watch-App bauen (ohne Signatur)
+        run: |
+          xcodebuild -project KettlebellTRX.xcodeproj -scheme KettlebellTRX \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO build | tail -n 60
+          exit ${PIPESTATUS[0]}

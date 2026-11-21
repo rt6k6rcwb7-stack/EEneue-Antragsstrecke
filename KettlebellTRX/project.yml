@@ -1,0 +1,106 @@
+# Xcode-Projektdefinition für XcodeGen (https://github.com/yonaskolb/XcodeGen)
+#   brew install xcodegen && xcodegen generate
+# Anschließend KettlebellTRX.xcodeproj öffnen. Siehe Docs/INSTALLATION.md.
+#
+# VOR DEM ERSTEN BUILD ANPASSEN:
+#   - bundleIdPrefix (eigene, eindeutige Kennung, z. B. de.<name>)
+#   - DEVELOPMENT_TEAM (eigene Apple-Team-ID, Xcode → Settings → Accounts)
+name: KettlebellTRX
+options:
+  bundleIdPrefix: de.kbtrx
+  deploymentTarget:
+    iOS: "17.0"
+    watchOS: "10.0"
+  createIntermediateGroups: true
+  developmentLanguage: de
+
+packages:
+  FitnessCore:
+    path: .
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: ""
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+targets:
+  KettlebellTRX:
+    type: application
+    platform: iOS
+    sources:
+      - path: Apps/iOS
+    dependencies:
+      - package: FitnessCore
+        product: FitnessCore
+      - target: KettlebellTRXWatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ${bundleIdPrefix}.app
+        PRODUCT_NAME: KettlebellTRX
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_CFBundleDisplayName: "KB & TRX"
+    info:
+      path: Apps/iOS/Info.plist
+      properties:
+        CFBundleDisplayName: "KB & TRX"
+        CFBundleDevelopmentRegion: de
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UIUserInterfaceStyle: Dark
+        ITSAppUsesNonExemptEncryption: false
+        NSHealthShareUsageDescription: "Die App liest Ruhepuls, Herzfrequenzvariabilität, Schlaf, Aktivität und Workouts aus Apple Health, um dein Training an deine Regeneration anzupassen. Die Daten bleiben auf deinem Gerät."
+        NSHealthUpdateUsageDescription: "Mit deiner Zustimmung speichert die App abgeschlossene Trainingseinheiten in Apple Health."
+        CFBundleURLTypes:
+          - CFBundleURLName: whoop-oauth
+            CFBundleURLSchemes: [kbtrx]
+    entitlements:
+      path: Apps/iOS/KettlebellTRX.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access: []
+
+  KettlebellTRXWatch:
+    type: application
+    platform: watchOS
+    sources:
+      - path: Apps/watchOS
+    dependencies:
+      - package: FitnessCore
+        product: FitnessCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ${bundleIdPrefix}.app.watchkitapp
+        PRODUCT_NAME: KettlebellTRXWatch
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: ${bundleIdPrefix}.app
+    info:
+      path: Apps/watchOS/Info.plist
+      properties:
+        CFBundleDisplayName: "KB & TRX"
+        WKApplication: true
+        WKCompanionAppBundleIdentifier: ${bundleIdPrefix}.app
+        WKBackgroundModes: [workout-processing]
+        NSHealthShareUsageDescription: "Die Watch-App liest während des Trainings deine Herzfrequenz."
+        NSHealthUpdateUsageDescription: "Mit deiner Zustimmung wird das Training in Apple Health gespeichert."
+    entitlements:
+      path: Apps/watchOS/KettlebellTRXWatch.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access: []
+
+schemes:
+  KettlebellTRX:
+    build:
+      targets:
+        KettlebellTRX: all
+        KettlebellTRXWatch: all
+    test:
+      targets:
+        - package: FitnessCore/FitnessCoreTests

@@ -54,7 +54,11 @@ public struct SyncReport: Sendable {
 
 /// Führt die Synchronisierung aller aktivierten Quellen durch.
 /// Fehler einer Quelle beeinflussen weder andere Quellen noch lokal gespeicherte Trainingsdaten.
-public final class SyncCoordinator: @unchecked Sendable {
+///
+/// `@MainActor`: Abrufe (`provider.fetch`) laufen nebenläufig im Hintergrund, Änderungen am
+/// Repository erfolgen ausschließlich auf dem Main Actor – keine Datenrennen mit der UI.
+@MainActor
+public final class SyncCoordinator {
     public let repository: AppRepository
     public var providers: [IntegrationKind: VitalDataProvider]
     /// Erster Abruf: so weit zurück (Tage).
@@ -112,7 +116,7 @@ public final class SyncCoordinator: @unchecked Sendable {
     }
 
     /// Exponentielles Backoff für automatische Wiederholungen (max. 6 h).
-    public static func retryDelay(afterFailures n: Int) -> TimeInterval {
+    nonisolated public static func retryDelay(afterFailures n: Int) -> TimeInterval {
         min(6 * 3600, 60 * pow(2, Double(max(0, n - 1))))
     }
 }
