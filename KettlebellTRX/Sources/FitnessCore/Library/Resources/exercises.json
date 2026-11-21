@@ -1,0 +1,3273 @@
+{
+  "schemaVersion": 1,
+  "exercises": [
+    {
+      "id": "kb_goblet_squat",
+      "nameDE": "Kettlebell Goblet Squat",
+      "nameEN": "Kettlebell Goblet Squat",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "adductors",
+        "core",
+        "upperBack"
+      ],
+      "difficulty": 1,
+      "summary": "Kniebeuge mit der Kettlebell vor der Brust – Grundübung für Beine, Gesäß und aufrechte Haltung.",
+      "startingPosition": "Hüftbreiter bis etwas breiterer Stand, Fußspitzen leicht nach außen. Kettlebell an den Hörnern vor dem Brustbein, Ellenbogen zeigen nach unten.",
+      "movementDirection": "Hüfte nach hinten-unten zwischen die Fersen absenken, Knie folgen den Fußspitzen. Aus dem ganzen Fuß wieder aufrichten.",
+      "breathing": "Vor dem Absenken einatmen und Rumpf spannen, beim Aufrichten ausatmen.",
+      "techniqueCues": [
+        "Brustbein bleibt oben, Blick nach vorn",
+        "Knie schieben nach außen über die Fußspitzen",
+        "Ganzer Fuß bleibt am Boden",
+        "Nur so tief, wie der Rücken neutral bleibt"
+      ],
+      "commonMistakes": [
+        "Fersen heben ab",
+        "Knie fallen nach innen",
+        "Rundrücken in der tiefen Position",
+        "Kettlebell zieht vom Körper weg"
+      ],
+      "safetyNotes": [
+        "Tiefe an Knie- und Hüftbeweglichkeit anpassen – eine Box als Tiefenbegrenzung ist sinnvoll",
+        "Bei Knieschmerzen Bewegungsumfang reduzieren oder TRX-gestützte Variante wählen"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip",
+        "lumbarSpine"
+      ],
+      "tags": [
+        "squat"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "medium"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 75,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_assisted_squat",
+        "bw_squat"
+      ],
+      "animation": "squat",
+      "requiresTechniqueCheck": false,
+      "regressionId": "trx_assisted_squat"
+    },
+    {
+      "id": "kb_deadlift",
+      "nameDE": "Kettlebell Kreuzheben",
+      "nameEN": "Kettlebell Deadlift",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "lowerBack",
+        "forearms",
+        "core",
+        "upperBack"
+      ],
+      "difficulty": 1,
+      "summary": "Hüftbeugung (Hinge) mit der Kettlebell zwischen den Füßen – stärkt die gesamte hintere Kette.",
+      "startingPosition": "Füße hüftbreit, Kettlebell mittig zwischen den Fußgewölben. Hüfte nach hinten schieben, Schienbeine möglichst senkrecht, Griff mit beiden Händen.",
+      "movementDirection": "Hüfte nach vorn bringen und aufrichten, bis Körper gerade steht. Kontrolliert durch Hüftbeugung wieder absenken.",
+      "breathing": "Unten einatmen und Rumpf fest machen, oben ausatmen.",
+      "techniqueCues": [
+        "Bewegung aus der Hüfte, nicht aus dem Rücken",
+        "Schulterblätter leicht nach hinten-unten ziehen",
+        "Kettlebell nah am Körper",
+        "Oben Gesäß anspannen, nicht ins Hohlkreuz lehnen"
+      ],
+      "commonMistakes": [
+        "Rundrücken beim Anheben",
+        "Squat statt Hinge – Knie wandern weit nach vorn",
+        "Überstrecken in der Endposition",
+        "Ruckartiges Anheben"
+      ],
+      "safetyNotes": [
+        "Neutrale Wirbelsäule hat Vorrang vor Gewicht",
+        "Bei Rückenbeschwerden mit leichter Kettlebell oder erhöhter Ablage beginnen"
+      ],
+      "stressedRegions": [
+        "lumbarSpine",
+        "hip"
+      ],
+      "tags": [
+        "hinge"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "heavy"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 75,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_suitcase_deadlift",
+        "bw_hip_hinge_drill",
+        "kb_glute_bridge"
+      ],
+      "animation": "hinge",
+      "requiresTechniqueCheck": false,
+      "regressionId": "bw_hip_hinge_drill",
+      "progressionId": "kb_romanian_deadlift"
+    },
+    {
+      "id": "kb_suitcase_deadlift",
+      "nameDE": "Kettlebell Suitcase Kreuzheben",
+      "nameEN": "Kettlebell Suitcase Deadlift",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "glutes",
+        "hamstrings",
+        "obliques"
+      ],
+      "secondaryMuscles": [
+        "forearms",
+        "core",
+        "quadriceps"
+      ],
+      "difficulty": 2,
+      "summary": "Einseitiges Kreuzheben mit der Kettlebell neben dem Fuß – trainiert Hinge und seitliche Rumpfstabilität.",
+      "startingPosition": "Füße hüftbreit, Kettlebell seitlich neben einem Fuß.",
+      "movementDirection": "Hüfte beugen, Kettlebell greifen und aufrichten, ohne dass sich der Oberkörper zur Seite neigt.",
+      "breathing": "Unten einatmen, beim Aufrichten ausatmen.",
+      "techniqueCues": [
+        "Schultern bleiben waagerecht",
+        "Freier Arm locker, Rumpf gegen seitliches Abkippen spannen",
+        "Hüfte führt die Bewegung"
+      ],
+      "commonMistakes": [
+        "Seitliches Abknicken",
+        "Rundrücken",
+        "Kettlebell schwingt"
+      ],
+      "safetyNotes": [
+        "Mit der leichteren Kettlebell beginnen",
+        "Bei Beschwerden der Lendenwirbelsäule nur schmerzfrei ausführen"
+      ],
+      "stressedRegions": [
+        "lumbarSpine",
+        "hip"
+      ],
+      "tags": [
+        "hinge",
+        "antiRotation"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "medium"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 60,
+        "perSide": true
+      },
+      "alternatives": [
+        "kb_deadlift",
+        "kb_suitcase_carry"
+      ],
+      "animation": "hinge",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "kb_romanian_deadlift",
+      "nameDE": "Kettlebell Rumänisches Kreuzheben",
+      "nameEN": "Kettlebell Romanian Deadlift",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "hamstrings",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "lowerBack",
+        "forearms"
+      ],
+      "difficulty": 2,
+      "summary": "Kreuzheben mit nahezu gestreckten Beinen aus dem Stand – Fokus auf die hintere Oberschenkelmuskulatur.",
+      "startingPosition": "Aufrechter Stand, Kettlebell mit beiden Händen vor den Oberschenkeln, Knie leicht gebeugt.",
+      "movementDirection": "Hüfte nach hinten schieben, Kettlebell nah an den Beinen bis etwa Schienbeinmitte senken, dann Hüfte wieder nach vorn bringen.",
+      "breathing": "Beim Absenken einatmen, beim Aufrichten ausatmen.",
+      "techniqueCues": [
+        "Kniewinkel bleibt nahezu konstant",
+        "Dehnung hinten im Oberschenkel spüren",
+        "Rücken lang"
+      ],
+      "commonMistakes": [
+        "Zu tiefes Absenken mit Rundrücken",
+        "Knie strecken ganz durch",
+        "Gewicht auf den Zehen"
+      ],
+      "safetyNotes": [
+        "Bewegungsumfang an die Beweglichkeit der Oberschenkelrückseite anpassen"
+      ],
+      "stressedRegions": [
+        "lumbarSpine",
+        "hip"
+      ],
+      "tags": [
+        "hinge"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "heavy"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 75,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_deadlift",
+        "trx_hamstring_curl"
+      ],
+      "animation": "hinge",
+      "requiresTechniqueCheck": false,
+      "regressionId": "kb_deadlift"
+    },
+    {
+      "id": "kb_swing",
+      "nameDE": "Kettlebell Swing (beidarmig)",
+      "nameEN": "Two-Hand Kettlebell Swing",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "forearms",
+        "upperBack",
+        "cardiovascular"
+      ],
+      "difficulty": 2,
+      "summary": "Explosive Hüftstreckung mit schwingender Kettlebell – Kraftausdauer und Herz-Kreislauf. Nur bei sicherer Hinge-Technik.",
+      "startingPosition": "Kettlebell ca. 30 cm vor den Füßen, Hüfte gebeugt, Griff mit beiden Händen, Rücken neutral.",
+      "movementDirection": "Kettlebell zwischen die Oberschenkel zurückschwingen (Hike), dann Hüfte kräftig strecken – die Kettlebell schwebt bis etwa Brusthöhe. Arme führen nur.",
+      "breathing": "Beim Zurückschwingen einatmen, bei der Hüftstreckung kurz und kräftig ausatmen.",
+      "techniqueCues": [
+        "Kraft kommt aus der Hüfte, nicht aus den Armen",
+        "Oben: Körper bildet eine Linie, Gesäß fest",
+        "Kettlebell nicht über Brusthöhe",
+        "Unterarme berühren beim Rückschwung die Oberschenkel"
+      ],
+      "commonMistakes": [
+        "Kniebeuge statt Hüftbeugung",
+        "Mit den Armen heben",
+        "Zurücklehnen in der Endposition",
+        "Rundrücken im Rückschwung"
+      ],
+      "safetyNotes": [
+        "Nur einsetzen, wenn Kreuzheben technisch sicher sitzt (Technikbestätigung im Profil)",
+        "Bei Beschwerden der Lendenwirbelsäule oder kardiovaskulären Einschränkungen durch Kreuzheben ersetzen",
+        "Freien Raum vor und hinter dem Körper sicherstellen",
+        "Satz beenden, sobald die Technik nachlässt"
+      ],
+      "stressedRegions": [
+        "lumbarSpine",
+        "hip",
+        "shoulder"
+      ],
+      "tags": [
+        "hinge",
+        "ballistic",
+        "cardioDemand"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "medium"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 12,
+        "restSeconds": 75,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_deadlift",
+        "kb_glute_bridge",
+        "trx_squat_to_row"
+      ],
+      "animation": "swing",
+      "requiresTechniqueCheck": true,
+      "regressionId": "kb_deadlift"
+    },
+    {
+      "id": "kb_halo",
+      "nameDE": "Kettlebell Halo",
+      "nameEN": "Kettlebell Halo",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "secondaryMuscles": [
+        "upperBack",
+        "triceps",
+        "rotatorCuff"
+      ],
+      "difficulty": 1,
+      "summary": "Langsames Kreisen der Kettlebell um den Kopf – Schulterbeweglichkeit und Rumpfspannung.",
+      "startingPosition": "Aufrechter Stand oder Halbkniestand, Kettlebell kopfüber an den Hörnern vor der Brust.",
+      "movementDirection": "Kettlebell eng um den Kopf führen: an einem Ohr vorbei, hinter dem Kopf, am anderen Ohr zurück. Richtung wechseln.",
+      "breathing": "Ruhig und gleichmäßig weiteratmen.",
+      "techniqueCues": [
+        "Langsam und kontrolliert",
+        "Rumpf fest, kein Hohlkreuz",
+        "Kopf bleibt ruhig, die Kettlebell bewegt sich"
+      ],
+      "commonMistakes": [
+        "Zu schweres Gewicht",
+        "Ausweichen ins Hohlkreuz",
+        "Kopf weicht der Kettlebell aus"
+      ],
+      "safetyNotes": [
+        "Nur leichte Kettlebell (8 kg)",
+        "Bei Schulter- oder Nackenbeschwerden Radius verkleinern oder weglassen"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "cervicalSpine"
+      ],
+      "tags": [
+        "rotation"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "light"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 5,
+        "restSeconds": 45,
+        "perSide": true
+      },
+      "alternatives": [
+        "mob_wall_slide",
+        "trx_y_raise"
+      ],
+      "animation": "halo",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "kb_floor_press",
+      "nameDE": "Kettlebell Bodendrücken",
+      "nameEN": "Kettlebell Floor Press",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Drücken in Rückenlage – der Boden begrenzt den Bewegungsumfang und schont die Schulter.",
+      "startingPosition": "Rückenlage, Knie gebeugt, Kettlebell im Rack: Griff in der Handfläche, Unterarm senkrecht, Oberarm ca. 45° vom Körper.",
+      "movementDirection": "Kettlebell senkrecht nach oben drücken, kontrolliert absenken, bis der Oberarm den Boden berührt.",
+      "breathing": "Beim Drücken ausatmen, beim Absenken einatmen.",
+      "techniqueCues": [
+        "Handgelenk gerade",
+        "Oberarm im 45°-Winkel, nicht abgespreizt",
+        "Oberarm am Boden kurz ablegen, nicht aufprallen"
+      ],
+      "commonMistakes": [
+        "Abgeknicktes Handgelenk",
+        "Ellenbogen 90° abgespreizt",
+        "Kettlebell schwankt über dem Gesicht"
+      ],
+      "safetyNotes": [
+        "Kettlebell zum Ablegen sicher zur Seite rollen",
+        "Bei Schulterschmerz Bewegungsumfang verkleinern"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "elbow",
+        "wrist"
+      ],
+      "tags": [
+        "push",
+        "floor"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "medium"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 60,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_chest_press",
+        "bw_incline_push_up"
+      ],
+      "animation": "floor_press",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "kb_single_arm_row",
+      "nameDE": "Kettlebell Rudern einarmig (gestützt)",
+      "nameEN": "Supported Single-Arm Kettlebell Row",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "upperBack",
+        "lats"
+      ],
+      "secondaryMuscles": [
+        "biceps",
+        "rearDelts",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Einarmiges Rudern mit Abstützung – stärkt den oberen Rücken bei entlasteter Lendenwirbelsäule.",
+      "startingPosition": "Schrittstellung, freie Hand stützt sich auf Knie oder Bank, Rücken lang, Kettlebell hängt unter der Schulter.",
+      "movementDirection": "Ellenbogen nah am Körper nach hinten zur Hüfte ziehen, kurz halten, kontrolliert absenken.",
+      "breathing": "Beim Ziehen ausatmen, beim Absenken einatmen.",
+      "techniqueCues": [
+        "Schulterblatt zuerst nach hinten-unten",
+        "Oberkörper dreht nicht auf",
+        "Nacken lang"
+      ],
+      "commonMistakes": [
+        "Schwung aus dem Oberkörper",
+        "Schulter zieht zum Ohr",
+        "Rundrücken"
+      ],
+      "safetyNotes": [
+        "Abstützung entlastet den Rücken – nicht weglassen"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "lumbarSpine"
+      ],
+      "tags": [
+        "pull",
+        "hinge"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "heavy"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 60,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_row",
+        "trx_single_arm_rotational_row"
+      ],
+      "animation": "row_kb",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "kb_suitcase_carry",
+      "nameDE": "Kettlebell Suitcase Carry",
+      "nameEN": "Kettlebell Suitcase Carry",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "obliques",
+        "forearms"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "glutes",
+        "upperBack",
+        "shoulders"
+      ],
+      "difficulty": 1,
+      "summary": "Gehen mit einer Kettlebell in einer Hand – seitliche Rumpfstabilität, Griffkraft und Haltung.",
+      "startingPosition": "Aufrecht stehen, Kettlebell seitlich in einer Hand, Schultern waagerecht.",
+      "movementDirection": "Mit ruhigen Schritten gehen (Strecke oder Zeit), dann Seite wechseln.",
+      "breathing": "Gleichmäßig atmen, Rumpf leicht gespannt halten.",
+      "techniqueCues": [
+        "Groß machen, Schultern waagerecht",
+        "Nicht zur Kettlebell-Seite neigen",
+        "Kontrollierte Schritte"
+      ],
+      "commonMistakes": [
+        "Seitliches Abkippen",
+        "Schulter zieht nach oben",
+        "Zu schnelles Gehen"
+      ],
+      "safetyNotes": [
+        "Kettlebell zum Abstellen über Hüftbeugung absetzen, nicht fallen lassen"
+      ],
+      "stressedRegions": [
+        "lumbarSpine",
+        "shoulder"
+      ],
+      "tags": [
+        "carry",
+        "antiRotation"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "heavy"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 45,
+        "perSide": true
+      },
+      "alternatives": [
+        "kb_farmers_carry",
+        "side_plank"
+      ],
+      "animation": "carry",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "kb_farmers_carry",
+      "nameDE": "Farmer's Walk (zwei Kettlebells)",
+      "nameEN": "Farmer's Carry",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "forearms",
+        "upperBack"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "glutes",
+        "calves"
+      ],
+      "difficulty": 1,
+      "summary": "Gehen mit je einer Kettlebell pro Hand – Griffkraft, Haltung und Ganzkörperspannung.",
+      "startingPosition": "Aufrecht stehen, je eine Kettlebell seitlich in jeder Hand.",
+      "movementDirection": "Ruhige, kontrollierte Schritte über Strecke oder Zeit.",
+      "breathing": "Gleichmäßig atmen.",
+      "techniqueCues": [
+        "Brust offen, Schultern tief",
+        "Blick geradeaus",
+        "Kurze, ruhige Schritte"
+      ],
+      "commonMistakes": [
+        "Vorgebeugter Oberkörper",
+        "Hochgezogene Schultern"
+      ],
+      "safetyNotes": [
+        "Beide Kettlebells nacheinander über Hüftbeugung aufnehmen"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "lumbarSpine"
+      ],
+      "tags": [
+        "carry"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "medium"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "seconds",
+        "target": 40,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_suitcase_carry"
+      ],
+      "animation": "carry",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "kb_goblet_reverse_lunge",
+      "nameDE": "Goblet Ausfallschritt rückwärts",
+      "nameEN": "Goblet Reverse Lunge",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "adductors",
+        "core",
+        "calves"
+      ],
+      "difficulty": 2,
+      "summary": "Ausfallschritt nach hinten mit Kettlebell vor der Brust – einbeinige Kraft und Gleichgewicht.",
+      "startingPosition": "Aufrechter Stand, Kettlebell im Goblet-Griff vor der Brust.",
+      "movementDirection": "Einen Schritt nach hinten setzen, hinteres Knie kontrolliert Richtung Boden senken, über das vordere Bein zurück in den Stand.",
+      "breathing": "Beim Absenken einatmen, beim Aufrichten ausatmen.",
+      "techniqueCues": [
+        "Vorderes Knie zeigt über den Fuß",
+        "Oberkörper aufrecht",
+        "Hinteres Knie setzt nicht auf"
+      ],
+      "commonMistakes": [
+        "Zu kurzer Schritt",
+        "Knie fällt nach innen",
+        "Wackeln – Tempo zu hoch"
+      ],
+      "safetyNotes": [
+        "Gleichgewicht vor Gewicht – zuerst TRX-gestützt üben"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip"
+      ],
+      "tags": [
+        "lunge",
+        "balance"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "light"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 60,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_assisted_reverse_lunge",
+        "bw_split_squat"
+      ],
+      "animation": "lunge",
+      "requiresTechniqueCheck": false,
+      "regressionId": "trx_assisted_reverse_lunge"
+    },
+    {
+      "id": "kb_half_kneeling_press",
+      "nameDE": "Kettlebell Schulterdrücken im Halbkniestand",
+      "nameEN": "Half-Kneeling Kettlebell Press",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "upperBack",
+        "glutes"
+      ],
+      "difficulty": 3,
+      "summary": "Kontrolliertes einarmiges Überkopfdrücken – nur bei freier, schmerzfreier Schulterbeweglichkeit.",
+      "startingPosition": "Halbkniestand, Kettlebell im Rack auf der Seite des aufgestellten Knies gegenüber.",
+      "movementDirection": "Kettlebell langsam senkrecht über die Schulter drücken, Arm neben dem Ohr, kontrolliert zurück ins Rack.",
+      "breathing": "Vor dem Drücken einatmen, beim Drücken ausatmen.",
+      "techniqueCues": [
+        "Rippen unten, kein Hohlkreuz",
+        "Gesäß des knienden Beins angespannt",
+        "Langsames Tempo"
+      ],
+      "commonMistakes": [
+        "Ausweichen ins Hohlkreuz",
+        "Seitliches Wegknicken",
+        "Zu schweres Gewicht"
+      ],
+      "safetyNotes": [
+        "Überkopfbelastung: wird im Plan standardmäßig NICHT verwendet",
+        "Nur mit vollem, schmerzfreiem Schulterbewegungsumfang und Freigabe im Profil",
+        "Bei Schulter- oder HWS-Beschwerden meiden"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "cervicalSpine",
+        "lumbarSpine"
+      ],
+      "tags": [
+        "overhead",
+        "push"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "light"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 6,
+        "restSeconds": 75,
+        "perSide": true
+      },
+      "alternatives": [
+        "kb_floor_press",
+        "trx_y_raise"
+      ],
+      "animation": "overhead_press",
+      "requiresTechniqueCheck": false,
+      "regressionId": "kb_floor_press"
+    },
+    {
+      "id": "kb_glute_bridge",
+      "nameDE": "Kettlebell Hüftheben",
+      "nameEN": "Kettlebell Glute Bridge",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Hüftheben in Rückenlage mit Kettlebell auf dem Becken – rückenschonende Gesäßkräftigung.",
+      "startingPosition": "Rückenlage, Knie gebeugt, Füße hüftbreit, Kettlebell mit beiden Händen auf dem Becken.",
+      "movementDirection": "Becken anheben, bis Knie, Hüfte und Schultern eine Linie bilden, kurz halten, kontrolliert absenken.",
+      "breathing": "Beim Anheben ausatmen, beim Absenken einatmen.",
+      "techniqueCues": [
+        "Gesäß aktiv anspannen",
+        "Rippen bleiben unten",
+        "Druck über die Fersen"
+      ],
+      "commonMistakes": [
+        "Hohlkreuz statt Hüftstreckung",
+        "Knie fallen auseinander"
+      ],
+      "safetyNotes": [
+        "Kettlebell sicher festhalten"
+      ],
+      "stressedRegions": [
+        "hip"
+      ],
+      "tags": [
+        "hinge",
+        "floor"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "heavy"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 12,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "bw_glute_bridge",
+        "trx_hip_press"
+      ],
+      "animation": "bridge",
+      "requiresTechniqueCheck": false,
+      "regressionId": "bw_glute_bridge"
+    },
+    {
+      "id": "kb_around_the_body",
+      "nameDE": "Kettlebell um den Körper",
+      "nameEN": "Kettlebell Around the Body",
+      "category": "kettlebell",
+      "equipment": [
+        "kettlebell"
+      ],
+      "primaryMuscles": [
+        "core",
+        "forearms"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "obliques"
+      ],
+      "difficulty": 1,
+      "summary": "Kettlebell auf Hüfthöhe um den Körper weiterreichen – Aktivierung von Rumpf und Griff im Aufwärmen.",
+      "startingPosition": "Aufrechter, hüftbreiter Stand, Kettlebell in einer Hand vor dem Körper.",
+      "movementDirection": "Kettlebell vor dem Körper in die andere Hand übergeben, hinter dem Rücken wieder zurück. Nach einigen Runden Richtung wechseln.",
+      "breathing": "Ruhig weiteratmen.",
+      "techniqueCues": [
+        "Rumpf bleibt stabil, Hüfte dreht nicht mit",
+        "Sichere Übergabe"
+      ],
+      "commonMistakes": [
+        "Hüfte schwingt mit",
+        "Zu schnelles Tempo"
+      ],
+      "safetyNotes": [
+        "Leichte Kettlebell verwenden"
+      ],
+      "stressedRegions": [
+        "wrist"
+      ],
+      "tags": [
+        "antiRotation"
+      ],
+      "load": {
+        "kind": "kettlebell",
+        "tier": "light"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 30,
+        "perSide": false
+      },
+      "alternatives": [
+        "warm_hip_circles"
+      ],
+      "animation": "carry",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_row",
+      "nameDE": "TRX Rudern",
+      "nameEN": "TRX Row",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "upperBack",
+        "lats"
+      ],
+      "secondaryMuscles": [
+        "biceps",
+        "rearDelts",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Ziehen des Körpers zu den Griffen – Grundübung für Rücken und Haltung.",
+      "startingPosition": "Mit Blick zum Ankerpunkt stehen, Griffe in den Händen, Arme gestreckt, Körper als gerade Linie nach hinten gelehnt.",
+      "movementDirection": "Brust zu den Händen ziehen, Ellenbogen nah am Körper, kontrolliert zurück in die Ausgangsposition.",
+      "breathing": "Beim Heranziehen ausatmen, beim Zurücklassen einatmen.",
+      "techniqueCues": [
+        "Körper bleibt eine Linie – Gesäß fest",
+        "Schulterblätter zuerst zusammen",
+        "Langsames Ablassen"
+      ],
+      "commonMistakes": [
+        "Hüfte knickt ein",
+        "Schultern ziehen zu den Ohren",
+        "Schwung"
+      ],
+      "safetyNotes": [
+        "Intensität über den Körperwinkel steuern: Füße weiter vor = schwerer"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "elbow"
+      ],
+      "tags": [
+        "pull"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Körperwinkel ca. 45°; steiler = leichter"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 60,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_single_arm_row",
+        "trx_face_pull"
+      ],
+      "animation": "row_trx",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_chest_press",
+      "nameDE": "TRX Brustdrücken",
+      "nameEN": "TRX Chest Press",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Liegestütz-Variante im Stand an den Schlingen – Brust, Arme und Rumpfspannung.",
+      "startingPosition": "Mit dem Rücken zum Ankerpunkt, Griffe auf Brusthöhe, Arme gestreckt, Körper nach vorn gelehnt.",
+      "movementDirection": "Ellenbogen beugen und Brust kontrolliert zwischen die Hände senken, dann wieder wegdrücken.",
+      "breathing": "Beim Absenken einatmen, beim Drücken ausatmen.",
+      "techniqueCues": [
+        "Körper bleibt eine Linie",
+        "Ellenbogen ca. 45° vom Körper",
+        "Schlingen dürfen die Arme nicht berühren"
+      ],
+      "commonMistakes": [
+        "Durchhängende Hüfte",
+        "Zu tiefes Absenken mit Schulterschmerz",
+        "Ungleiche Schlingenspannung"
+      ],
+      "safetyNotes": [
+        "Bewegungsumfang schmerzfrei halten – besonders bei Schulterproblemen"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "elbow",
+        "wrist"
+      ],
+      "tags": [
+        "push"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Körperwinkel ca. 60°; aufrechter = leichter"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 60,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_floor_press",
+        "bw_incline_push_up"
+      ],
+      "animation": "press_trx",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_assisted_squat",
+      "nameDE": "TRX-gestützte Kniebeuge",
+      "nameEN": "TRX Assisted Squat",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "adductors",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Kniebeuge mit Halt an den Griffen – ideal zum Erlernen von Tiefe und Haltung.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Griffe vor der Brust, leichte Spannung in den Schlingen.",
+      "movementDirection": "Hüfte nach hinten-unten senken, Arme strecken sich leicht nach vorn, aus den Beinen aufstehen.",
+      "breathing": "Beim Absenken einatmen, beim Aufrichten ausatmen.",
+      "techniqueCues": [
+        "Nur so viel Zug wie nötig",
+        "Brust aufrecht",
+        "Knie über den Fußspitzen"
+      ],
+      "commonMistakes": [
+        "Mit den Armen hochziehen",
+        "Fersen heben ab"
+      ],
+      "safetyNotes": [
+        "Gute Option bei eingeschränkter Knie- oder Hüftbeweglichkeit"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip"
+      ],
+      "tags": [
+        "squat"
+      ],
+      "load": {
+        "kind": "trx"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 12,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "bw_squat",
+        "kb_goblet_squat"
+      ],
+      "animation": "squat",
+      "requiresTechniqueCheck": false,
+      "progressionId": "kb_goblet_squat"
+    },
+    {
+      "id": "trx_assisted_reverse_lunge",
+      "nameDE": "TRX-gestützter Ausfallschritt rückwärts",
+      "nameEN": "TRX Assisted Reverse Lunge",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hipFlexors",
+        "core",
+        "calves"
+      ],
+      "difficulty": 1,
+      "summary": "Ausfallschritt nach hinten mit Halt an den Griffen – Beinkraft, Hüftmobilität und Gleichgewicht.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Griffe vor dem Körper, aufrechter Stand.",
+      "movementDirection": "Ein Bein nach hinten setzen, hinteres Knie Richtung Boden senken, über das vordere Bein zurück.",
+      "breathing": "Beim Absenken einatmen, beim Aufrichten ausatmen.",
+      "techniqueCues": [
+        "Gewicht auf dem vorderen Bein",
+        "Oberkörper aufrecht",
+        "Griffe nur zur Balance"
+      ],
+      "commonMistakes": [
+        "Knie fällt nach innen",
+        "Zu kurzer Schritt"
+      ],
+      "safetyNotes": [
+        "Bei Knieschmerzen Schritttiefe verringern"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip"
+      ],
+      "tags": [
+        "lunge",
+        "balance"
+      ],
+      "load": {
+        "kind": "trx"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 45,
+        "perSide": true
+      },
+      "alternatives": [
+        "bw_split_squat",
+        "trx_assisted_squat"
+      ],
+      "animation": "lunge",
+      "requiresTechniqueCheck": false,
+      "progressionId": "kb_goblet_reverse_lunge"
+    },
+    {
+      "id": "trx_squat_to_row",
+      "nameDE": "TRX Kniebeuge mit Rudern",
+      "nameEN": "TRX Squat to Row",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes",
+        "upperBack"
+      ],
+      "secondaryMuscles": [
+        "lats",
+        "biceps",
+        "core",
+        "cardiovascular"
+      ],
+      "difficulty": 1,
+      "summary": "Kombination aus Kniebeuge und Rudern – Ganzkörperkoordination mit moderater Herz-Kreislauf-Belastung.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Arme gestreckt, leichte Rücklage.",
+      "movementDirection": "In die Kniebeuge gehen, dabei Arme strecken; beim Aufstehen fließend in eine Ruderbewegung übergehen.",
+      "breathing": "Beim Absenken einatmen, beim Aufstehen und Rudern ausatmen.",
+      "techniqueCues": [
+        "Fließende Bewegung",
+        "Schlingen bleiben gespannt",
+        "Rücken neutral"
+      ],
+      "commonMistakes": [
+        "Hüfte knickt beim Rudern ein",
+        "Hektisches Tempo"
+      ],
+      "safetyNotes": [
+        "Tempo moderat halten"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip",
+        "shoulder"
+      ],
+      "tags": [
+        "squat",
+        "pull",
+        "cardioDemand"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Körperwinkel ca. 30°"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_row",
+        "trx_assisted_squat"
+      ],
+      "animation": "squat_row",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_face_pull",
+      "nameDE": "TRX Face Pull",
+      "nameEN": "TRX Face Pull",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "rearDelts",
+        "upperBack"
+      ],
+      "secondaryMuscles": [
+        "rotatorCuff",
+        "biceps"
+      ],
+      "difficulty": 1,
+      "summary": "Ziehen der Griffe Richtung Stirn mit nach außen gedrehten Armen – Schultergesundheit und Haltung.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Arme gestreckt auf Schulterhöhe, Handflächen zueinander oder nach unten.",
+      "movementDirection": "Hände seitlich am Kopf vorbei ziehen, Ellenbogen hoch und weit, kontrolliert zurück.",
+      "breathing": "Beim Ziehen ausatmen.",
+      "techniqueCues": [
+        "Ellenbogen auf Schulterhöhe",
+        "Schulterblätter nach hinten-unten",
+        "Nacken lang"
+      ],
+      "commonMistakes": [
+        "Schultern ziehen hoch",
+        "Kopf schiebt nach vorn"
+      ],
+      "safetyNotes": [
+        "Kleinerer Winkel bei empfindlicher Schulter"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "cervicalSpine"
+      ],
+      "tags": [
+        "pull"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Körperwinkel steil, ca. 20–30°"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 12,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_row",
+        "trx_y_raise"
+      ],
+      "animation": "row_trx",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_y_raise",
+      "nameDE": "TRX Y-Heben",
+      "nameEN": "TRX Y Fly",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "rearDelts",
+        "upperBack"
+      ],
+      "secondaryMuscles": [
+        "rotatorCuff",
+        "core"
+      ],
+      "difficulty": 2,
+      "summary": "Arme in Y-Form nach oben-außen führen – Kräftigung der unteren Schulterblattmuskulatur.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Arme gestreckt vor dem Körper, leichte Rücklage.",
+      "movementDirection": "Gestreckte Arme schräg nach oben in eine Y-Position führen, Körper richtet sich dabei auf.",
+      "breathing": "Beim Heben ausatmen.",
+      "techniqueCues": [
+        "Sehr steiler Körperwinkel genügt",
+        "Daumen zeigen nach oben",
+        "Kein Hohlkreuz"
+      ],
+      "commonMistakes": [
+        "Zu flacher Winkel",
+        "Schultern ziehen zu den Ohren"
+      ],
+      "safetyNotes": [
+        "Arme oberhalb der Schulter: bei Schulterbeschwerden durch Face Pull ersetzen"
+      ],
+      "stressedRegions": [
+        "shoulder"
+      ],
+      "tags": [
+        "pull"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Nahezu aufrecht, ca. 15°"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_face_pull",
+        "mob_wall_slide"
+      ],
+      "animation": "y_raise",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_biceps_curl",
+      "nameDE": "TRX Bizepscurl",
+      "nameEN": "TRX Biceps Curl",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "biceps"
+      ],
+      "secondaryMuscles": [
+        "forearms",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Beugen der Arme mit fixierten Ellenbogen – Armkraft für Griff und Schlagbewegungen.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Arme gestreckt auf Schulterhöhe, Handflächen oben.",
+      "movementDirection": "Hände zur Stirn beugen, Ellenbogen bleiben auf Schulterhöhe, kontrolliert strecken.",
+      "breathing": "Beim Beugen ausatmen.",
+      "techniqueCues": [
+        "Ellenbogen bleiben ortsfest",
+        "Körperlinie halten"
+      ],
+      "commonMistakes": [
+        "Ellenbogen sinken ab",
+        "Hüfte knickt ein"
+      ],
+      "safetyNotes": [
+        "Bei Ellenbogenbeschwerden Winkel steiler wählen"
+      ],
+      "stressedRegions": [
+        "elbow"
+      ],
+      "tags": [
+        "pull"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Körperwinkel ca. 30°"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_row"
+      ],
+      "animation": "curl_trx",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_hamstring_curl",
+      "nameDE": "TRX Beinbeuger",
+      "nameEN": "TRX Hamstring Curl",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "hamstrings",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "calves"
+      ],
+      "difficulty": 2,
+      "summary": "In Rückenlage die Fersen in den Schlingen zum Gesäß ziehen – Oberschenkelrückseite und Gesäß.",
+      "startingPosition": "Rückenlage, Fersen in den Fußschlaufen unter dem Ankerpunkt, Arme seitlich am Boden.",
+      "movementDirection": "Becken anheben und Fersen zum Gesäß ziehen, kontrolliert wieder strecken.",
+      "breathing": "Beim Heranziehen ausatmen.",
+      "techniqueCues": [
+        "Becken bleibt oben",
+        "Langsames Strecken"
+      ],
+      "commonMistakes": [
+        "Becken sinkt ab",
+        "Hohlkreuz"
+      ],
+      "safetyNotes": [
+        "Bei Krampfneigung Bewegungsumfang verkürzen"
+      ],
+      "stressedRegions": [
+        "knee",
+        "lumbarSpine"
+      ],
+      "tags": [
+        "floor",
+        "hinge"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Schlaufen ca. 20 cm über dem Boden"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_glute_bridge",
+        "trx_hip_press"
+      ],
+      "animation": "hamstring_curl",
+      "requiresTechniqueCheck": false,
+      "regressionId": "trx_hip_press"
+    },
+    {
+      "id": "trx_hip_press",
+      "nameDE": "TRX Hüftheben",
+      "nameEN": "TRX Hip Press",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Hüftheben mit Fersen in den Schlaufen – instabile Variante der Glute Bridge.",
+      "startingPosition": "Rückenlage, Fersen in den Fußschlaufen, Knie ca. 90° gebeugt.",
+      "movementDirection": "Becken anheben, bis Knie, Hüfte und Schultern eine Linie bilden, kontrolliert absenken.",
+      "breathing": "Beim Anheben ausatmen.",
+      "techniqueCues": [
+        "Gesäß anspannen",
+        "Schlingen ruhig halten"
+      ],
+      "commonMistakes": [
+        "Hohlkreuz",
+        "Pendeln der Schlingen"
+      ],
+      "safetyNotes": [
+        "Sicher aus den Schlaufen aussteigen"
+      ],
+      "stressedRegions": [
+        "hip"
+      ],
+      "tags": [
+        "floor",
+        "hinge"
+      ],
+      "load": {
+        "kind": "trx"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "bw_glute_bridge",
+        "kb_glute_bridge"
+      ],
+      "animation": "bridge",
+      "requiresTechniqueCheck": false,
+      "progressionId": "trx_hamstring_curl"
+    },
+    {
+      "id": "trx_pallof_press",
+      "nameDE": "TRX Pallof Press",
+      "nameEN": "TRX Pallof Press",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "obliques",
+        "core"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "glutes"
+      ],
+      "difficulty": 1,
+      "summary": "Anti-Rotationsübung: Griffe vor der Brust wegdrücken, ohne dass der Rumpf aufdreht – Basis für Golf und Tennis.",
+      "startingPosition": "Seitlich zum Ankerpunkt stehen, beide Hände am Griff vor der Brust, Schlinge gespannt.",
+      "movementDirection": "Arme langsam nach vorn strecken, 2 Sekunden halten, zurückführen. Rumpf widersteht dem Zug zur Seite.",
+      "breathing": "Beim Wegdrücken ausatmen.",
+      "techniqueCues": [
+        "Hüfte und Schultern zeigen nach vorn",
+        "Je weiter vom Anker, desto schwerer"
+      ],
+      "commonMistakes": [
+        "Rumpf dreht zum Ankerpunkt",
+        "Hohlkreuz"
+      ],
+      "safetyNotes": [
+        "Schonende Rumpfübung, auch bei Rückenbeschwerden meist gut verträglich"
+      ],
+      "stressedRegions": [],
+      "tags": [
+        "antiRotation",
+        "isometric"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Seitlicher Abstand bestimmt die Last"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 30,
+        "perSide": true
+      },
+      "alternatives": [
+        "side_plank",
+        "bird_dog"
+      ],
+      "animation": "pallof",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_single_arm_rotational_row",
+      "nameDE": "TRX einarmiges Rudern mit Rotation",
+      "nameEN": "TRX Single-Arm Rotational Row",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "upperBack",
+        "obliques"
+      ],
+      "secondaryMuscles": [
+        "lats",
+        "biceps",
+        "core"
+      ],
+      "difficulty": 2,
+      "summary": "Einarmiges Rudern mit kontrollierter Rumpfrotation – Rotationskraft für Golf- und Tennisschwung.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, ein Griff in einer Hand, freier Arm zeigt zum Anker, Körper leicht zurückgelehnt.",
+      "movementDirection": "Ziehen und dabei Oberkörper zur Seite des Zugarms öffnen, freier Arm zeigt am Ende nach hinten. Kontrolliert zurück.",
+      "breathing": "Beim Ziehen ausatmen.",
+      "techniqueCues": [
+        "Rotation aus der Brustwirbelsäule",
+        "Hüfte bleibt stabil",
+        "Kontrolliertes Tempo"
+      ],
+      "commonMistakes": [
+        "Rotation aus der Lendenwirbelsäule",
+        "Ruckartige Bewegung"
+      ],
+      "safetyNotes": [
+        "Bei Rückenbeschwerden ohne Rotation ausführen"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "thoracicSpine"
+      ],
+      "tags": [
+        "pull",
+        "rotation"
+      ],
+      "load": {
+        "kind": "trx",
+        "leverHint": "Körperwinkel ca. 30°"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 45,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_row",
+        "kb_single_arm_row"
+      ],
+      "animation": "row_trx",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_assisted_lateral_lunge",
+      "nameDE": "TRX-gestützter Seitausfallschritt",
+      "nameEN": "TRX Assisted Lateral Lunge",
+      "category": "trx",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "adductors",
+        "glutes",
+        "quadriceps"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "difficulty": 2,
+      "summary": "Seitlicher Ausfallschritt mit Halt – Hüftmobilität und seitliche Beinkraft (Tennis!).",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Griffe vor dem Körper, breiter Stand.",
+      "movementDirection": "Hüfte zu einer Seite nach hinten schieben, ein Knie beugen, anderes Bein bleibt gestreckt; zurück zur Mitte.",
+      "breathing": "Beim Absenken einatmen.",
+      "techniqueCues": [
+        "Fußsohlen bleiben am Boden",
+        "Knie über Fuß"
+      ],
+      "commonMistakes": [
+        "Knie schiebt weit vor die Fußspitze",
+        "Rundrücken"
+      ],
+      "safetyNotes": [
+        "Bewegungsumfang an Hüft- und Leistenbeweglichkeit anpassen"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip"
+      ],
+      "tags": [
+        "lunge",
+        "balance"
+      ],
+      "load": {
+        "kind": "trx"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 45,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_assisted_reverse_lunge"
+      ],
+      "animation": "lateral_lunge",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_deep_squat_hold",
+      "nameDE": "TRX tiefe Hocke (Mobilität)",
+      "nameEN": "TRX Deep Squat Hold",
+      "category": "mobility",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "hipFlexors",
+        "adductors"
+      ],
+      "secondaryMuscles": [
+        "calves",
+        "lowerBack"
+      ],
+      "difficulty": 1,
+      "summary": "Gehaltene tiefe Hocke mit Halt an den Griffen – Mobilität für Hüfte und Sprunggelenk.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Griffe vor dem Körper.",
+      "movementDirection": "In eine tiefe Hocke sinken, Arme halten das Gleichgewicht, ruhig atmen und Position halten.",
+      "breathing": "Tief und ruhig atmen.",
+      "techniqueCues": [
+        "Fersen möglichst am Boden",
+        "Knie nach außen drücken",
+        "Brust aufrecht"
+      ],
+      "commonMistakes": [
+        "Zu viel Zug an den Armen",
+        "Schmerzhafte Kniebeugung"
+      ],
+      "safetyNotes": [
+        "Nur schmerzfreie Tiefe – bei Kniebeschwerden weglassen"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip",
+        "ankle"
+      ],
+      "tags": [
+        "stretch",
+        "squat"
+      ],
+      "load": {
+        "kind": "trx"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 15,
+        "perSide": false
+      },
+      "alternatives": [
+        "mob_hip_90_90"
+      ],
+      "animation": "deep_squat",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_chest_stretch",
+      "nameDE": "TRX Brustöffner",
+      "nameEN": "TRX Chest Opener",
+      "category": "mobility",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "difficulty": 1,
+      "summary": "Dehnung der Brust- und vorderen Schultermuskulatur in den Schlingen.",
+      "startingPosition": "Mit dem Rücken zum Ankerpunkt, Arme seitlich in den Griffen, kleiner Schritt nach vorn.",
+      "movementDirection": "Körper langsam nach vorn lehnen, bis eine Dehnung in der Brust spürbar ist, halten.",
+      "breathing": "Ruhig in die Dehnung atmen.",
+      "techniqueCues": [
+        "Arme auf oder leicht unter Schulterhöhe",
+        "Sanfte Dehnung"
+      ],
+      "commonMistakes": [
+        "Zu starke Dehnung",
+        "Hohlkreuz"
+      ],
+      "safetyNotes": [
+        "Bei Schulterinstabilität nur sehr sanft"
+      ],
+      "stressedRegions": [
+        "shoulder"
+      ],
+      "tags": [
+        "stretch"
+      ],
+      "load": {
+        "kind": "trx"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 15,
+        "perSide": false
+      },
+      "alternatives": [
+        "mob_open_book"
+      ],
+      "animation": "chest_stretch",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "trx_hip_hinge_mobility",
+      "nameDE": "TRX Hüftbeuge-Dehnung",
+      "nameEN": "TRX Hip Hinge Stretch",
+      "category": "mobility",
+      "equipment": [
+        "trx"
+      ],
+      "primaryMuscles": [
+        "hamstrings",
+        "lats"
+      ],
+      "secondaryMuscles": [
+        "lowerBack",
+        "shoulders"
+      ],
+      "difficulty": 1,
+      "summary": "Mit gestreckten Armen in den Schlingen in die Hüftbeugung lehnen – Rückseite und Schultern öffnen.",
+      "startingPosition": "Mit Blick zum Ankerpunkt, Arme gestreckt, Griffe auf Hüfthöhe.",
+      "movementDirection": "Hüfte nach hinten schieben, Oberkörper sinkt zwischen die Arme, Rücken lang.",
+      "breathing": "Ruhig atmen, beim Ausatmen etwas tiefer sinken.",
+      "techniqueCues": [
+        "Knie leicht gebeugt",
+        "Wirbelsäule lang"
+      ],
+      "commonMistakes": [
+        "Rundrücken"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "hip",
+        "shoulder"
+      ],
+      "tags": [
+        "stretch",
+        "hinge"
+      ],
+      "load": {
+        "kind": "trx"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 15,
+        "perSide": false
+      },
+      "alternatives": [
+        "cool_supine_hamstring_stretch"
+      ],
+      "animation": "hinge",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "bw_squat",
+      "nameDE": "Kniebeuge (Eigengewicht)",
+      "nameEN": "Bodyweight Squat",
+      "category": "bodyweight",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "adductors",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Kniebeuge ohne Zusatzgewicht – Technikgrundlage und Aufwärmübung.",
+      "startingPosition": "Hüftbreiter Stand, Arme vor dem Körper.",
+      "movementDirection": "Hüfte nach hinten-unten senken, aus dem ganzen Fuß aufrichten.",
+      "breathing": "Beim Absenken einatmen, beim Aufrichten ausatmen.",
+      "techniqueCues": [
+        "Knie über den Fußspitzen",
+        "Brust aufrecht"
+      ],
+      "commonMistakes": [
+        "Fersen heben ab",
+        "Knie fallen nach innen"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "knee",
+        "hip"
+      ],
+      "tags": [
+        "squat"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 12,
+        "restSeconds": 45,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_assisted_squat"
+      ],
+      "animation": "squat",
+      "requiresTechniqueCheck": false,
+      "progressionId": "kb_goblet_squat"
+    },
+    {
+      "id": "bw_incline_push_up",
+      "nameDE": "Erhöhter Liegestütz",
+      "nameEN": "Incline Push-Up",
+      "category": "bodyweight",
+      "equipment": [
+        "bodyweight",
+        "wall"
+      ],
+      "primaryMuscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Liegestütz mit den Händen auf einer Erhöhung (Bank, Tisch, Wand) – dosierbare Drückübung.",
+      "startingPosition": "Hände schulterbreit auf einer stabilen Erhöhung, Körper gerade Linie.",
+      "movementDirection": "Brust kontrolliert zur Kante senken, wieder wegdrücken.",
+      "breathing": "Beim Absenken einatmen, beim Drücken ausatmen.",
+      "techniqueCues": [
+        "Höhere Ablage = leichter",
+        "Körper als Brett"
+      ],
+      "commonMistakes": [
+        "Hüfte hängt durch",
+        "Ellenbogen weit abgespreizt"
+      ],
+      "safetyNotes": [
+        "Stabile, rutschfeste Ablage wählen"
+      ],
+      "stressedRegions": [
+        "shoulder",
+        "wrist",
+        "elbow"
+      ],
+      "tags": [
+        "push"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 60,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_chest_press",
+        "kb_floor_press"
+      ],
+      "animation": "push_up",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "bw_glute_bridge",
+      "nameDE": "Hüftheben (Eigengewicht)",
+      "nameEN": "Glute Bridge",
+      "category": "bodyweight",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Hüftheben in Rückenlage – aktiviert das Gesäß und entlastet den unteren Rücken.",
+      "startingPosition": "Rückenlage, Knie gebeugt, Füße hüftbreit, Arme neben dem Körper.",
+      "movementDirection": "Becken anheben bis zur Linie Knie–Hüfte–Schulter, kurz halten, absenken.",
+      "breathing": "Beim Anheben ausatmen.",
+      "techniqueCues": [
+        "Gesäß aktiv",
+        "Kein Hohlkreuz"
+      ],
+      "commonMistakes": [
+        "Becken kippt",
+        "Druck auf den Zehen"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "hip"
+      ],
+      "tags": [
+        "hinge",
+        "floor"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 12,
+        "restSeconds": 30,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_glute_bridge",
+        "trx_hip_press"
+      ],
+      "animation": "bridge",
+      "requiresTechniqueCheck": false,
+      "progressionId": "kb_glute_bridge"
+    },
+    {
+      "id": "bw_split_squat",
+      "nameDE": "Split Squat",
+      "nameEN": "Split Squat",
+      "category": "bodyweight",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hipFlexors",
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Statische Ausfallschrittposition, auf und ab – einbeinige Kraft ohne Schrittbewegung.",
+      "startingPosition": "Schrittstellung, hinterer Fuß auf dem Fußballen, Oberkörper aufrecht.",
+      "movementDirection": "Senkrecht nach unten sinken, bis das hintere Knie knapp über dem Boden ist, wieder hochdrücken.",
+      "breathing": "Beim Absenken einatmen.",
+      "techniqueCues": [
+        "Senkrechte Bewegung",
+        "Vorderes Knie über dem Fuß"
+      ],
+      "commonMistakes": [
+        "Zu enge Spur – Wackeln"
+      ],
+      "safetyNotes": [
+        "Bei Bedarf an Wand oder TRX festhalten"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip"
+      ],
+      "tags": [
+        "lunge",
+        "balance"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 45,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_assisted_reverse_lunge"
+      ],
+      "animation": "lunge",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "bw_single_leg_balance",
+      "nameDE": "Einbeinstand mit Reichbewegung",
+      "nameEN": "Single-Leg Balance Reach",
+      "category": "bodyweight",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "glutes",
+        "calves"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "hamstrings"
+      ],
+      "difficulty": 1,
+      "summary": "Einbeinstand mit kontrolliertem Vorneigen – Gleichgewicht und Fußstabilität.",
+      "startingPosition": "Aufrechter Stand auf einem Bein, Standknie leicht gebeugt.",
+      "movementDirection": "Oberkörper nach vorn neigen, freies Bein nach hinten strecken, zurück in den Stand.",
+      "breathing": "Ruhig weiteratmen.",
+      "techniqueCues": [
+        "Hüfte bleibt waagerecht",
+        "Blick auf einen festen Punkt"
+      ],
+      "commonMistakes": [
+        "Becken dreht auf",
+        "Hektisches Ausgleichen"
+      ],
+      "safetyNotes": [
+        "In Wandnähe üben, bei Unsicherheit festhalten"
+      ],
+      "stressedRegions": [
+        "ankle",
+        "hip"
+      ],
+      "tags": [
+        "balance",
+        "hinge"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 6,
+        "restSeconds": 30,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_assisted_reverse_lunge"
+      ],
+      "animation": "balance",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "bw_calf_raise",
+      "nameDE": "Wadenheben",
+      "nameEN": "Calf Raise",
+      "category": "bodyweight",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "calves"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Fersenheben im Stand – Kräftigung der Waden und Sprunggelenkstabilität (Tennis: Antritte).",
+      "startingPosition": "Aufrechter Stand, ggf. eine Hand an der Wand.",
+      "movementDirection": "Langsam auf die Fußballen hochdrücken, oben kurz halten, langsam absenken.",
+      "breathing": "Gleichmäßig atmen.",
+      "techniqueCues": [
+        "Langsames Absenken",
+        "Gewicht über den Großzehen"
+      ],
+      "commonMistakes": [
+        "Schnelles Wippen"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "ankle"
+      ],
+      "tags": [
+        "balance"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 15,
+        "restSeconds": 30,
+        "perSide": false
+      },
+      "alternatives": [
+        "bw_single_leg_balance"
+      ],
+      "animation": "calf_raise",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "bw_hip_hinge_drill",
+      "nameDE": "Hüftbeuge-Technikübung",
+      "nameEN": "Hip Hinge Drill",
+      "category": "warmup",
+      "equipment": [
+        "bodyweight",
+        "wall"
+      ],
+      "primaryMuscles": [
+        "hamstrings",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "lowerBack"
+      ],
+      "difficulty": 1,
+      "summary": "Hüfte nach hinten zur Wand schieben – erlernt das Hinge-Muster für Kreuzheben und Swing.",
+      "startingPosition": "Ca. eine Fußlänge vor einer Wand stehen, Rücken zur Wand, Hände an den Leisten.",
+      "movementDirection": "Hüfte nach hinten schieben, bis das Gesäß die Wand berührt, Rücken bleibt lang; wieder aufrichten.",
+      "breathing": "Beim Vorbeugen einatmen.",
+      "techniqueCues": [
+        "Schienbeine bleiben senkrecht",
+        "Hände spüren die Hüftfalte"
+      ],
+      "commonMistakes": [
+        "Knie beugen sich stark",
+        "Rundrücken"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "hip"
+      ],
+      "tags": [
+        "hinge"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 20,
+        "perSide": false
+      },
+      "alternatives": [
+        "kb_deadlift"
+      ],
+      "animation": "hinge",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "bird_dog",
+      "nameDE": "Bird Dog",
+      "nameEN": "Bird Dog",
+      "category": "core",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "core",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "lowerBack",
+        "shoulders"
+      ],
+      "difficulty": 1,
+      "summary": "Im Vierfüßlerstand diagonal Arm und Bein strecken – Rückenstabilität und Koordination.",
+      "startingPosition": "Vierfüßlerstand, Hände unter den Schultern, Knie unter der Hüfte, Rücken neutral.",
+      "movementDirection": "Einen Arm und das gegenüberliegende Bein lang strecken, 2 Sekunden halten, zurück, Seite wechseln.",
+      "breathing": "Beim Strecken ausatmen.",
+      "techniqueCues": [
+        "Becken bleibt waagerecht",
+        "Lang machen statt hoch heben",
+        "Langsam"
+      ],
+      "commonMistakes": [
+        "Hohlkreuz",
+        "Becken kippt zur Seite"
+      ],
+      "safetyNotes": [
+        "Sehr rückenfreundlich – geeignet auch bei leichten LWS-Beschwerden"
+      ],
+      "stressedRegions": [],
+      "tags": [
+        "balance",
+        "floor",
+        "antiRotation"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 6,
+        "restSeconds": 30,
+        "perSide": true
+      },
+      "alternatives": [
+        "dead_bug",
+        "trx_pallof_press"
+      ],
+      "animation": "bird_dog",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "dead_bug",
+      "nameDE": "Dead Bug",
+      "nameEN": "Dead Bug",
+      "category": "core",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "core"
+      ],
+      "secondaryMuscles": [
+        "hipFlexors",
+        "shoulders"
+      ],
+      "difficulty": 1,
+      "summary": "In Rückenlage gegengleich Arm und Bein absenken – tiefe Rumpfmuskulatur.",
+      "startingPosition": "Rückenlage, Arme senkrecht nach oben, Hüfte und Knie 90° gebeugt.",
+      "movementDirection": "Einen Arm über Kopf und das gegenüberliegende Bein lang zum Boden führen, zurück, Seite wechseln.",
+      "breathing": "Beim Absenken ausatmen.",
+      "techniqueCues": [
+        "Unterer Rücken bleibt am Boden",
+        "Langsam und kontrolliert"
+      ],
+      "commonMistakes": [
+        "Hohlkreuz",
+        "Luft anhalten"
+      ],
+      "safetyNotes": [
+        "Bewegungsumfang verkleinern, wenn der Rücken abhebt"
+      ],
+      "stressedRegions": [],
+      "tags": [
+        "floor",
+        "antiRotation"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 6,
+        "restSeconds": 30,
+        "perSide": true
+      },
+      "alternatives": [
+        "bird_dog"
+      ],
+      "animation": "dead_bug",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "front_plank",
+      "nameDE": "Unterarmstütz",
+      "nameEN": "Front Plank",
+      "category": "core",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "core"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "glutes"
+      ],
+      "difficulty": 1,
+      "summary": "Halten des Körpers auf Unterarmen und Fußspitzen – Rumpfspannung.",
+      "startingPosition": "Unterarme unter den Schultern, Beine gestreckt, Körper gerade Linie.",
+      "movementDirection": "Position halten, Gesäß und Bauch fest.",
+      "breathing": "Ruhig weiteratmen – nicht pressen.",
+      "techniqueCues": [
+        "Körper wie ein Brett",
+        "Ellenbogen unter den Schultern"
+      ],
+      "commonMistakes": [
+        "Hüfte hängt durch oder ragt hoch",
+        "Pressatmung"
+      ],
+      "safetyNotes": [
+        "Bei Bluthochdruck auf ruhige Atmung achten, Halte kurz halten",
+        "Variante auf den Knien möglich"
+      ],
+      "stressedRegions": [
+        "shoulder"
+      ],
+      "tags": [
+        "isometric",
+        "floor"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 30,
+        "perSide": false
+      },
+      "alternatives": [
+        "bear_hold",
+        "dead_bug"
+      ],
+      "animation": "plank",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "side_plank",
+      "nameDE": "Seitstütz",
+      "nameEN": "Side Plank",
+      "category": "core",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "obliques",
+        "core"
+      ],
+      "secondaryMuscles": [
+        "glutes",
+        "shoulders"
+      ],
+      "difficulty": 2,
+      "summary": "Seitlicher Unterarmstütz – seitliche Rumpfkette, wichtig für Rotationssportarten.",
+      "startingPosition": "Seitlage, Unterarm unter der Schulter, Beine gestreckt oder Knie gebeugt (leichter).",
+      "movementDirection": "Becken anheben, bis der Körper eine Linie bildet, halten. Seite wechseln.",
+      "breathing": "Ruhig weiteratmen.",
+      "techniqueCues": [
+        "Becken nicht nach hinten schieben",
+        "Schulter weg vom Ohr"
+      ],
+      "commonMistakes": [
+        "Becken sinkt ab",
+        "Oberkörper dreht ein"
+      ],
+      "safetyNotes": [
+        "Variante mit gebeugten Knien bei Schulterbeschwerden"
+      ],
+      "stressedRegions": [
+        "shoulder"
+      ],
+      "tags": [
+        "isometric",
+        "floor",
+        "antiRotation"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "seconds",
+        "target": 20,
+        "restSeconds": 30,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_pallof_press",
+        "kb_suitcase_carry"
+      ],
+      "animation": "side_plank",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mcgill_curl_up",
+      "nameDE": "McGill Curl-up",
+      "nameEN": "McGill Curl-Up",
+      "category": "core",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "core"
+      ],
+      "secondaryMuscles": [
+        "neck"
+      ],
+      "difficulty": 1,
+      "summary": "Rückenfreundliche Bauchübung mit minimaler Wirbelsäulenbeugung.",
+      "startingPosition": "Rückenlage, ein Bein gestreckt, ein Knie gebeugt, Hände unter dem unteren Rücken.",
+      "movementDirection": "Kopf und Schultern nur wenige Zentimeter anheben, Nacken bleibt neutral, 8–10 Sekunden halten.",
+      "breathing": "Während des Haltens ruhig atmen.",
+      "techniqueCues": [
+        "Kopf und Brust als Einheit heben",
+        "Kinn nicht zur Brust ziehen"
+      ],
+      "commonMistakes": [
+        "Zu hohes Aufrollen",
+        "Nacken zieht"
+      ],
+      "safetyNotes": [
+        "Bei HWS-Beschwerden weglassen oder Kopf ablegen und nur anspannen"
+      ],
+      "stressedRegions": [
+        "cervicalSpine"
+      ],
+      "tags": [
+        "floor",
+        "isometric"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "reps",
+        "target": 5,
+        "restSeconds": 30,
+        "perSide": false
+      },
+      "alternatives": [
+        "dead_bug"
+      ],
+      "animation": "curl_up",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "bear_hold",
+      "nameDE": "Bärenstand",
+      "nameEN": "Bear Hold",
+      "category": "core",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "core",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "quadriceps"
+      ],
+      "difficulty": 1,
+      "summary": "Aus dem Vierfüßlerstand Knie wenige Zentimeter anheben und halten.",
+      "startingPosition": "Vierfüßlerstand, Hände unter Schultern, Knie unter Hüfte, Zehen aufgestellt.",
+      "movementDirection": "Knie 2–5 cm anheben, Rücken bleibt flach, halten.",
+      "breathing": "Ruhig weiteratmen.",
+      "techniqueCues": [
+        "Rücken waagerecht",
+        "Hände drücken den Boden weg"
+      ],
+      "commonMistakes": [
+        "Gesäß ragt hoch",
+        "Luft anhalten"
+      ],
+      "safetyNotes": [
+        "Bei Handgelenkbeschwerden auf Fäusten oder Unterarmen"
+      ],
+      "stressedRegions": [
+        "wrist",
+        "shoulder"
+      ],
+      "tags": [
+        "isometric",
+        "floor"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 2,
+        "targetKind": "seconds",
+        "target": 20,
+        "restSeconds": 30,
+        "perSide": false
+      },
+      "alternatives": [
+        "front_plank",
+        "bird_dog"
+      ],
+      "animation": "bear",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_cat_cow",
+      "nameDE": "Katze-Kuh",
+      "nameEN": "Cat-Cow",
+      "category": "mobility",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "lowerBack",
+        "upperBack"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "difficulty": 1,
+      "summary": "Wechsel zwischen Rundrücken und sanftem Hohlkreuz im Vierfüßlerstand – Mobilisation der Wirbelsäule.",
+      "startingPosition": "Vierfüßlerstand, Hände unter den Schultern, Knie unter der Hüfte.",
+      "movementDirection": "Wirbel für Wirbel einrollen (Katze), dann Brust nach vorn schieben (Kuh).",
+      "breathing": "Beim Einrollen ausatmen, beim Öffnen einatmen.",
+      "techniqueCues": [
+        "Langsam und fließend",
+        "Bewegung über die ganze Wirbelsäule verteilen"
+      ],
+      "commonMistakes": [
+        "Nur der Nacken bewegt sich"
+      ],
+      "safetyNotes": [
+        "Kopfbewegung klein halten bei HWS-Beschwerden"
+      ],
+      "stressedRegions": [],
+      "tags": [
+        "floor",
+        "stretch"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 10,
+        "perSide": false
+      },
+      "alternatives": [
+        "mob_open_book"
+      ],
+      "animation": "cat_cow",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_open_book",
+      "nameDE": "Offenes Buch (BWS-Rotation)",
+      "nameEN": "Open Book",
+      "category": "mobility",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "upperBack",
+        "chest"
+      ],
+      "secondaryMuscles": [
+        "obliques"
+      ],
+      "difficulty": 1,
+      "summary": "In Seitlage den oberen Arm aufdrehen – Rotation der Brustwirbelsäule für Golf und Tennis.",
+      "startingPosition": "Seitlage, Knie 90° gebeugt (ggf. Kissen zwischen Knie), Arme gestreckt vor der Brust.",
+      "movementDirection": "Oberen Arm in einem Bogen zur anderen Seite öffnen, Blick folgt der Hand, zurück.",
+      "breathing": "Beim Öffnen ausatmen.",
+      "techniqueCues": [
+        "Knie bleiben zusammen am Boden",
+        "Nur so weit, wie angenehm"
+      ],
+      "commonMistakes": [
+        "Becken dreht mit",
+        "Ruckartiges Öffnen"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "thoracicSpine",
+        "shoulder"
+      ],
+      "tags": [
+        "rotation",
+        "stretch",
+        "floor"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 6,
+        "restSeconds": 10,
+        "perSide": true
+      },
+      "alternatives": [
+        "mob_worlds_greatest_stretch",
+        "trx_chest_stretch"
+      ],
+      "animation": "open_book",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_worlds_greatest_stretch",
+      "nameDE": "World's Greatest Stretch",
+      "nameEN": "World's Greatest Stretch",
+      "category": "mobility",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "hipFlexors",
+        "hamstrings",
+        "upperBack"
+      ],
+      "secondaryMuscles": [
+        "adductors",
+        "obliques"
+      ],
+      "difficulty": 2,
+      "summary": "Ausfallschritt mit Rotation – Hüftbeuger, Leiste und Brustwirbelsäule in einer Übung.",
+      "startingPosition": "Tiefer Ausfallschritt, hinteres Knie kann am Boden abgelegt werden, Hände innen neben dem vorderen Fuß.",
+      "movementDirection": "Ellenbogen Richtung vorderen Fußknöchel senken, dann Arm zur Decke aufdrehen. Seite wechseln.",
+      "breathing": "Beim Aufdrehen ausatmen.",
+      "techniqueCues": [
+        "Hinteres Bein aktiv",
+        "Rotation aus der Brust"
+      ],
+      "commonMistakes": [
+        "Hohlkreuz",
+        "Hektisches Tempo"
+      ],
+      "safetyNotes": [
+        "Hinteres Knie ablegen, wenn das Gleichgewicht nicht reicht"
+      ],
+      "stressedRegions": [
+        "hip",
+        "knee",
+        "thoracicSpine"
+      ],
+      "tags": [
+        "stretch",
+        "rotation",
+        "lunge"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 4,
+        "restSeconds": 10,
+        "perSide": true
+      },
+      "alternatives": [
+        "mob_hip_flexor_stretch",
+        "mob_open_book"
+      ],
+      "animation": "lunge",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_hip_90_90",
+      "nameDE": "Hüfte 90/90",
+      "nameEN": "90/90 Hip Switch",
+      "category": "mobility",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "glutes",
+        "hipFlexors"
+      ],
+      "secondaryMuscles": [
+        "adductors"
+      ],
+      "difficulty": 1,
+      "summary": "Sitzend beide Knie 90° gebeugt, abwechselnd zu beiden Seiten kippen – Innen- und Außenrotation der Hüfte.",
+      "startingPosition": "Sitz am Boden, Hände hinter dem Körper abgestützt, Füße breit, Knie gebeugt.",
+      "movementDirection": "Beide Knie langsam zur einen Seite ablegen, dann zur anderen Seite wechseln.",
+      "breathing": "Ruhig atmen.",
+      "techniqueCues": [
+        "Oberkörper aufrecht",
+        "Langsam, ohne Schwung"
+      ],
+      "commonMistakes": [
+        "Schmerzhafter Druck im Knie"
+      ],
+      "safetyNotes": [
+        "Bei Knie- oder Hüftschmerz Bewegungsumfang verkleinern"
+      ],
+      "stressedRegions": [
+        "hip",
+        "knee"
+      ],
+      "tags": [
+        "stretch",
+        "floor",
+        "rotation"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 10,
+        "perSide": false
+      },
+      "alternatives": [
+        "trx_deep_squat_hold"
+      ],
+      "animation": "hip_90_90",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_hip_flexor_stretch",
+      "nameDE": "Hüftbeuger-Dehnung im Halbkniestand",
+      "nameEN": "Half-Kneeling Hip Flexor Stretch",
+      "category": "mobility",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "hipFlexors"
+      ],
+      "secondaryMuscles": [
+        "quadriceps"
+      ],
+      "difficulty": 1,
+      "summary": "Dehnung der vorderen Hüfte – gleicht langes Sitzen aus und verbessert die Hüftstreckung.",
+      "startingPosition": "Halbkniestand, hinteres Knie auf weicher Unterlage.",
+      "movementDirection": "Becken leicht aufrichten (Gesäß anspannen) und Hüfte etwas nach vorn schieben, halten.",
+      "breathing": "Ruhig in die Dehnung atmen.",
+      "techniqueCues": [
+        "Becken aufrichten statt ins Hohlkreuz",
+        "Oberkörper aufrecht"
+      ],
+      "commonMistakes": [
+        "Hohlkreuz",
+        "Zu weites Vorschieben"
+      ],
+      "safetyNotes": [
+        "Polster unter dem Knie"
+      ],
+      "stressedRegions": [
+        "knee",
+        "hip"
+      ],
+      "tags": [
+        "stretch"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 10,
+        "perSide": true
+      },
+      "alternatives": [
+        "mob_worlds_greatest_stretch"
+      ],
+      "animation": "hip_flexor_stretch",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_wall_slide",
+      "nameDE": "Wandgleiten",
+      "nameEN": "Wall Slide",
+      "category": "mobility",
+      "equipment": [
+        "wall"
+      ],
+      "primaryMuscles": [
+        "rotatorCuff",
+        "upperBack"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "difficulty": 1,
+      "summary": "Unterarme an der Wand nach oben gleiten lassen – Schulterblattkontrolle und Überkopfbeweglichkeit ohne Last.",
+      "startingPosition": "Mit dem Gesicht zur Wand, Unterarme in Schulterbreite an der Wand, Ellenbogen auf Schulterhöhe.",
+      "movementDirection": "Unterarme langsam nach oben gleiten lassen, nur im schmerzfreien Bereich, zurück.",
+      "breathing": "Beim Hochgleiten ausatmen.",
+      "techniqueCues": [
+        "Schultern weg von den Ohren",
+        "Rippen unten"
+      ],
+      "commonMistakes": [
+        "Hohlkreuz",
+        "Schmerzhafte Endposition"
+      ],
+      "safetyNotes": [
+        "Nur schmerzfreier Bewegungsbereich"
+      ],
+      "stressedRegions": [
+        "shoulder"
+      ],
+      "tags": [
+        "stretch"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 10,
+        "perSide": false
+      },
+      "alternatives": [
+        "mob_arm_circles"
+      ],
+      "animation": "wall_slide",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_chin_tuck",
+      "nameDE": "Nackenrückzug (Chin Tuck)",
+      "nameEN": "Chin Tuck",
+      "category": "mobility",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "neck"
+      ],
+      "secondaryMuscles": [
+        "upperBack"
+      ],
+      "difficulty": 1,
+      "summary": "Kopf sanft waagerecht nach hinten schieben – aktiviert die tiefe Halsmuskulatur und verbessert die Kopfhaltung.",
+      "startingPosition": "Aufrecht sitzen oder stehen, Blick geradeaus.",
+      "movementDirection": "Kinn waagerecht nach hinten schieben (Doppelkinn), 3 Sekunden halten, lösen.",
+      "breathing": "Ruhig weiteratmen.",
+      "techniqueCues": [
+        "Kein Nicken – waagerechte Bewegung",
+        "Sanft"
+      ],
+      "commonMistakes": [
+        "Kopf nach unten nicken",
+        "Zu viel Kraft"
+      ],
+      "safetyNotes": [
+        "Bei Schwindel, Kribbeln oder ausstrahlenden Schmerzen abbrechen und ärztlich abklären"
+      ],
+      "stressedRegions": [
+        "cervicalSpine"
+      ],
+      "tags": [
+        "isometric"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 8,
+        "restSeconds": 10,
+        "perSide": false
+      },
+      "alternatives": [],
+      "animation": "chin_tuck",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "warm_march",
+      "nameDE": "Marschieren auf der Stelle",
+      "nameEN": "March in Place",
+      "category": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "hipFlexors",
+        "cardiovascular"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "calves"
+      ],
+      "difficulty": 1,
+      "summary": "Lockeres Marschieren mit Armeinsatz – bringt den Kreislauf schonend in Gang.",
+      "startingPosition": "Aufrechter Stand.",
+      "movementDirection": "Knie abwechselnd anheben, Arme schwingen gegengleich mit. Tempo langsam steigern.",
+      "breathing": "Locker und gleichmäßig atmen.",
+      "techniqueCues": [
+        "Aufrecht bleiben",
+        "Tempo moderat"
+      ],
+      "commonMistakes": [],
+      "safetyNotes": [
+        "Kein Sprung, keine Stoßbelastung"
+      ],
+      "stressedRegions": [],
+      "tags": [
+        "cardioDemand"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 60,
+        "restSeconds": 0,
+        "perSide": false
+      },
+      "alternatives": [
+        "warm_hip_circles"
+      ],
+      "animation": "march",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "mob_arm_circles",
+      "nameDE": "Armkreisen",
+      "nameEN": "Arm Circles",
+      "category": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "upperBack"
+      ],
+      "difficulty": 1,
+      "summary": "Große, langsame Armkreise vorwärts und rückwärts – Schultergelenk mobilisieren.",
+      "startingPosition": "Aufrechter Stand, Arme locker seitlich.",
+      "movementDirection": "Arme in großen Kreisen bewegen, Richtung nach der Hälfte wechseln.",
+      "breathing": "Ruhig atmen.",
+      "techniqueCues": [
+        "Kreise zunächst klein, dann größer",
+        "Nur schmerzfreier Bereich"
+      ],
+      "commonMistakes": [
+        "Schwungvolles Reißen"
+      ],
+      "safetyNotes": [
+        "Bei Schulterbeschwerden Kreise klein halten"
+      ],
+      "stressedRegions": [
+        "shoulder"
+      ],
+      "tags": [],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 0,
+        "perSide": false
+      },
+      "alternatives": [
+        "mob_wall_slide"
+      ],
+      "animation": "arm_circles",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "warm_hip_circles",
+      "nameDE": "Hüftkreisen",
+      "nameEN": "Hip Circles",
+      "category": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "hipFlexors",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "lowerBack"
+      ],
+      "difficulty": 1,
+      "summary": "Kreisende Beckenbewegung im Stand – Hüfte und unteren Rücken lockern.",
+      "startingPosition": "Hüftbreiter Stand, Hände an den Hüften.",
+      "movementDirection": "Becken in großen Kreisen bewegen, Richtung wechseln.",
+      "breathing": "Ruhig atmen.",
+      "techniqueCues": [
+        "Oberkörper bleibt ruhig"
+      ],
+      "commonMistakes": [],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "lumbarSpine",
+        "hip"
+      ],
+      "tags": [],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 0,
+        "perSide": false
+      },
+      "alternatives": [
+        "mob_cat_cow"
+      ],
+      "animation": "hip_circles",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "warm_leg_swings",
+      "nameDE": "Beinpendel",
+      "nameEN": "Leg Swings",
+      "category": "warmup",
+      "equipment": [
+        "bodyweight",
+        "wall"
+      ],
+      "primaryMuscles": [
+        "hipFlexors",
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "adductors",
+        "glutes"
+      ],
+      "difficulty": 1,
+      "summary": "Lockeres Pendeln eines Beins vor und zurück bzw. seitlich – dynamische Hüftmobilisation.",
+      "startingPosition": "Seitlich zu Wand oder TRX stehen und festhalten.",
+      "movementDirection": "Bein locker vor und zurück pendeln, Amplitude langsam vergrößern, Seite wechseln.",
+      "breathing": "Ruhig atmen.",
+      "techniqueCues": [
+        "Oberkörper aufrecht",
+        "Kontrollierte Amplitude"
+      ],
+      "commonMistakes": [
+        "Zu starker Schwung"
+      ],
+      "safetyNotes": [
+        "Festhalten für sicheres Gleichgewicht"
+      ],
+      "stressedRegions": [
+        "hip"
+      ],
+      "tags": [
+        "balance"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 10,
+        "restSeconds": 0,
+        "perSide": true
+      },
+      "alternatives": [
+        "warm_hip_circles"
+      ],
+      "animation": "leg_swing",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "cool_crocodile_breathing",
+      "nameDE": "Krokodilatmung",
+      "nameEN": "Crocodile Breathing",
+      "category": "cooldown",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "core"
+      ],
+      "secondaryMuscles": [],
+      "difficulty": 1,
+      "summary": "Bauchlage mit ruhiger Zwerchfellatmung – unterstützt den Übergang in die Erholung.",
+      "startingPosition": "Bauchlage, Stirn auf den Handrücken.",
+      "movementDirection": "Durch die Nase in den Bauch und die Flanken atmen, langsam ausatmen.",
+      "breathing": "Ca. 4 Sekunden ein, 6 Sekunden aus.",
+      "techniqueCues": [
+        "Ausatmung länger als Einatmung",
+        "Schultern locker"
+      ],
+      "commonMistakes": [],
+      "safetyNotes": [],
+      "stressedRegions": [],
+      "tags": [
+        "floor"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 60,
+        "restSeconds": 0,
+        "perSide": false
+      },
+      "alternatives": [
+        "cool_childs_pose"
+      ],
+      "animation": "lying_breath",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "cool_childs_pose",
+      "nameDE": "Kindhaltung",
+      "nameEN": "Child's Pose",
+      "category": "cooldown",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "lowerBack",
+        "lats"
+      ],
+      "secondaryMuscles": [
+        "hipFlexors"
+      ],
+      "difficulty": 1,
+      "summary": "Sitz auf den Fersen mit nach vorn gestreckten Armen – Entspannung für Rücken und Schultern.",
+      "startingPosition": "Vierfüßlerstand, Knie etwas breiter als hüftbreit.",
+      "movementDirection": "Gesäß Richtung Fersen schieben, Arme lang nach vorn, Stirn ablegen.",
+      "breathing": "Tief in den Rücken atmen.",
+      "techniqueCues": [
+        "Nur so weit, wie angenehm"
+      ],
+      "commonMistakes": [
+        "Druck im Knie ignorieren"
+      ],
+      "safetyNotes": [
+        "Bei Kniebeschwerden Kissen zwischen Gesäß und Fersen"
+      ],
+      "stressedRegions": [
+        "knee"
+      ],
+      "tags": [
+        "stretch",
+        "floor"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 45,
+        "restSeconds": 0,
+        "perSide": false
+      },
+      "alternatives": [
+        "cool_crocodile_breathing"
+      ],
+      "animation": "child_pose",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "cool_supine_hamstring_stretch",
+      "nameDE": "Oberschenkelrückseite-Dehnung in Rückenlage",
+      "nameEN": "Supine Hamstring Stretch",
+      "category": "cooldown",
+      "equipment": [
+        "mat"
+      ],
+      "primaryMuscles": [
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "calves"
+      ],
+      "difficulty": 1,
+      "summary": "In Rückenlage ein gestrecktes Bein anheben (ggf. mit TRX-Schlaufe) – schonende Dehnung.",
+      "startingPosition": "Rückenlage, ein Bein gestreckt am Boden, anderes Bein mit Schlaufe oder Händen am Oberschenkel.",
+      "movementDirection": "Bein gestreckt anheben, bis eine angenehme Dehnung spürbar ist, halten, Seite wechseln.",
+      "breathing": "Ruhig in die Dehnung atmen.",
+      "techniqueCues": [
+        "Becken bleibt am Boden",
+        "Leichte Kniebeugung erlaubt"
+      ],
+      "commonMistakes": [
+        "Ziehen bis zum Schmerz"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "hip"
+      ],
+      "tags": [
+        "stretch",
+        "floor"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "seconds",
+        "target": 30,
+        "restSeconds": 0,
+        "perSide": true
+      },
+      "alternatives": [
+        "trx_hip_hinge_mobility"
+      ],
+      "animation": "hamstring_stretch",
+      "requiresTechniqueCheck": false
+    },
+    {
+      "id": "cool_thoracic_rotation_seated",
+      "nameDE": "Sitzende Oberkörperrotation",
+      "nameEN": "Seated Thoracic Rotation",
+      "category": "cooldown",
+      "equipment": [
+        "bodyweight"
+      ],
+      "primaryMuscles": [
+        "upperBack",
+        "obliques"
+      ],
+      "secondaryMuscles": [],
+      "difficulty": 1,
+      "summary": "Aufrecht sitzend den Oberkörper langsam zu beiden Seiten drehen – Rotation sanft ausklingen lassen.",
+      "startingPosition": "Aufrechter Sitz (Stuhl oder Boden), Arme vor der Brust verschränkt.",
+      "movementDirection": "Oberkörper langsam zu einer Seite drehen, kurz halten, zur anderen Seite.",
+      "breathing": "Beim Drehen ausatmen.",
+      "techniqueCues": [
+        "Becken bleibt ruhig",
+        "Aufrichten vor dem Drehen"
+      ],
+      "commonMistakes": [
+        "Schwungvolles Drehen"
+      ],
+      "safetyNotes": [],
+      "stressedRegions": [
+        "thoracicSpine"
+      ],
+      "tags": [
+        "rotation",
+        "stretch"
+      ],
+      "load": {
+        "kind": "bodyweight"
+      },
+      "defaultPrescription": {
+        "sets": 1,
+        "targetKind": "reps",
+        "target": 6,
+        "restSeconds": 0,
+        "perSide": true
+      },
+      "alternatives": [
+        "mob_open_book"
+      ],
+      "animation": "rotation",
+      "requiresTechniqueCheck": false
+    }
+  ]
+}

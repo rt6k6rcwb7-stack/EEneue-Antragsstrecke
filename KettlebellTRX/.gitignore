@@ -1,0 +1,8 @@
+.build/
+.swiftpm/
+*.xcodeproj/
+DerivedData/
+xcuserdata/
+.DS_Store
+Backend/whoop-token-broker/node_modules/
+Backend/whoop-token-broker/.wrangler/
